@@ -1,0 +1,7 @@
+@mixin alert() {
+	width: 100%;
+	padding: $spacer / 2;
+	border-radius: 4px;
+	font-weight: 400;
+	text-align: center;
+}

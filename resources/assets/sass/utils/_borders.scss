@@ -1,0 +1,51 @@
+//
+// Border utils
+
+.border          { border: 1px solid darken($grey, 20%) !important; }
+.border-none        { border: 0 !important; }
+.border-top-none    { border-top: 0 !important; }
+.border-right-none  { border-right: 0 !important; }
+.border-bottom-none { border-bottom: 0 !important; }
+.border-left-none   { border-left: 0 !important; }
+
+@each $theme-color, $value in $theme {
+  .border-color-#{$theme-color} {
+    border-color: $value !important;
+  }
+}
+
+.border-color-white {
+  border-color: $white !important;
+}
+
+//
+// Border-radius
+//
+
+.rounded-border {
+  border-radius: $border-radius !important;
+}
+.rounded-border-top {
+  border-top-left-radius: $border-radius !important;
+  border-top-right-radius: $border-radius !important;
+}
+.rounded-border-right {
+  border-top-right-radius: $border-radius !important;
+  border-bottom-right-radius: $border-radius !important;
+}
+.rounded-border-bottom {
+  border-bottom-right-radius: $border-radius !important;
+  border-bottom-left-radius: $border-radius !important;
+}
+.rounded-border-left {
+  border-top-left-radius: $border-radius !important;
+  border-bottom-left-radius: $border-radius !important;
+}
+
+.rounded-border-circle {
+  border-radius: 50%;
+}
+
+.rounded-border-none {
+  border-radius: 0;
+}

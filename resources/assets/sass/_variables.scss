@@ -1,0 +1,209 @@
+//Main variables for crutch 0.0.1
+//
+//Groupings:
+//Colors
+//Spacing
+//Layout
+//Fonts
+//Buttons
+//Forms
+//Navigation
+
+//google font import
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i');
+
+
+
+//Colors
+
+$white: #fff !default;
+$black: #000 !default;
+$off-white: #fffce8 !default;
+
+$grey: #eee !default;
+$greyer: #ddd !default;
+$greyest: #666 !default;
+
+$blue: #143dad !default;
+$bluer: #11328e !default;
+$bluest: #092677 !default;
+
+$red: #ff1111 !default;
+$redder: #df1212 !default;
+$reddest: #af1100 !default;
+
+$green: #11af22 !default;
+$greener: #149b21 !default;
+$greenest: #167720 !default;
+
+$orange: #ffa500 !default;
+$purple: #aa00cc !default;
+$yellow: #ffe20c !default; 
+$pink: #f666cc !default; 
+
+//
+//Content Colors
+$theme: (
+	main: #c774e8,
+	secondary: #8795e8,
+	attention: #ff6ad5,
+	dark: lighten($black, 25%),
+	light: lighten($off-white, 30%),
+	dank: #330066
+	) !default;
+
+//
+//Content Spacing
+
+$spacer: 1.25rem !default;
+
+$spacers: (
+	nothing: 0,
+	something: ($spacer * 0.5),
+	enough: ($spacer),
+	more: ($spacer * 2),
+	most: ($spacer * 3.5)
+	) !default;
+
+$sizes: (
+	quarter: 25%,
+	half: 50%,
+	three-quarter: 75%,
+	entire: 100%
+	) !default;
+
+//
+//Initial Body Styling
+
+$body-bg: $greyer !default;
+$body-color: $white !default;
+
+//
+//Anchor styling
+
+$link-color: $redder !default;
+$link-decoration: none !default;
+$link-hover: darken($link-color, 12%) !default;
+$link-hover-decoration: underline !default;
+
+//
+//Responsive break points
+$viewport-widths: (
+	mobile: 767px, 
+	tablet: 1023px,
+	desktop: 1365px,
+	desktop-wide: 1919px
+	) !default; 
+
+//
+//Container maximum widths
+$container-width-desktop-wide: 1920px !default;
+$container-width-desktop: 1366px !default;
+$container-width-tablet: 768px !default;
+$container-width-mobile: 414px !default;
+
+//
+//Layout specifications
+$grid-column-gutter: 2% !default;
+
+//
+//Other misc. variables
+$line-height-desktop: 1.5 !default;
+$line-height-mobile: 1.5 !default;
+
+$border-width: 2px !default;
+
+$border-radius: .3rem !default;
+$border-radius-more: .38rem !default;
+$border-radius-less: .25rem !default;
+
+$item-active-color: $white !default;
+$item-active-background: theme("main") !default;
+
+//
+//Font Styling
+$sans-serif-family: "Nunito", "Helvetica Neue", Arial, sans-serif !default;
+$mono-family: Monaco, "Liberation Mono", monospace !default;
+$serif-family: "PT Serif", "Droid Serif", "Baskerville", serif !default;
+
+$base-font-size: .95rem !default;
+$more-font-size: 1.2rem !default;
+$less-font-size: .8rem !default;
+
+$font-weight-standard: 200 !default;
+$font-weight-bold: 600 !default;
+
+$line-height-standard: 1.35 !default;
+
+$h1-size: 2.2rem !default;
+$h2-size: 2.05rem !default;
+$h3-size: 1.8rem !default;
+$h4-size: 1.65rem !default;
+$h5-size: 1.5rem !default;
+$h6-size: 1.25rem !default;
+
+$heading-margin-bottom: ($spacer / 1.75) !default;
+$heading-font-family: inherit !default; 
+$heading-font-weight: 500 !default;
+$heading-line-height: 1.2 !default;
+$heading-color: inherit !default;
+
+$display-biggest: 4rem !default;
+$display-bigger: 3.25rem !default;
+$display-big: 2.5rem !default;
+$display-medium: 2rem !default;
+
+$display-biggest-weight: 300 !default;
+$display-bigger-weight: 300 !default;
+$display-big-weight: 300 !default;
+$display-medium-weight: 300 !default;
+$display-line-height: $heading-line-height !default; 
+
+$small-font-size: 75% !default;
+
+//
+//Buttons
+$input-button-padding-y: .55rem !default;
+$input-button-padding-x: .80rem !default;
+$input-button-line-height: 1.3 !default;
+
+$input-button-bigger-padding-y: .65rem !default;
+$input-button-bigger-padding-x: 1.1rem !default;
+$input-button-bigger-line-height: 1.6 !default;
+
+$button-font-weight: $font-weight-standard !default;
+$button-disabled-color: $greyest !default;
+
+//
+//Forms
+$input-bg-color: lighten($off-white, 20%) !default;
+$input-disabled-bg-color: lighten($greyest, 20%) !default;
+
+$input-color: $greyer !default;
+$input-border-color: rgba($grey, .25) !default;
+$input-button-border-width: $border-width !default;
+$input-box-shadow: inset 1px 1px 1px rgba($black, .1) !default;
+
+$input-border-radius: $border-radius !default;
+$input-border-radius-more: $border-radius-more !default;
+$input-border-radius-less: $border-radius-less !default;
+
+$input-placeholder-color: $greyer !default;
+$input-border-height: $input-button-border-width * 2 !default;
+
+$form-text-margin-top: .3rem !default;
+
+//
+//Navigation
+$navigation-link-padding-y: .38rem !default;
+$navigation-link-padding-x: .8rem !default;
+
+$navigation-bar-padding-y: ($spacer / 2) !default;
+$navigation-bar-padding-x: $spacer;
+$navigation-bar-logo-size: $more-font-size;
+
+$navigation-link-height: $navigation-bar-logo-size * $line-height-standard !default;
+$navigation-logo-height: ($base-font-size * $line-height-standard + $navigation-link-padding-y * 2) !default;
+$navigation-logo-padding-y: ($navigation-logo-height - $navigation-link-height) / 2.1 !default;
+
+

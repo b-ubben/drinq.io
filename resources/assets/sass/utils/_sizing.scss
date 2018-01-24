@@ -1,0 +1,11 @@
+//
+//Width and Height utils
+
+@each $prop, $abbrev in (width: w, height: h) {
+  @each $size, $percent in $sizes {
+    .#{$abbrev}-#{$size} { #{$prop}: $percent !important; }
+  }
+}
+
+.max-h-full { max-width: 100% !important; }
+.max-wfull { max-height: 100% !important; }

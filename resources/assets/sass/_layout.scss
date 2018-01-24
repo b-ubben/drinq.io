@@ -1,0 +1,54 @@
+//
+//Container class
+
+.container {
+	@include container();
+}
+
+.container-desktop-wide {
+	@include container();
+	max-width: $container-width-desktop-wide;
+}
+
+.container-desktop {
+	@include container();
+	max-width: $container-width-desktop;
+}
+
+.container-tablet {
+	@include container();
+	max-width: $container-width-tablet;
+}
+
+.container-mobile {
+	@include container();
+	max-width: $container-width-mobile;
+}
+
+.item, .item-half{
+	@include item();
+	width: 100%;
+}
+
+.item-third {
+	@include item();
+	width: 50%;
+}
+
+.row{
+	@include row();
+}
+
+
+@media screen and (min-width: 640px) {
+	.item-third{
+		@include item();
+		min-width: 300px;
+		max-width: 30.82%;
+	}
+
+	.item-half{
+		@include item();
+		max-width: 47.5%;
+	}
+}

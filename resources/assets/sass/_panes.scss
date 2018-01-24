@@ -1,0 +1,19 @@
+.pane {
+	background: rgba($greyest, 0.1);
+	display: flex;
+		flex-flow: column nowrap;
+}
+
+.pane-title {
+	color: map-get($theme, main);
+	text-align: center;
+}
+
+.pane-content {
+	padding: $spacer;
+}
+
+.pane-rounded {
+	border: 1px solid $greyer;
+	border-radius: 5px; 
+}

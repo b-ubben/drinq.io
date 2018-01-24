@@ -1,0 +1,18 @@
+.crutch-form input[type=text],
+.crutch-form input[type=password] {
+	border: 1px solid $greyer;
+	border-radius: 4px;
+	padding: 0.35rem;
+	margin: 0.25rem auto;
+}	
+
+.crutch-form input[type="submit"] {
+	border: 1px solid $greyer; 
+	border-radius: 8px;
+	color: map-get($theme, dark); 
+	padding: 0.3rem;
+	margin: 0.2rem;
+	height: 2rem;
+	line-height: 1.5rem;
+	min-width: 3rem;
+}

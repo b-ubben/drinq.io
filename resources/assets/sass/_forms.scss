@@ -1,0 +1,15 @@
+//
+//Form styling for the crutch framework
+
+.crutch-form {
+	padding: $spacer;
+}
+
+.crutch-form input:hover {
+	border: 1px solid map-get($theme, main);
+}
+
+.input-long {
+	width: 100%;
+	margin: auto;
+}

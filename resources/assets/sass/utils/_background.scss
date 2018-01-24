@@ -1,0 +1,9 @@
+//
+//Background color options
+
+@each $theme-color, $value in $theme {
+  @include background-color-variant('.bg-#{$theme-color}', $value);
+}
+
+.bg-white { background-color: $white !important; }
+.bg-transparent { background-color: transparent !important; }

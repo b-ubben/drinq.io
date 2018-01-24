@@ -1,0 +1,13 @@
+.alert-successful {
+	@include alert();
+	color: $greenest;
+	background: rgba(lighten($green, 10%), 0.6);
+	border: 1px solid rgba($greenest, 0.15);
+}
+
+.alert-failure {
+	@include alert();
+	color: $reddest;
+	background: rgba(lighten($red, 10%), 0.6);
+	border: 1px solid rgba($reddest, 0.15);
+}
