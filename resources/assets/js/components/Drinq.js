@@ -22,5 +22,5 @@ export default class Drinq extends Component {
 }
 
 if (document.getElementById('content')) {
-    ReactDOM.render(<Navigation />, document.getElementById('navigation'));
+    ReactDOM.render(<Drinq />, document.getElementById('content'));
 }
