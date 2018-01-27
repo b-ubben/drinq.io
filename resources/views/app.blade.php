@@ -13,7 +13,6 @@
         <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div id="navigation"></div>
         <div id="content"></div>
         <script src="{{asset('js/app.js')}}" ></script>
     </body>

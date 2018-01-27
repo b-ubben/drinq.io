@@ -20,7 +20,6 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 
-import Drinq from './components/Drinq';
-import Navigation from './components/Navigation';
+import Master from './components/Master';
 
-render(<Drinq />, document.getElementById('content'));
+render(<Master />, document.getElementById('content'));

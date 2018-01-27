@@ -1,28 +1,21 @@
-// Master.js
-
-import React, {Component} from 'react';
-import { Router, Route, Link } from 'react-router';
-
 class Master extends Component {
-  render(){
+  render() {
     return (
-      <div className="container">
-        <nav className="navbar navbar-default">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <a className="navbar-brand" href="#">AppDividend</a>
+      <div>
+        <nav className="navigation bg-dark">
+          <a href="/" className="navigation-logo">drinq</a>
+          <a className="navigation-link">
+            <div className="menu-logo">
+              <div className="menu-logo-bars"></div>
+              <div className="menu-logo-bars"></div>
+              <div className="menu-logo-bars"></div>
             </div>
-            <ul className="nav navbar-nav">
-              <li className="active"><a href="#">Home</a></li>
-              <li><a href="#">Page 1</a></li>
-              <li><a href="#">Page 2</a></li>
-              <li><a href="#">Page 3</a></li>
-            </ul>
-          </div>
-      </nav>
-          <div>
-              {this.props.children}
-          </div>
+          </a>
+        </nav>
+
+        <main className="container">
+          {this.props.children}
+        </main>
       </div>
     )
   }

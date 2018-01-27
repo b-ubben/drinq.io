@@ -8953,7 +8953,7 @@ var Drinq = function (_Component) {
 
 
 if (document.getElementById('content')) {
-    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Navigation, null), document.getElementById('navigation'));
+    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Drinq, null), document.getElementById('content'));
 }
 
 /***/ }),
@@ -13401,8 +13401,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router__ = __webpack_require__(248);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_router__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Drinq__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Navigation__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Master__ = __webpack_require__(287);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -13427,8 +13426,7 @@ __webpack_require__(70);
 
 
 
-
-Object(__WEBPACK_IMPORTED_MODULE_1_react_dom__["render"])(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Drinq__["default"], null), document.getElementById('content'));
+Object(__WEBPACK_IMPORTED_MODULE_1_react_dom__["render"])(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Master__["a" /* default */], null), document.getElementById('content'));
 
 /***/ }),
 /* 124 */
@@ -59310,7 +59308,18 @@ exports.default = (0, _createRouterHistory2.default)(_createHashHistory2.default
 module.exports = exports['default'];
 
 /***/ }),
-/* 281 */
+/* 281 */,
+/* 282 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59322,51 +59331,54 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Navigation = function (_Component) {
-  _inherits(Navigation, _Component);
+var Master = function (_Component) {
+  _inherits(Master, _Component);
 
-  function Navigation() {
-    _classCallCheck(this, Navigation);
+  function Master() {
+    _classCallCheck(this, Master);
 
-    return _possibleConstructorReturn(this, (Navigation.__proto__ || Object.getPrototypeOf(Navigation)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Master.__proto__ || Object.getPrototypeOf(Master)).apply(this, arguments));
   }
 
-  _createClass(Navigation, [{
+  _createClass(Master, [{
     key: "render",
     value: function render() {
       return React.createElement(
-        "nav",
-        { className: "navigation bg-dark" },
+        "div",
+        null,
         React.createElement(
-          "a",
-          { href: "/", className: "navigation-logo" },
-          "drinq"
+          "nav",
+          { className: "navigation bg-dark" },
+          React.createElement(
+            "a",
+            { href: "/", className: "navigation-logo" },
+            "drinq"
+          ),
+          React.createElement(
+            "a",
+            { className: "navigation-link" },
+            React.createElement(
+              "div",
+              { className: "menu-logo" },
+              React.createElement("div", { className: "menu-logo-bars" }),
+              React.createElement("div", { className: "menu-logo-bars" }),
+              React.createElement("div", { className: "menu-logo-bars" })
+            )
+          )
         ),
         React.createElement(
-          "a",
-          { className: "navigation-link" },
-          React.createElement(
-            "div",
-            { className: "menu-logo" },
-            React.createElement("div", { className: "menu-logo-bars" }),
-            React.createElement("div", { className: "menu-logo-bars" }),
-            React.createElement("div", { className: "menu-logo-bars" })
-          )
+          "main",
+          { className: "container" },
+          this.props.children
         )
       );
     }
   }]);
 
-  return Navigation;
+  return Master;
 }(Component);
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Navigation);
-
-/***/ }),
-/* 282 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
+/* harmony default export */ __webpack_exports__["a"] = (Master);
 
 /***/ })
 /******/ ]);
