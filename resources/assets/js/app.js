@@ -23,4 +23,4 @@ import { Router, Route, browserHistory } from 'react-router';
 import Drinq from './components/Drinq';
 import Navigation from './components/Navigation';
 
-render(<Navigation />, document.getElementById('Drinq'));
+render(<Drinq />, document.getElementById('content'));
