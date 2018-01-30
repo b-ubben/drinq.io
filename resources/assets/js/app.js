@@ -13,13 +13,8 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Drinq');
-
-require('./bootstrap');
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import Main from './components/Main';
 
-import Master from './components/Master';
-
-render(<Master />, document.getElementById('content'));
+render(<Main />, document.getElementById('content'));
