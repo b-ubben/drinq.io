@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	//Base view for drinq.io
 ?>
@@ -12,7 +12,7 @@
         <title>drinq.io</title>
         <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
     </head>
-    <body>
+    <body class="bg-secondary text-white">
         <div id="content"></div>
         <script src="{{asset('js/app.js')}}" ></script>
     </body>
