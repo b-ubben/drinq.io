@@ -1963,3 +1963,11 @@ a:hover {
   visibility: hidden !important;
 }
 
+.bg-lighterDark {
+  background: #525252;
+}
+
+.border-color-grey {
+  border-color: #616161 !important;
+}
+

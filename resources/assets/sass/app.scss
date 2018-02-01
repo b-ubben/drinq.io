@@ -3,3 +3,11 @@
 
 // Crutch
 @import "crutch";
+
+.bg-lighterDark {
+  background: lighten(map-get($theme, dark), 7%);
+}
+
+.border-color-grey {
+  border-color: lighten(map-get($theme, dark), 13%) !important;
+}

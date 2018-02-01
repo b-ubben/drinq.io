@@ -42225,6 +42225,8 @@ module.exports = ReactDOMInvalidARIAHook;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__partials_Footer__ = __webpack_require__(263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_Landing__ = __webpack_require__(264);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_About__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_Login__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_Register__ = __webpack_require__(272);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -42232,6 +42234,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
 
 
 
@@ -42265,6 +42269,8 @@ var Main = function (_Component) {
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__partials_Navigation__["a" /* default */], { isLoggedIn: this.state.isLoggedIn }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_4__pages_Landing__["a" /* default */] }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/about', component: __WEBPACK_IMPORTED_MODULE_5__pages_About__["a" /* default */] }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/login', component: __WEBPACK_IMPORTED_MODULE_6__pages_Login__["a" /* default */] }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/register', component: __WEBPACK_IMPORTED_MODULE_7__pages_Register__["a" /* default */] }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__partials_Footer__["a" /* default */], null)
         )
       );
@@ -45371,8 +45377,8 @@ var Navigation = function (_Component) {
           'nav',
           { className: 'navigation' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'span',
-            { className: 'navigation-logo' },
+            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+            { to: '/', className: 'navigation-logo' },
             'drinq'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -45391,29 +45397,29 @@ var Navigation = function (_Component) {
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'nav',
-          { className: this.state.isExpanded ? 'nav-expanded display-block' : 'display-none' },
+          { className: this.state.isExpanded ? 'nav-expanded bg-lighterDark display-block' : 'display-none' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'row text-center flex-nowrap' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: 'item-third' },
+              { className: 'item-half' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                { className: 'navigation-link', to: '/', onClick: function onClick(e) {
+                { className: 'navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey', to: '/', onClick: function onClick(e) {
                     return _this2.handleToggle(e);
                   } },
                 'Home'
               ),
               isLoggedIn ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                { className: 'navigation-link', to: '/logout', onClick: function onClick(e) {
+                { className: 'navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey', to: '/logout', onClick: function onClick(e) {
                     return _this2.handleToggle(e);
                   } },
                 'Log Out'
               ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                { className: 'navigation-link', to: '/login', onClick: function onClick(e) {
+                { className: 'navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey', to: '/login', onClick: function onClick(e) {
                     return _this2.handleToggle(e);
                   } },
                 'Log In'
@@ -45421,23 +45427,23 @@ var Navigation = function (_Component) {
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: 'item-third' },
+              { className: 'item-half' },
               isLoggedIn ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                { className: 'navigation-link', to: '/profile', onClick: function onClick(e) {
+                { className: 'navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey', to: '/profile', onClick: function onClick(e) {
                     return _this2.handleToggle(e);
                   } },
                 'Profile'
               ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                { className: 'navigation-link', to: '/register', onClick: function onClick(e) {
+                { className: 'navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey', to: '/register', onClick: function onClick(e) {
                     return _this2.handleToggle(e);
                   } },
                 'Register'
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                { className: 'navigation-link padding-bottom-something', to: '/about', onClick: function onClick(e) {
+                { className: 'navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey', to: '/about', onClick: function onClick(e) {
                     return _this2.handleToggle(e);
                   } },
                 'About Us'
@@ -45492,7 +45498,12 @@ var Footer = function (_Component) {
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             null,
-            "Developed and tested by the unfortunate Morning Drinkers"
+            "Developed and tested by the Morning Drinkers"
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "p",
+            null,
+            "Copyright \xA9 2017"
           )
         )
       );
@@ -45643,6 +45654,141 @@ var About = function (_Component) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var Login = function (_Component) {
+  _inherits(Login, _Component);
+
+  function Login(props) {
+    _classCallCheck(this, Login);
+
+    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+  }
+
+  _createClass(Login, [{
+    key: "render",
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "main",
+        { className: "item-half" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "div",
+          { className: "pane pane-rounded bg-light padding-something" },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "p",
+            { className: "pane-title display-medium" },
+            "Please sign in to continue"
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "form",
+            { action: "", className: "crutch-form text-center" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "text", name: "username", id: "username", className: "input-long", placeholder: "Username" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "password", name: "password", id: "password", className: "input-long", placeholder: "Password" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "submit", name: "submit", value: "Go", className: "margin-x-auto margin-top-something button-long bg-dank text-white" })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Login;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Login);
+
+/***/ }),
+/* 272 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var Register = function (_Component) {
+  _inherits(Register, _Component);
+
+  function Register(props) {
+    _classCallCheck(this, Register);
+
+    return _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this, props));
+  }
+
+  _createClass(Register, [{
+    key: "render",
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "main",
+        { className: "row" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "div",
+          { className: "item-half" },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "pane pane-rounded padding-something bg-light" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "p",
+              { className: "pane-title display-medium" },
+              "Drinq User Registration"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "p",
+              { className: "pane-content text-dark text-center" },
+              "Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy."
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "form",
+              { className: "crutch-form text-center", action: "" },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "text", name: "username", id: "username", placeholder: "Username", className: "input-long" }),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "text", name: "email", id: "email", placeholder: "Email Address", className: "input-long" }),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "password", name: "password", id: "password", placeholder: "Password", className: "input-long" }),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "password", name: "passwordConf", id: "passwordConf", placeholder: "Please confirm password", className: "input-long" }),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "submit", name: "submit", value: "Go", className: "margin-x-auto margin-top-something button-long bg-dank text-white" })
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Register;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Register);
 
 /***/ })
 /******/ ]);
