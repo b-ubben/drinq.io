@@ -11,11 +11,17 @@ import Landing from './pages/Landing';
 import About from './pages/About';
 
 export default class Main extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {isLoggedIn: false};
+  }
+
   render() {
     return(
       <Router>
         <div className="Main">
-          <Navigation />
+          <Navigation isLoggedIn={this.state.isLoggedIn}/>
           <Route exact path="/" component={ Landing } />
           <Route exact path="/about" component={ About } />
           <Footer />
