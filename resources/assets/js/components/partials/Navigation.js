@@ -25,11 +25,18 @@ export default class Navigation extends Component {
     }
   }
 
-  /*handleLogOut() {
-    if (this.props.isLoggedIn) {
-      this.props.isLoggedIn = false;
+  handleLogOut() {
+    if (this.state.isLoggedIn) {
+      this.setState({isLoggedIn: false});
     }
-  }*/
+  }
+
+  onLogoutClick(e) {
+    e.preventDefault();
+
+    this.handleToggle(e);
+    this.handleLogOut(e);
+  }
 
   render() {
     const isLoggedIn = this.state.isLoggedIn;
@@ -52,7 +59,7 @@ export default class Navigation extends Component {
             <div className="item-half">
               <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/" onClick={(e) => this.handleToggle(e)}>Home</Link>
               {isLoggedIn ? (
-                <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/logout" onClick={(e) => this.handleToggle(e)}>Log Out</Link>) : (<Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/login" onClick={(e) => this.handleToggle(e)}>Log In</Link>)
+                <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/logout" onClick={(e) => this.onLogoutClick(e)}>Log Out</Link>) : (<Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/login" onClick={(e) => this.handleToggle(e)}>Log In</Link>)
               }
             </div>
 

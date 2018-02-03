@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  BrowserHistory,
   Link
 } from 'react-router-dom';
 
