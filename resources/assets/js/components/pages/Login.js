@@ -5,6 +5,18 @@ export default class Login extends Component {
     super(props);
   }
 
+  componentWillMount() {
+    //
+  }
+
+  componentWillUnmount() {
+    //
+  }
+
+  componentDidMount() {
+    //
+  }
+
   render() {
     return(
       <main className="item-half">

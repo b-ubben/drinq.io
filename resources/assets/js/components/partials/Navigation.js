@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 export default class Navigation extends Component {
   constructor(props) {
     super(props);
+
+    this.state = { isExpanded: false, userID: null };
   }
 
   componentWillMount() {
-    this.state = { isExpanded: false };
     this.handleToggle = this.handleToggle.bind(this);
   }
 
@@ -22,8 +23,8 @@ export default class Navigation extends Component {
   }
 
   /*handleLogOut() {
-    if (this.props.loggedIn) {
-      this.props.loggedIn = false;
+    if (this.props.isLoggedIn) {
+      this.props.isLoggedIn = false;
     }
   }*/
 

@@ -38,8 +38,8 @@ $greenest: #167720 !default;
 
 $orange: #ffa500 !default;
 $purple: #aa00cc !default;
-$yellow: #ffe20c !default; 
-$pink: #f666cc !default; 
+$yellow: #ffe20c !default;
+$pink: #f666cc !default;
 
 //
 //Content Colors
@@ -89,11 +89,11 @@ $link-hover-decoration: underline !default;
 //
 //Responsive break points
 $viewport-widths: (
-	mobile: 767px, 
+	mobile: 767px,
 	tablet: 1023px,
 	desktop: 1365px,
 	desktop-wide: 1919px
-	) !default; 
+	) !default;
 
 //
 //Container maximum widths
@@ -143,7 +143,7 @@ $h5-size: 1.5rem !default;
 $h6-size: 1.25rem !default;
 
 $heading-margin-bottom: ($spacer / 1.75) !default;
-$heading-font-family: inherit !default; 
+$heading-font-family: inherit !default;
 $heading-font-weight: 500 !default;
 $heading-line-height: 1.2 !default;
 $heading-color: inherit !default;
@@ -157,7 +157,7 @@ $display-biggest-weight: 300 !default;
 $display-bigger-weight: 300 !default;
 $display-big-weight: 300 !default;
 $display-medium-weight: 300 !default;
-$display-line-height: $heading-line-height !default; 
+$display-line-height: $heading-line-height !default;
 
 $small-font-size: 75% !default;
 
@@ -205,5 +205,3 @@ $navigation-bar-logo-size: $more-font-size;
 $navigation-link-height: $navigation-bar-logo-size * $line-height-standard !default;
 $navigation-logo-height: ($base-font-size * $line-height-standard + $navigation-link-padding-y * 2) !default;
 $navigation-logo-padding-y: ($navigation-logo-height - $navigation-link-height) / 2.1 !default;
-
-
