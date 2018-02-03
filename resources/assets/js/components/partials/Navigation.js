@@ -5,7 +5,10 @@ export default class Navigation extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { isExpanded: false, userID: null };
+    this.state = {
+      isExpanded: false,
+      isLoggedIn: this.props.isLoggedIn
+    };
   }
 
   componentWillMount() {
@@ -29,7 +32,7 @@ export default class Navigation extends Component {
   }*/
 
   render() {
-    const isLoggedIn = this.props.isLoggedIn;
+    const isLoggedIn = this.state.isLoggedIn;
 
     return(
       <div className="bg-dark">

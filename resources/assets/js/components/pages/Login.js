@@ -3,6 +3,12 @@ import React, { Component } from 'react';
 export default class Login extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      username: null,
+      password: null,
+      isLoggedIn: this.props.isLoggedIn
+    };
   }
 
   componentWillMount() {

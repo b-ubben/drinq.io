@@ -45343,7 +45343,10 @@ var Navigation = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Navigation.__proto__ || Object.getPrototypeOf(Navigation)).call(this, props));
 
-    _this.state = { isExpanded: false, userID: null };
+    _this.state = {
+      isExpanded: false,
+      isLoggedIn: _this.props.isLoggedIn
+    };
     return _this;
   }
 
@@ -45373,7 +45376,7 @@ var Navigation = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var isLoggedIn = this.props.isLoggedIn;
+      var isLoggedIn = this.state.isLoggedIn;
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
@@ -45677,7 +45680,14 @@ var Login = function (_Component) {
   function Login(props) {
     _classCallCheck(this, Login);
 
-    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+    _this.state = {
+      username: null,
+      password: null,
+      isLoggedIn: _this.props.isLoggedIn
+    };
+    return _this;
   }
 
   _createClass(Login, [{
