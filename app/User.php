@@ -9,6 +9,27 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    // specify the primary key for the model/table
+    protected $primaryKey = "user_id";
+
+    // specify the table for users
+    protected $table = "users";
+
+    // the USERS table is related to the REVIEWS table. USERS can have many REVIEWS
+    public function reviews() {
+        return $this->hasMany('App\Review', 'review_id');
+    }
+
+    // specify the many to many relation to the roles table
+    public function roles() {
+        return $this->belongsToMany('App\Role', 'user_roles', 'user_id', 'role_id');
+    }
+
+    // small function that determines whether the user is an admin or not
+    public function isAdmin() {
+        return true;
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -24,6 +45,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
 }
