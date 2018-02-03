@@ -13,8 +13,8 @@ class Menu extends Model
     protected $table = "menus";
 
     // create the relationship of RESTAURANT has one MENU
-    public function restaurant() {
-    	return $this->belongsTo('App\Restaurant', 'restaurant_id');
+    public function location() {
+    	return $this->belongsTo('App\Location', 'location_id');
     }
 
     /**
