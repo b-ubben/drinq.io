@@ -27,7 +27,12 @@ class User extends Authenticatable
 
     // small function that determines whether the user is an admin or not
     public function isAdmin() {
-        return true;
+        foreach ($this->roles()->get() as $role) {
+            if ($role->role == 'Administrator') {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
