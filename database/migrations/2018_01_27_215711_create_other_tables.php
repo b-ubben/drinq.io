@@ -44,13 +44,14 @@ class CreateOtherTables extends Migration
             $table->timestamps();
         });
 
-        // define the menus table
-        Schema::create('menus', function (Blueprint $table) {
-            $table->increments('menu_id');
+        // define the items table
+        Schema::create('items', function (Blueprint $table) {
+            $table->increments('item_id');
             $table->integer('location_id')->unsigned();
             $table->string('item_name');
-            $table->text('menu_description');
-            $table->decimal('menu_price', 15, 2);
+            $table->text('item_description');
+            $table->string('item_category');
+            $table->decimal('item_price', 15, 2);
             $table->timestamps();
         });
 
@@ -77,15 +78,15 @@ class CreateOtherTables extends Migration
                   ->on('locations');
         });
 
-        // define menus table
-        Schema::table('menus', function($table) {
+        // define items table
+        Schema::table('items', function($table) {
             // defining all of the FK constraints for reviews
             $table->foreign('location_id')
                   ->references('location_id')
                   ->on('locations');
         });
 
-        // FK constraints on menus
+        // FK constraints on items
         Schema::table('happy_hours', function($table) {
             // defining all of the FK constraints for reviews
             $table->foreign('location_id')
@@ -104,7 +105,7 @@ class CreateOtherTables extends Migration
         // drop the database when running migrations
         Schema::dropIfExists('reviews');
         Schema::dropIfExists('locations');
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('items');
         Schema::dropIfExists('happy_hours');
     }
 }

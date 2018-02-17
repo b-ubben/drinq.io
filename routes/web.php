@@ -14,3 +14,5 @@
 Route::view('/{path?}', 'app')
      ->where('path', '.*')
      ->name('react');
+
+Route::resource('login', 'LoginController');
