@@ -11,7 +11,7 @@ export default class Navigation extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.handleToggle = this.handleToggle.bind(this);
   }
 
