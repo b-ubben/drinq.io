@@ -3,6 +3,13 @@ import React, { Component } from 'react';
 export default class Register extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      username: '',
+      email: '',
+      password: '',
+      passwordConf: ''
+    }
   }
 
   render() {
@@ -12,7 +19,7 @@ export default class Register extends Component {
       		<div className="pane pane-rounded padding-something bg-light">
       			<p className="pane-title display-big">Drinq User Registration</p>
       			<p className="pane-content text-dark text-center">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
-      			<form className="crutch-form text-center container-mobile" action="">
+      			<form className="crutch-form text-center container-mobile">
       				<input type="text" name="username" id="username" placeholder="Username" className="input-long" />
       				<br />
       				<input type="text" name="email" id="email" placeholder="Email Address" className="input-long" />
