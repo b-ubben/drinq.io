@@ -3,7 +3,7 @@
 
 // Alignment
 
-.text-align-justify  { text-align: justify !important; }
+.text-justify  { text-align: justify !important; }
 .text-white-space-nowrap   { white-space: nowrap !important; }
 .text-truncate { 
 	overflow: hidden;
@@ -12,9 +12,9 @@
 }
 
 
-.text-align-left   { text-align: left !important; }
-.text-align-right  { text-align: right !important; }
-.text-align-center { text-align: center !important; }
+.text-left   { text-align: left !important; }
+.text-right  { text-align: right !important; }
+.text-center { text-align: center !important; }
 
 // Transformation
 
@@ -30,9 +30,12 @@
 
 //Text misc.
 
-.text-white { color: #fff !important; }
+.strike-through { text-decoration: line-through !important; }
+.underline { text-decoration: underline !important; }
 
+.text-white { color: #fff !important; }
 .text-dark { color: map-get($theme, dark); }
+.text-main { color: map-get($theme, main); }
 
 .text-hide {
 	font: 0/0 a;

@@ -622,22 +622,12 @@ a,
 a:visited {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 a:hover {
   color: #ff6ad5;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-bold {
-  font-weight: bold;
-}
-
-.text-italic {
-  font-style: italic;
+  cursor: pointer;
 }
 
 .alert-successful {
@@ -660,6 +650,11 @@ a:hover {
   color: #af1100;
   background: rgba(255, 68, 68, 0.6);
   border: 1px solid rgba(175, 17, 0, 0.15);
+}
+
+.image-fluid {
+  width: 100%;
+  height: auto;
 }
 
 .crutch-form {
@@ -709,23 +704,6 @@ a:hover {
   max-width: 414px;
 }
 
-.item,
-.item-half {
-  -ms-flex-preferred-size: auto;
-      flex-basis: auto;
-  padding: 2%;
-  margin: 1.25rem auto;
-  width: 100%;
-}
-
-.item-third {
-  -ms-flex-preferred-size: auto;
-      flex-basis: auto;
-  padding: 2%;
-  margin: 1.25rem auto;
-  width: 50%;
-}
-
 .row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -736,31 +714,131 @@ a:hover {
   width: 100%;
 }
 
+.item {
+  padding: 2%;
+  margin: 0.625rem auto;
+  width: 100%;
+}
+
+.item-quarter {
+  padding: 2%;
+  margin: 0.625rem auto;
+  width: 25%;
+}
+
+.item-third {
+  padding: 2%;
+  margin: 0.625rem auto;
+  width: 33.33%;
+}
+
+.item-half {
+  padding: 2%;
+  margin: 0.625rem auto;
+  width: 50%;
+}
+
+.item-two-thirds {
+  padding: 2%;
+  margin: 0.625rem auto;
+  width: 66.66%;
+}
+
+.item-three-quarter {
+  padding: 2%;
+  margin: 0.625rem auto;
+  width: 75%;
+}
+
+.item__mobile {
+  padding: 2%;
+  margin: 0.625rem auto;
+  width: 100% !important;
+}
+
+.item-three-quarter__mobile {
+  padding: 2%;
+  margin: 0.625rem auto;
+  width: 75% !important;
+}
+
+.item-two-thirds__mobile {
+  padding: 2%;
+  margin: 0.625rem auto;
+  width: 66.66% !important;
+}
+
+.item-half__mobile {
+  padding: 2%;
+  margin: 0.625rem auto;
+  width: 50% !important;
+}
+
+.item-third__mobile {
+  padding: 2%;
+  margin: 0.625rem auto;
+  width: 33.33% !important;
+}
+
+.item-quarter__mobile {
+  padding: 2%;
+  margin: 0.625rem auto;
+  width: 25% !important;
+}
+
 @media screen and (min-width: 640px) {
-  .item-third {
-    -ms-flex-preferred-size: auto;
-        flex-basis: auto;
+  .item {
     padding: 2%;
-    margin: 1.25rem auto;
-    min-width: 300px;
-    max-width: 30.82%;
+    margin: 0.625rem auto;
+    width: 100% !important;
+  }
+
+  .item-three-quarter {
+    padding: 2%;
+    margin: 0.625rem auto;
+    width: 75% !important;
+  }
+
+  .item-two-thirds {
+    padding: 2%;
+    margin: 0.625rem auto;
+    width: 66.66% !important;
   }
 
   .item-half {
-    -ms-flex-preferred-size: auto;
-        flex-basis: auto;
     padding: 2%;
-    margin: 1.25rem auto;
-    max-width: 47.5%;
+    margin: 0.625rem auto;
+    width: 50% !important;
+  }
+
+  .item-third {
+    padding: 2%;
+    margin: 0.625rem auto;
+    width: 33.33% !important;
+  }
+
+  .item-quarter {
+    padding: 2%;
+    margin: 0.625rem auto;
+    width: 25% !important;
   }
 }
 
 .crutch-form input[type=text],
+.crutch-form input[type=email],
 .crutch-form input[type=password] {
   border: 1px solid #ddd;
   border-radius: 4px;
+  color: rgba(64, 64, 64, 0.85);
   padding: 0.35rem;
   margin: 0.25rem auto;
+  -webkit-transition: border 200ms ease-in-out;
+  transition: border 200ms ease-in-out;
+}
+
+.crutch-form input:focus,
+.crutch-form input:hover {
+  border: 1px solid #c774e8;
 }
 
 .crutch-form input[type="submit"] {
@@ -777,6 +855,12 @@ a:hover {
 .button-long {
   width: 100%;
   margin: auto;
+}
+
+.crutch-form input[type=button],
+.button-long,
+button {
+  cursor: pointer;
 }
 
 .navigation {
@@ -829,6 +913,11 @@ a:hover {
 
 .nav-expanded {
   display: none;
+}
+
+.fixed-navigation {
+  position: fixed;
+  padding-bottom: 2.5rem;
 }
 
 .align-baseline {
@@ -885,6 +974,10 @@ a:hover {
 
 .bg-transparent {
   background-color: transparent !important;
+}
+
+.bg-black {
+  background-color: #000 !important;
 }
 
 .border {
@@ -1036,6 +1129,16 @@ a:hover {
 @media print {
   .display-print-none {
     display: none !important;
+  }
+}
+
+.display-mobile-only {
+  display: none;
+}
+
+@media screen and (min-width: 620px) {
+  .display-mobile-only {
+    display: inherit;
   }
 }
 
@@ -1228,6 +1331,20 @@ a:hover {
   left: 0;
 }
 
+.fixed-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.fixed-right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .screenreader-only {
   position: absolute;
   width: 1px;
@@ -1241,44 +1358,44 @@ a:hover {
   border: 0;
 }
 
-.w-quarter {
+.width-quarter {
   width: 25% !important;
 }
 
-.w-half {
+.width-half {
   width: 50% !important;
 }
 
-.w-three-quarter {
+.width-three-quarter {
   width: 75% !important;
 }
 
-.w-entire {
+.width-entire {
   width: 100% !important;
 }
 
-.h-quarter {
+.height-quarter {
   height: 25% !important;
 }
 
-.h-half {
+.height-half {
   height: 50% !important;
 }
 
-.h-three-quarter {
+.height-three-quarter {
   height: 75% !important;
 }
 
-.h-entire {
+.height-entire {
   height: 100% !important;
 }
 
-.max-h-full {
-  max-width: 100% !important;
+.max-height-full {
+  max-height: 100% !important;
 }
 
-.max-wfull {
-  max-height: 100% !important;
+.max-width-full {
+  max-width: 100% !important;
 }
 
 .margin-nothing {
@@ -1889,7 +2006,7 @@ a:hover {
   float: left;
 }
 
-.text-align-justify {
+.text-justify {
   text-align: justify !important;
 }
 
@@ -1903,15 +2020,15 @@ a:hover {
   white-space: nowrap;
 }
 
-.text-align-left {
+.text-left {
   text-align: left !important;
 }
 
-.text-align-right {
+.text-right {
   text-align: right !important;
 }
 
-.text-align-center {
+.text-center {
   text-align: center !important;
 }
 
@@ -1939,12 +2056,24 @@ a:hover {
   font-style: italic;
 }
 
+.strike-through {
+  text-decoration: line-through !important;
+}
+
+.underline {
+  text-decoration: underline !important;
+}
+
 .text-white {
   color: #fff !important;
 }
 
 .text-dark {
   color: #404040;
+}
+
+.text-main {
+  color: #c774e8;
 }
 
 .text-hide {
@@ -1961,6 +2090,10 @@ a:hover {
 
 .invisible {
   visibility: hidden !important;
+}
+
+.overflow-scroll {
+  overflow: scroll;
 }
 
 .bg-lighterDark {
