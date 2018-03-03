@@ -8,9 +8,8 @@
 }
 
 @mixin item() {
-	flex-basis: auto;
 	padding: $grid-column-gutter;
-	margin: $spacer auto;
+	margin: ($spacer / 2) auto;
 }
 
 @mixin row() {
@@ -19,4 +18,3 @@
 	margin: 0 auto;
 	width: 100%;
 }
-

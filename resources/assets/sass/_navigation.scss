@@ -42,3 +42,8 @@
 .nav-expanded {
 	display: none;
 }
+
+.fixed-navigation {
+	position: fixed;
+	padding-bottom: $spacer * 2;
+}

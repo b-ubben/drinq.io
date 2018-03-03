@@ -1,5 +1,5 @@
 //
-// Heading 
+// Heading
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -67,23 +67,10 @@ a,
 a:visited {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 a:hover {
   color: map-get($theme, attention);
-}
-
-//
-//Text manipulation
-
-.text-center {
-  text-align: center;
-}
-
-.text-bold {
-  font-weight: bold;
-}
-
-.text-italic {
-  font-style: italic;
+  cursor: pointer;
 }

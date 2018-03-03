@@ -45578,10 +45578,10 @@ var Landing = function (_Component) {
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
-          { className: "row" },
+          { className: "row container-tablet" },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
-            { className: "item container-tablet pane padding-nothing" },
+            { className: "item pane padding-nothing" },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "p",
               { className: "pane-content" },
@@ -45708,7 +45708,7 @@ var Login = function (_Component) {
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "main",
-        { className: "item-half" },
+        { className: "item-three-quarter item__mobile" },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
           { className: "pane pane-rounded bg-light padding-something" },
@@ -45719,12 +45719,12 @@ var Login = function (_Component) {
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "form",
-            { action: "", className: "crutch-form text-center" },
+            { action: "", className: "crutch-form text-center container-mobile" },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "text", name: "username", id: "username", className: "input-long", placeholder: "Username" }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "password", name: "password", id: "password", className: "input-long", placeholder: "Password" }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "submit", name: "submit", value: "Go", className: "margin-x-auto margin-top-something button-long bg-dank text-white" })
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "submit", name: "submit", value: "Go", className: "margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" })
           )
         )
       );
@@ -45770,13 +45770,13 @@ var Register = function (_Component) {
         { className: "row" },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
-          { className: "item-half" },
+          { className: "item-three-quarter item__mobile" },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             { className: "pane pane-rounded padding-something bg-light" },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "p",
-              { className: "pane-title display-medium" },
+              { className: "pane-title display-big" },
               "Drinq User Registration"
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -45786,7 +45786,7 @@ var Register = function (_Component) {
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "form",
-              { className: "crutch-form text-center", action: "" },
+              { className: "crutch-form text-center container-mobile", action: "" },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "text", name: "username", id: "username", placeholder: "Username", className: "input-long" }),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "text", name: "email", id: "email", placeholder: "Email Address", className: "input-long" }),
@@ -45795,7 +45795,7 @@ var Register = function (_Component) {
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "password", name: "passwordConf", id: "passwordConf", placeholder: "Please confirm password", className: "input-long" }),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "submit", name: "submit", value: "Go", className: "margin-x-auto margin-top-something button-long bg-dank text-white" })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "submit", name: "submit", value: "Go", className: "margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" })
             )
           )
         )
