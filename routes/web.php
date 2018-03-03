@@ -15,4 +15,5 @@ Route::view('/{path?}', 'app')
      ->where('path', '.*')
      ->name('react');
 
-Route::resource('login', 'LoginController');
+Route::post('login', array('uses' => 'LoginController@performLogin'));
+Route::get('logout', array('uses' => 'LoginController@performLogout'));
