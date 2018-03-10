@@ -5,11 +5,17 @@ export default class Register extends Component {
     super(props);
 
     this.state = {
-      username: '',
-      email: '',
-      password: '',
-      passwordConf: ''
+      username = '',
+      email = '',
+      password = '',
+      passwordConf = ''
     }
+  }
+
+  validateUsername(event) {
+    this.setState({username: event.target.value});
+
+    //Compare entered username with existing DB records and mark as valid/not
   }
 
   render() {
