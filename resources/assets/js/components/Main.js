@@ -8,6 +8,7 @@ import {
 
 import Navigation from './partials/Navigation';
 import Footer from './partials/Footer';
+import Messages from './partials/Messages';
 import Landing from './pages/Landing';
 import About from './pages/About';
 import Login from './pages/Login';
@@ -25,6 +26,7 @@ export default class Main extends Component {
       <Router>
         <div className="Main">
           <Navigation isLoggedIn={this.state.isLoggedIn}/>
+          <Messages />
 
           <Route exact path="/" component={ Landing } />
           <Route exact path="/about" component={ About } />
