@@ -54,6 +54,8 @@ class RegistrationController extends Controller
     		Session::flash("acc_created", "Your account has been successfully created. Try logging in!");
     		// redirect back to login screen
     		return Redirect::to("login");
+
+    		// still need to refactor.
     	}
     }
 }
