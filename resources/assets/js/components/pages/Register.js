@@ -5,17 +5,28 @@ export default class Register extends Component {
     super(props);
 
     this.state = {
-      username = '',
-      email = '',
-      password = '',
-      passwordConf = ''
+      username: '',
+      email: '',
+      password: '',
+      passwordConf: '',
+      validUsername: false,
+      validEmail: false,
+      validPassword: false,
+      validPasswordConf: false,
+      valid: false
     }
   }
 
   validateUsername(event) {
     this.setState({username: event.target.value});
+    console.log(this.state.username);
+    if (this.state.username === 'test') {
+      this.setState({validUsername: true});
+    }
 
-    //Compare entered username with existing DB records and mark as valid/not
+    else {
+      this.setState({validUsername: false});
+    }
   }
 
   render() {
@@ -26,13 +37,13 @@ export default class Register extends Component {
       			<p className="pane-title display-big">Drinq User Registration</p>
       			<p className="pane-content text-dark text-center">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
       			<form className="crutch-form text-center container-mobile">
-      				<input type="text" name="username" id="username" placeholder="Username" className="input-long" />
+      				<input type="text" name="username" id="username" placeholder="Username" className={ this.state.validUsername ? "input-long" : "input-long invalid" } onKeyUp={ (e) => this.validateUsername(e) }/>
       				<br />
-      				<input type="text" name="email" id="email" placeholder="Email Address" className="input-long" />
+      				<input type="text" name="email" id="email" placeholder="Email Address" className={ this.state.validEmail ? "input-long" : "input-long invalid" } />
       				<br />
-      				<input type="password" name="password" id="password" placeholder="Password" className="input-long" />
+      				<input type="password" name="password" id="password" placeholder="Password" className={ this.state.validPassword ? "input-long" : "input-long invalid" } />
       				<br />
-      				<input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className="input-long" />
+      				<input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className={ this.state.validPasswordConf ? "input-long" : "input-long invalid" } />
       				<br />
       				<input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" />
       			</form>
