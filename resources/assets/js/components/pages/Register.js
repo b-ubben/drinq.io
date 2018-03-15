@@ -15,6 +15,7 @@ export default class Register extends Component {
       validPasswordConf: false,
       valid: false
     }
+
   }
 
     /* 
@@ -58,6 +59,44 @@ export default class Register extends Component {
     });
   }
 
+  validatePassword(event) {
+    this.setState({password: event.target.value}, () => {
+      if (this.state.password.length >= 5) {
+        console.log("Valid!");
+        this.setState({validPassword: true});
+      }
+      else {
+        console.log("Password must be greater than or equal to 5 chars");
+        this.setState({validPassword: false});
+      }
+    });
+  }
+
+  validatePasswordConf(event) {
+    this.setState({passwordConf: event.target.value}, () => {
+      if(this.state.password == this.state.passwordConf) {
+        console.log("Password Confirmation Confirmed!!!!");
+        this.setState({validPasswordConf: true});
+      } else {
+        console.log("Password confirmation failed :(");
+        this.setState({validPasswordConf: false});
+      }
+    });
+  }
+
+  // set to the submit button. submit is disabled if qualifications aren't met.
+  readyForSubmission(event) {
+    if(this.state.validUsername && this.state.validEmail && 
+      this.state.validPassword && this.state.validPasswordConf) {
+      this.setState({valid: true}, () => {
+        // code goes here for fetch to submit all parameters in the state.
+        return true;
+      });
+    } else {
+      // disable enter key/go button submission if requirements aren't met.
+      event.preventDefault();
+    }
+  }
 
   render() {
     return(
@@ -71,11 +110,11 @@ export default class Register extends Component {
       				<br />
       				<input type="text" name="email" id="email" placeholder="Email Address" className={ this.state.validEmail ? "input-long" : "input-long invalid" } onChange={ (e) => this.validateEmail(e) } />
       				<br />
-      				<input type="password" name="password" id="password" placeholder="Password" className={ this.state.validPassword ? "input-long" : "input-long invalid" } />
+      				<input type="password" name="password" id="password" placeholder="Password" className={ this.state.validPassword ? "input-long" : "input-long invalid" } onChange={ (e) => this.validatePassword(e) } />
       				<br />
-      				<input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className={ this.state.validPasswordConf ? "input-long" : "input-long invalid" } />
+      				<input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className={ this.state.validPasswordConf ? "input-long" : "input-long invalid" } onChange={ (e) => this.validatePasswordConf(e) }/>
       				<br />
-      				<input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" />
+      				<input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ (e) => this.readyForSubmission(e) }/>
       			</form>
       		</div>
       	</div>

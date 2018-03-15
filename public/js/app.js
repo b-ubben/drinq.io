@@ -45786,6 +45786,7 @@ var Register = function (_Component) {
       validPasswordConf: false,
       valid: false
     };
+
     return _this;
   }
 
@@ -45838,9 +45839,55 @@ var Register = function (_Component) {
       });
     }
   }, {
+    key: 'validatePassword',
+    value: function validatePassword(event) {
+      var _this4 = this;
+
+      this.setState({ password: event.target.value }, function () {
+        if (_this4.state.password.length >= 5) {
+          console.log("Valid!");
+          _this4.setState({ validPassword: true });
+        } else {
+          console.log("Password must be greater than or equal to 5 chars");
+          _this4.setState({ validPassword: false });
+        }
+      });
+    }
+  }, {
+    key: 'validatePasswordConf',
+    value: function validatePasswordConf(event) {
+      var _this5 = this;
+
+      this.setState({ passwordConf: event.target.value }, function () {
+        if (_this5.state.password == _this5.state.passwordConf) {
+          console.log("Password Confirmation Confirmed!!!!");
+          _this5.setState({ validPasswordConf: true });
+        } else {
+          console.log("Password confirmation failed :(");
+          _this5.setState({ validPasswordConf: false });
+        }
+      });
+    }
+
+    // set to the submit button. submit is disabled if qualifications aren't met.
+
+  }, {
+    key: 'readyForSubmission',
+    value: function readyForSubmission(event) {
+      if (this.state.validUsername && this.state.validEmail && this.state.validPassword && this.state.validPasswordConf) {
+        this.setState({ valid: true }, function () {
+          // code goes here for fetch to submit all parameters in the state. return true allows submission
+          return true;
+        });
+      } else {
+        // disable enter key/go button submission if requirements aren't met.
+        event.preventDefault();
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _this4 = this;
+      var _this6 = this;
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'main',
@@ -45865,18 +45912,24 @@ var Register = function (_Component) {
               'form',
               { className: 'crutch-form text-center container-mobile' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', name: 'username', id: 'username', placeholder: 'Username', className: this.state.validUsername ? "input-long" : "input-long invalid", onChange: function onChange(e) {
-                  return _this4.validateUsername(e);
+                  return _this6.validateUsername(e);
                 } }),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', name: 'email', id: 'email', placeholder: 'Email Address', className: this.state.validEmail ? "input-long" : "input-long invalid", onChange: function onChange(e) {
-                  return _this4.validateEmail(e);
+                  return _this6.validateEmail(e);
                 } }),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'password', name: 'password', id: 'password', placeholder: 'Password', className: this.state.validPassword ? "input-long" : "input-long invalid" }),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'password', name: 'password', id: 'password', placeholder: 'Password', className: this.state.validPassword ? "input-long" : "input-long invalid", onChange: function onChange(e) {
+                  return _this6.validatePassword(e);
+                } }),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'password', name: 'passwordConf', id: 'passwordConf', placeholder: 'Please confirm password', className: this.state.validPasswordConf ? "input-long" : "input-long invalid" }),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'password', name: 'passwordConf', id: 'passwordConf', placeholder: 'Please confirm password', className: this.state.validPasswordConf ? "input-long" : "input-long invalid", onChange: function onChange(e) {
+                  return _this6.validatePasswordConf(e);
+                } }),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', name: 'submit', value: 'Go', className: 'margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white' })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', name: 'submit', value: 'Go', className: 'margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white', onClick: function onClick(e) {
+                  return _this6.readyForSubmission(e);
+                } })
             )
           )
         )
