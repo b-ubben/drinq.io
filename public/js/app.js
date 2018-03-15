@@ -45790,7 +45790,7 @@ var Register = function (_Component) {
     return _this;
   }
 
-  /* 
+  /*
   *  setState is asynchronous, so if you want to print the new state, you have to use the callback parameter.
   *  this means that in setState, you do a callback function that will actually handle the validation.
   *  before, the wrong length was being thrown out and it was skipping the last character entered. this resolves that problem.
@@ -45876,7 +45876,7 @@ var Register = function (_Component) {
     value: function readyForSubmission(event) {
       if (this.state.validUsername && this.state.validEmail && this.state.validPassword && this.state.validPasswordConf) {
         this.setState({ valid: true }, function () {
-          // code goes here for fetch to submit all parameters in the state. return true allows submission
+          // code goes here for fetch to submit all parameters in the state.
           return true;
         });
       } else {
