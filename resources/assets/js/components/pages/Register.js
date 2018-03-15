@@ -18,7 +18,7 @@ export default class Register extends Component {
 
   }
 
-    /* 
+    /*
     *  setState is asynchronous, so if you want to print the new state, you have to use the callback parameter.
     *  this means that in setState, you do a callback function that will actually handle the validation.
     *  before, the wrong length was being thrown out and it was skipping the last character entered. this resolves that problem.
@@ -86,7 +86,7 @@ export default class Register extends Component {
 
   // set to the submit button. submit is disabled if qualifications aren't met.
   readyForSubmission(event) {
-    if(this.state.validUsername && this.state.validEmail && 
+    if(this.state.validUsername && this.state.validEmail &&
       this.state.validPassword && this.state.validPasswordConf) {
       this.setState({valid: true}, () => {
         // code goes here for fetch to submit all parameters in the state.
