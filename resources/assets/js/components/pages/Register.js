@@ -23,8 +23,8 @@ export default class Register extends Component {
     *  this means that in setState, you do a callback function that will actually handle the validation.
     *  before, the wrong length was being thrown out and it was skipping the last character entered. this resolves that problem.
     */
-  validateUsername(event) {
-    this.setState({username: event.target.value}, () => {
+  validateUsername = (e) => {
+    this.setState({username: e.target.value}, () => {
 
       // check that only alphanumeric characters are used
       if(!this.state.username.match(/^[a-z0-9]+$/i)) {
@@ -45,10 +45,10 @@ export default class Register extends Component {
     });
   }
 
-  validateEmail(event) {
+  validateEmail = (e) => {
     // crazy regex for validating email...
     var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    this.setState({email: event.target.value}, () => {
+    this.setState({email: e.target.value}, () => {
       if(this.state.email.match(emailRegex)) {
         console.log("Valid email!!!: " + this.state.email);
         this.setState({validEmail: true});
@@ -59,8 +59,8 @@ export default class Register extends Component {
     });
   }
 
-  validatePassword(event) {
-    this.setState({password: event.target.value}, () => {
+  validatePassword = (e) => {
+    this.setState({password: e.target.value}, () => {
       if (this.state.password.length >= 5) {
         console.log("Valid!");
         this.setState({validPassword: true});
@@ -72,8 +72,8 @@ export default class Register extends Component {
     });
   }
 
-  validatePasswordConf(event) {
-    this.setState({passwordConf: event.target.value}, () => {
+  validatePasswordConf = (e) => {
+    this.setState({passwordConf: e.target.value}, () => {
       if(this.state.password == this.state.passwordConf) {
         console.log("Password Confirmation Confirmed!!!!");
         this.setState({validPasswordConf: true});
@@ -85,7 +85,7 @@ export default class Register extends Component {
   }
 
   // set to the submit button. submit is disabled if qualifications aren't met.
-  readyForSubmission(event) {
+  readyForSubmission = (e) => {
     if(this.state.validUsername && this.state.validEmail &&
       this.state.validPassword && this.state.validPasswordConf) {
       this.setState({valid: true}, () => {
@@ -94,7 +94,7 @@ export default class Register extends Component {
       });
     } else {
       // disable enter key/go button submission if requirements aren't met.
-      event.preventDefault();
+      e.preDefault();
     }
   }
 
@@ -106,15 +106,15 @@ export default class Register extends Component {
       			<p className="pane-title display-big">Drinq User Registration</p>
       			<p className="pane-content text-dark text-center">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
       			<form className="crutch-form text-center container-mobile">
-      				<input type="text" name="username" id="username" placeholder="Username" className={ this.state.validUsername ? "input-long" : "input-long invalid" } onChange={ (e) => this.validateUsername(e) }/>
+      				<input type="text" name="username" id="username" placeholder="Username" className={ this.state.validUsername ? "input-long" : "input-long invalid" } onChange={ this.validateUsername }/>
       				<br />
-      				<input type="text" name="email" id="email" placeholder="Email Address" className={ this.state.validEmail ? "input-long" : "input-long invalid" } onChange={ (e) => this.validateEmail(e) } />
+      				<input type="text" name="email" id="email" placeholder="Email Address" className={ this.state.validEmail ? "input-long" : "input-long invalid" } onChange={ this.validateEmail } />
       				<br />
-      				<input type="password" name="password" id="password" placeholder="Password" className={ this.state.validPassword ? "input-long" : "input-long invalid" } onChange={ (e) => this.validatePassword(e) } />
+      				<input type="password" name="password" id="password" placeholder="Password" className={ this.state.validPassword ? "input-long" : "input-long invalid" } onChange={ this.validatePassword } />
       				<br />
-      				<input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className={ this.state.validPasswordConf ? "input-long" : "input-long invalid" } onChange={ (e) => this.validatePasswordConf(e) }/>
+      				<input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className={ this.state.validPasswordConf ? "input-long" : "input-long invalid" } onChange={ this.validatePasswordConf }/>
       				<br />
-      				<input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ (e) => this.readyForSubmission(e) }/>
+      				<input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ this.readyForSubmission }/>
       			</form>
       		</div>
       	</div>

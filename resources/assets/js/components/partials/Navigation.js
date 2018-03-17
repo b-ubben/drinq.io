@@ -2,27 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 export default class Navigation extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isExpanded: false,
-      isLoggedIn: this.props.isLoggedIn
-    };
+  state = {
+    isExpanded: false,
+    isLoggedIn: this.props.isLoggedIn
   }
 
   componentDidMount() {
     this.handleToggle = this.handleToggle.bind(this);
   }
 
-  handleToggle() {
-    if (this.state.isExpanded) {
-      this.setState({isExpanded: false});
-    }
-
-    else {
-      this.setState({isExpanded: true});
-    }
+  handleToggle = (e) => {
+    this.state.isExpanded ? this.setState({isExpanded: false}) : this.setState({isExpanded: true});
   }
 
   handleLogOut() {
@@ -31,7 +21,7 @@ export default class Navigation extends Component {
     }
   }
 
-  onLogoutClick(e) {
+  onLogoutClick = (e) => {
     e.preventDefault();
 
     this.handleToggle(e);
@@ -45,7 +35,7 @@ export default class Navigation extends Component {
       <div className="bg-dark">
         <nav className="navigation">
           <Link to="/" className="navigation-logo">drinq</Link>
-          <a className="navigation-link" onClick={(e) => this.handleToggle(e)}>
+          <a className="navigation-link" onClick={ this.handleToggle }>
             <div className="menu-logo">
               <div className="menu-logo-bars"></div>
               <div className="menu-logo-bars"></div>
@@ -57,17 +47,17 @@ export default class Navigation extends Component {
         <nav className={this.state.isExpanded ? 'nav-expanded bg-lighterDark display-block' : 'display-none'}>
           <div className="row text-center flex-nowrap">
             <div className="item-half">
-              <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/" onClick={(e) => this.handleToggle(e)}>Home</Link>
+              <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/" onClick={ this.handleToggle }>Home</Link>
               {isLoggedIn ? (
-                <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/logout" onClick={(e) => this.onLogoutClick(e)}>Log Out</Link>) : (<Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/login" onClick={(e) => this.handleToggle(e)}>Log In</Link>)
+                <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/logout" onClick={ this.onLogoutClick }>Log Out</Link>) : (<Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/login" onClick={ this.handleToggle }>Log In</Link>)
               }
             </div>
 
             <div className="item-half">
               {isLoggedIn ? (
-                <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/profile" onClick={(e) => this.handleToggle(e)}>Profile</Link>) : (<Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/register" onClick={(e) => this.handleToggle(e)}>Register</Link>)
+                <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/profile" onClick={ this.handleToggle }>Profile</Link>) : (<Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/register" onClick={ this.handleToggle }>Register</Link>)
               }
-              <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/about" onClick={(e) => this.handleToggle(e)}>About Us</Link>
+              <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/about" onClick={ this.handleToggle }>About Us</Link>
             </div>
           </div>
         </nav>

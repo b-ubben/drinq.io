@@ -8,25 +8,21 @@ import {
 
 import Navigation from './partials/Navigation';
 import Footer from './partials/Footer';
-// import Messages from './partials/Messages';
+import Messages from './partials/Messages';
 import Landing from './pages/Landing';
 import About from './pages/About';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
 export default class Main extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {isLoggedIn: false};
-  }
+  state = { isLoggedIn: false }
 
   render() {
     return(
       <Router>
         <div className="Main">
           <Navigation isLoggedIn={this.state.isLoggedIn}/>
-          {/*<Messages />*/}
+          <Messages />
 
           <Route exact path="/" component={ Landing } />
           <Route exact path="/about" component={ About } />

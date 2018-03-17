@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
+import { string } from 'prop-types';
 
 export default class Login extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      username: null,
-      password: null,
-      isLoggedIn: this.props.isLoggedIn
-    };
+  state = {
+      isValid: false,
+      username: '',
+      password: ''
   }
 
-  componentDidMount() {
-    //
+  handleUsername = (e) => {
+    //Validation goes here
   }
 
   render() {
@@ -21,7 +18,7 @@ export default class Login extends Component {
       	<div className="pane pane-rounded bg-light padding-something">
       		<p className="pane-title display-medium">Please sign in to continue</p>
       		<form action="" className="crutch-form text-center container-mobile">
-      			<input type="text" name="username" id="username" className="input-long" placeholder="Username" />
+      			<input type="text" name="username" id="username" className="input-long" placeholder="Username" onChange={ this.handleUsername }/>
       			<br />
       			<input type="password" name="password" id="password" className="input-long" placeholder="Password" />
       			<br />
