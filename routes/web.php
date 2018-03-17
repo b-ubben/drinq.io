@@ -14,10 +14,3 @@
 Route::view('/{path?}', 'app')
      ->where('path', '.*')
      ->name('react');
-
-// log in routes
-Route::post('login', array('uses' => 'LoginController@performLogin'));
-Route::get('logout', array('uses' => 'LoginController@performLogout'));
-
-// register user routes routes
-Route::post('register', array('uses' => 'RegistrationController@registerUser'));

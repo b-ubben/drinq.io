@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use Session;
+use Response;
 use App\User;
 
 class RegistrationController extends Controller
@@ -30,7 +31,13 @@ class RegistrationController extends Controller
 
     	// if validator fails, flash messages and return all field items except the password
     	if($validator->fails()) {
-    		return Redirect::to('register')->withErrors($validator)->withInput(Input::except('password'));
+    		// return Redirect::to('register')->withErrors($validator)->withInput(Input::except('password'));
+    		return Response::json(
+	    			array(
+		            'status' => 666,
+		            'message' => "test"
+	        	)
+	        );
     	} else {
     		// if it succeeds, get all inputs and put them into the model
     		$new_user = new User;

@@ -88,8 +88,22 @@ export default class Register extends Component {
   readyForSubmission = (e) => {
     if(this.state.validUsername && this.state.validEmail &&
       this.state.validPassword && this.state.validPasswordConf) {
+
       this.setState({valid: true}, () => {
         // code goes here for fetch to submit all parameters in the state.
+        fetch('/register', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: '',
+            email: '',
+            password: '',
+            passwordConf: '',
+          }),
+        });
         return true;
       });
     } else {
