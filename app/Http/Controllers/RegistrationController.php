@@ -21,7 +21,7 @@ class RegistrationController extends Controller
     	$rules = array(
     		'username'	=>	'required|alphaNum|unique:users',
     		'email'		=>	'unique:users,email',
-    		'password'	=>	'required|alphaNum|min:5|confirmed'
+    		'password'	=>	'required|alphaNum|min:5|confirmed',
     		'passwordConf'	=>	'required|alphaNum|min:5'
     	);
 
