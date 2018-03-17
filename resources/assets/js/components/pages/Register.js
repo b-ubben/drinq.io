@@ -94,7 +94,7 @@ export default class Register extends Component {
       });
     } else {
       // disable enter key/go button submission if requirements aren't met.
-      e.preDefault();
+      e.preventDefault();
     }
   }
 
