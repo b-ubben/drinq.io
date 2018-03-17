@@ -21,8 +21,8 @@ class RegistrationController extends Controller
     	$rules = array(
     		'username'	=>	'required|alphaNum|unique:users',
     		'email'		=>	'unique:users,email',
-    		'password'	=>	'required|alphaNum|min:7|confirmed'
-    		'passwordConf'	=>	'required|alphaNum|min:7'
+    		'password'	=>	'required|alphaNum|min:5|confirmed'
+    		'passwordConf'	=>	'required|alphaNum|min:5'
     	);
 
     	// initiate validator, and get all form fields
