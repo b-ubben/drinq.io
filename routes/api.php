@@ -24,6 +24,11 @@ Route::get('logout', array('uses' => 'LoginController@performLogout'));
 // register user routes routes
 Route::post('register', array('uses' => 'RegistrationController@registerUser'));
 
+
+// test route for testing. duh. useful for when deploying the app and testing whether the api route works
 Route::get('test', function (){
-    return response([1,2,3,4],200);   
+    return Response::json(array(
+    	"status" => 200,
+    	"message" => "All's well in the API world. System Operational."
+    ), 200); 
 });
