@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\MessageBag;
 use Auth;
 use Session;
 use Response;
@@ -23,8 +22,7 @@ class RegistrationController extends Controller
     	$rules = array(
     		'username'	=>	'required|alphaNum|unique:users',
     		'email'		=>	'required|unique:users,email',
-    		'password'	=>	'required|alphaNum|between:5,255|confirmed',
-    		'passwordConf'	=>	'required|alphaNum|between:5,255'
+    		'password'	=>	'required|alphaNum|between:5,255',
     	);
 
     	// // initiate validator, and get all form fields
@@ -50,13 +48,14 @@ class RegistrationController extends Controller
     		// get all form fields and add them to the model. anything classified as fillable can be added here
     		$new_user->username = $request->username;
     		$new_user->email = $request->email;
+            $new_user->zip_code = 0;
     		$new_user->password = $hashed_pw;
 
     		// save the user to the database
     		$new_user->save();
 
-    		// attach the default role of user
-    		$new_user->roles->attach(2);
+    		// attach the default role of user - not admin
+    		$new_user->roles()->attach(2);
 
     		// flash the message that the account was created
             return Response::json(
