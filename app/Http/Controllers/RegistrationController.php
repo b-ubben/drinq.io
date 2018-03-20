@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\MessageBag;
 use Auth;
 use Session;
 use Response;
@@ -16,39 +17,39 @@ use App\User;
 class RegistrationController extends Controller
 {
     //
-    public function registerUser() {
+    public function registerUser(Request $request) {
 
     	// initiate rules for validation.
     	$rules = array(
     		'username'	=>	'required|alphaNum|unique:users',
-    		'email'		=>	'unique:users,email',
-    		'password'	=>	'required|alphaNum|min:5|confirmed',
-    		'passwordConf'	=>	'required|alphaNum|min:5'
+    		'email'		=>	'required|unique:users,email',
+    		'password'	=>	'required|alphaNum|between:5,255|confirmed',
+    		'passwordConf'	=>	'required|alphaNum|between:5,255'
     	);
 
-    	// initiate validator, and get all form fields
-    	$validator = Validator::make(Input::all(), $rules);
+    	// // initiate validator, and get all form fields
+    	$validator = Validator::make($request->all(), $rules);
 
     	// if validator fails, flash messages and return all field items except the password
     	if($validator->fails()) {
-    		// return Redirect::to('register')->withErrors($validator)->withInput(Input::except('password'));
     		return Response::json(
 	    			array(
 		            'status' => 666,
-		            'message' => "test"
-	        	)
+                    'message' => "Could not create user",
+		            'reason' => $validator->messages()
+	        	), 500
 	        );
     	} else {
     		// if it succeeds, get all inputs and put them into the model
     		$new_user = new User;
     		// acquire password, then hash it
-    		$password = Input::get("password");
+    		$password = $request->password;
     		// hash password
     		$hashed_pw = Hash::make($password);
 
     		// get all form fields and add them to the model. anything classified as fillable can be added here
-    		$new_user->username = Input::get('username');
-    		$new_user->email = Input::get('email');
+    		$new_user->username = $request->username;
+    		$new_user->email = $request->email;
     		$new_user->password = $hashed_pw;
 
     		// save the user to the database
@@ -58,11 +59,13 @@ class RegistrationController extends Controller
     		$new_user->roles->attach(2);
 
     		// flash the message that the account was created
-    		Session::flash("acc_created", "Your account has been successfully created. Try logging in!");
-    		// redirect back to login screen
-    		return Redirect::to("login");
-
-    		// still need to refactor.
+            return Response::json(
+                    array(
+                    'status' => 200,
+                    'message' => "User created!",
+                    'reason' => "User created successfully."
+                ), 200
+            );
     	}
     }
 }

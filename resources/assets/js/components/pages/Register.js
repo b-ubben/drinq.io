@@ -86,7 +86,7 @@ export default class Register extends Component {
 
       this.setState({valid: true}, () => {
         // code goes here for fetch to submit all parameters in the state.
-        fetch('/register', {
+        fetch('register', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
