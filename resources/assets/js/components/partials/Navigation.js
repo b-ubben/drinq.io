@@ -39,13 +39,13 @@ export default class Navigation extends Component {
       <div className="bg-dark">
         <nav className="navigation">
           <Link to="/" className="navigation-logo">drinq</Link>
-          <a className="navigation-link" onClick={ this.handleToggle }>
+          <Link to="" className="navigation-link" onClick={ this.handleToggle }>
             <div className="menu-logo">
               <div className="menu-logo-bars"></div>
               <div className="menu-logo-bars"></div>
               <div className="menu-logo-bars"></div>
             </div>
-          </a>
+          </Link>
         </nav>
 
         <nav className={this.state.isExpanded ? 'nav-expanded bg-lighterDark display-block' : 'display-none'}>
