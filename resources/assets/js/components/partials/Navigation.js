@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default class Navigation extends Component {
   state = {
     isExpanded: false,
-    isLoggedIn: this.props.isLoggedIn
+    isLoggedIn: false
   }
 
   componentDidMount() {
-    this.handleToggle = this.handleToggle.bind(this);
+    this.checkIfLoggedIn();
+  }
+
+  checkIfLoggedIn() {
+    sessionStorage.getItem('isLoggedIn') ? this.setState({isLoggedIn: true}) : this.setState({isLoggedIn: false});
   }
 
   handleToggle = (e) => {
     this.state.isExpanded ? this.setState({isExpanded: false}) : this.setState({isExpanded: true});
   }
 
-  handleLogOut() {
-    if (this.state.isLoggedIn) {
-      this.setState({isLoggedIn: false});
-    }
+  handleLogOut = (e) => {
+    e.preventDefault();
+    this.setState({isLoggedIn: false});
+    sessionStorage.clear();
   }
 
   onLogoutClick = (e) => {
@@ -49,7 +53,7 @@ export default class Navigation extends Component {
             <div className="item-half">
               <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/" onClick={ this.handleToggle }>Home</Link>
               {isLoggedIn ? (
-                <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/logout" onClick={ this.onLogoutClick }>Log Out</Link>) : (<Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/login" onClick={ this.handleToggle }>Log In</Link>)
+                <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/logout" onClick={ this.onLogoutClick }>Log Out</Link>) : (<Link className="navigation-link border rounded-border button-long pane bg-dark border-color-grey" to="/login" onClick={ this.handleToggle }>Log In</Link>)
               }
             </div>
 
@@ -57,7 +61,7 @@ export default class Navigation extends Component {
               {isLoggedIn ? (
                 <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/profile" onClick={ this.handleToggle }>Profile</Link>) : (<Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/register" onClick={ this.handleToggle }>Register</Link>)
               }
-              <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/about" onClick={ this.handleToggle }>About Us</Link>
+              <Link className="navigation-link border rounded-border button-long pane bg-dark border-color-grey" to="/about" onClick={ this.handleToggle }>About Us</Link>
             </div>
           </div>
         </nav>

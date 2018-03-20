@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 
 export default class Register extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      username: '',
-      email: '',
-      password: '',
-      passwordConf: '',
-      validUsername: false,
-      validEmail: false,
-      validPassword: false,
-      validPasswordConf: false,
-      valid: false
-    }
-
+  state = {
+    username: '',
+    email: '',
+    password: '',
+    passwordConf: '',
+    validUsername: false,
+    validEmail: false,
+    validPassword: false,
+    validPasswordConf: false,
+    valid: false
   }
 
     /*
@@ -116,7 +111,7 @@ export default class Register extends Component {
     return(
       <main className="row">
       	<div className="item-three-quarter item__mobile">
-      		<div className="pane pane-rounded padding-something bg-light">
+      		<div className="pane pane-rounded padding-something margin-top-enough bg-light">
       			<p className="pane-title display-big">Drinq User Registration</p>
       			<p className="pane-content text-dark text-center">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
       			<form className="crutch-form text-center container-mobile">

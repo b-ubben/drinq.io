@@ -17,13 +17,12 @@ import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 
 export default class Main extends Component {
-  state = { isLoggedIn: false }
 
   render() {
     return(
       <Router>
         <div className="Main">
-          <Navigation isLoggedIn={this.state.isLoggedIn}/>
+          <Navigation />
           <Messages />
 
           <Switch>
