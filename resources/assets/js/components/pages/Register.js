@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { string } from 'prop-types';
+
 export default class Register extends Component {
   state = {
     username: '',
@@ -10,6 +12,14 @@ export default class Register extends Component {
     validPassword: false,
     validPasswordConf: false,
     valid: false
+  }
+
+  static propTypes = {
+    baseUrl: string.isRequired
+  }
+
+  static defaultProps = {
+    baseUrl: sessionStorage.getItem('baseUrl')
   }
 
     /*
@@ -92,7 +102,7 @@ export default class Register extends Component {
         })
 
         // run the post request with the user loginData shown above
-        axios.post('http://drinq.test/api/register', loginData, {
+        axios.post(this.props.baseUrl + '/register', loginData, {
               headers: {
                   'Content-Type': 'application/json',
               }
@@ -111,15 +121,15 @@ export default class Register extends Component {
       	<div className="item-three-quarter item__mobile">
       		<div className="pane pane-rounded padding-something margin-top-enough bg-light">
       			<p className="pane-title display-big">Drinq User Registration</p>
-      			<p className="pane-content text-dark text-center">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
+          <p className="pane-content text-dark text-center container-mobile padding-something">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
       			<form className="crutch-form text-center container-mobile">
-      				<input type="text" name="username" id="username" placeholder="Username" className={ this.state.validUsername ? "input-long" : "input-long invalid" } onChange={ this.validateUsername }/>
+      				<input type="text" name="username" id="username" placeholder="Username" className="input-long" onChange={ this.validateUsername }/>
       				<br />
-      				<input type="text" name="email" id="email" placeholder="Email Address" className={ this.state.validEmail ? "input-long" : "input-long invalid" } onChange={ this.validateEmail } />
+            <input type="text" name="email" id="email" placeholder="Email Address" className="input-long" onChange={ this.validateEmail } />
       				<br />
-      				<input type="password" name="password" id="password" placeholder="Password" className={ this.state.validPassword ? "input-long" : "input-long invalid" } onChange={ this.validatePassword } />
+            <input type="password" name="password" id="password" placeholder="Password" className="input-long" onChange={ this.validatePassword } />
       				<br />
-      				<input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className={ this.state.validPasswordConf ? "input-long" : "input-long invalid" } onChange={ this.validatePasswordConf }/>
+            <input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className="input-long" onChange={ this.validatePasswordConf }/>
       				<br />
       				<input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ this.readyForSubmission }/>
       			</form>

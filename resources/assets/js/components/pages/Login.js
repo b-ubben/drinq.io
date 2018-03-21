@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { string } from 'prop-types';
 
 export default class Login extends Component {
   state = {
-      hasBeenSubmitted: false,
+      hasLoggedInSucessfully: false,
       username: '',
-      password: ''
+      password: '',
+  }
+
+  static propTypes = {
+    baseUrl: string.isRequired
+  }
+
+  static defaultProps = {
+    baseUrl: sessionStorage.getItem('baseUrl')
   }
 
   handleUsername = (e) => {
@@ -24,10 +33,11 @@ export default class Login extends Component {
 
   handleLogIn = (e) => {
     e.preventDefault();
+
     //test credentials used to simulate proper credentials on DB
     if (this.state.username == 'test' && this.state.password == 'test') {
       sessionStorage.setItem('isLoggedIn', 'true');
-      this.setState({hasBeenSubmitted: true});
+      this.setState({hasLoggedInSucessfully: true});
       console.log(sessionStorage.getItem('isLoggedIn'));
     } else {
       console.log('Incorrect credentials!!');
@@ -35,7 +45,7 @@ export default class Login extends Component {
   }
 
   render() {
-    if (this.state.hasBeenSubmitted) {
+    if (this.state.hasLoggedInSucessfully) {
       return(<Redirect to='/' />);
     }
 
