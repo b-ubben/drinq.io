@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 export default class Register extends Component {
   state = {
     username: '',
@@ -86,20 +85,19 @@ export default class Register extends Component {
 
       this.setState({valid: true}, () => {
         // code goes here for fetch to submit all parameters in the state.
-        fetch('register', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: '',
-            email: '',
-            password: '',
-            passwordConf: '',
-          }),
-        });
-        return true;
+        let loginData = JSON.stringify({
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password,
+        })
+
+        // run the post request with the user loginData shown above
+        axios.post('http://drinq.test/api/register', loginData, {
+              headers: {
+                  'Content-Type': 'application/json',
+              }
+          }
+        )
       });
     } else {
       // disable enter key/go button submission if requirements aren't met.
