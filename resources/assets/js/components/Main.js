@@ -26,14 +26,23 @@ export default class Main extends Component {
    }
 
    componentDidMount() {
-     sessionStorage.setItem('baseUrl', BASE_URL);
+     if (!sessionStorage.getItem('baseUrl')) {
+       sessionStorage.setItem('baseUrl', BASE_URL);
+     }
+
+     if ( sessionStorage.getItem('isLoggedIn') == 'true') {
+       this.setState({isLoggedIn: sessionStorage.getItem('isLoggedIn')});
+     }
    }
 
   render() {
+    const isLoggedIn = this.state.isLoggedIn;
+
     return(
       <Router>
         <div className="Main">
           <Navigation isLoggedIn={ this.state.isLoggedIn }/>
+          <p className="text-center text-white">{isLoggedIn ? "You're logged in." : "You're not logged in."}</p>
           <Messages />
 
           <Switch>
