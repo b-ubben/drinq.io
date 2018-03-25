@@ -12,7 +12,9 @@ export default class Navigation extends Component {
   }
 
   checkIfLoggedIn() {
-    sessionStorage.getItem('isLoggedIn') ? this.setState({isLoggedIn: true}) : this.setState({isLoggedIn: false});
+    if (sessionStorage.getItem('isLoggedIn') === 'true') {
+      this.setState({isLoggedIn: true});
+    }
   }
 
   handleToggle = (e) => {
@@ -39,13 +41,13 @@ export default class Navigation extends Component {
       <div className="bg-dark">
         <nav className="navigation">
           <Link to="/" className="navigation-logo">drinq</Link>
-          <Link to="" className="navigation-link" onClick={ this.handleToggle }>
+          <button className="navigation-link bg-dark border-none" onClick={ this.handleToggle }>
             <div className="menu-logo">
               <div className="menu-logo-bars"></div>
               <div className="menu-logo-bars"></div>
               <div className="menu-logo-bars"></div>
             </div>
-          </Link>
+          </button>
         </nav>
 
         <nav className={this.state.isExpanded ? 'nav-expanded bg-lighterDark display-block' : 'display-none'}>

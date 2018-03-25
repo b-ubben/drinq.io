@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 
 export default class Messages extends Component {
   state = {
-    message: ''
+    messages: ''
+  }
+
+  componentDidMount() {
+    this.setState({messages: this.props.messages});
   }
 
   //Function to clear message after a few seconds goes here
@@ -11,7 +15,7 @@ export default class Messages extends Component {
   render() {
     return(
       <div>
-        <span>{ this.state.message }</span>
+        <span>{ this.state.messages }</span>
       </div>
     );
   }

@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { string } from 'prop-types';
 
+//import partials
+import Navigation from './../partials/Navigation';
+import Messages from './../partials/Messages';
+import Footer from './../partials/Footer';
+
 export default class Register extends Component {
   state = {
     username: '',
@@ -11,7 +16,8 @@ export default class Register extends Component {
     validEmail: false,
     validPassword: false,
     validPasswordConf: false,
-    valid: false
+    valid: false,
+    isLoggedIn: false
   }
 
   static propTypes = {
@@ -117,25 +123,32 @@ export default class Register extends Component {
 
   render() {
     return(
-      <main className="row">
-      	<div className="item-three-quarter item__mobile">
-      		<div className="pane pane-rounded padding-something margin-top-enough bg-light">
-      			<p className="pane-title display-big">Drinq User Registration</p>
-          <p className="pane-content text-dark text-center container-mobile padding-something">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
-      			<form className="crutch-form text-center container-mobile">
-      				<input type="text" name="username" id="username" placeholder="Username" className="input-long" onChange={ this.validateUsername }/>
-      				<br />
-            <input type="text" name="email" id="email" placeholder="Email Address" className="input-long" onChange={ this.validateEmail } />
-      				<br />
-            <input type="password" name="password" id="password" placeholder="Password" className="input-long" onChange={ this.validatePassword } />
-      				<br />
-            <input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className="input-long" onChange={ this.validatePasswordConf }/>
-      				<br />
-      				<input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ this.readyForSubmission }/>
-      			</form>
-      		</div>
-      	</div>
-      </main>
+      <div>
+        <Navigation isLoggedIn={ this.state.isLoggedIn }/>
+        <Messages />
+
+        <main className="row">
+        	<div className="item-three-quarter item__mobile">
+        		<div className="pane pane-rounded padding-something margin-top-enough bg-light">
+        			<p className="pane-title display-big">Drinq User Registration</p>
+            <p className="pane-content text-dark text-center container-mobile padding-something">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
+        			<form className="crutch-form text-center container-mobile">
+        				<input type="text" name="username" id="username" placeholder="Username" className="input-long" onChange={ this.validateUsername }/>
+        				<br />
+              <input type="text" name="email" id="email" placeholder="Email Address" className="input-long" onChange={ this.validateEmail } />
+        				<br />
+              <input type="password" name="password" id="password" placeholder="Password" className="input-long" onChange={ this.validatePassword } />
+        				<br />
+              <input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className="input-long" onChange={ this.validatePasswordConf }/>
+        				<br />
+        				<input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ this.readyForSubmission }/>
+        			</form>
+        		</div>
+        	</div>
+        </main>
+
+        <Footer />
+      </div>
     );
   }
 }

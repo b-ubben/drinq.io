@@ -11,3 +11,7 @@
 .border-color-grey {
   border-color: lighten(map-get($theme, dark), 13%) !important;
 }
+
+a {
+  text-decoration: underline;
+}

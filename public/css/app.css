@@ -2104,3 +2104,7 @@ button {
   border-color: #616161 !important;
 }
 
+a {
+  text-decoration: underline;
+}
+

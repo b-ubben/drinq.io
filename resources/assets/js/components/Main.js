@@ -7,10 +7,7 @@ import {
   Switch
 } from 'react-router-dom';
 
-//Import partials
-import Navigation from './partials/Navigation';
-import Footer from './partials/Footer';
-import Messages from './partials/Messages';
+//Import baseUrl
 import { BASE_URL } from './partials/Path';
 
 //Import pages
@@ -30,8 +27,12 @@ export default class Main extends Component {
        sessionStorage.setItem('baseUrl', BASE_URL);
      }
 
+     this.checkIfLoggedIn();
+   }
+
+   checkIfLoggedIn() {
      if ( sessionStorage.getItem('isLoggedIn') == 'true') {
-       this.setState({isLoggedIn: sessionStorage.getItem('isLoggedIn')});
+       this.setState({isLoggedIn: true});
      }
    }
 
@@ -41,19 +42,13 @@ export default class Main extends Component {
     return(
       <Router>
         <div className="Main">
-          <Navigation isLoggedIn={ this.state.isLoggedIn }/>
-          <p className="text-center text-white">{isLoggedIn ? "You're logged in." : "You're not logged in."}</p>
-          <Messages />
-
           <Switch>
-          <Route exact path="/" component={ Landing } />
-            <Route path="/about" component={ About } />
-            <Route path="/login" component={ Login } />
-            <Route path="/register" component={ Register } />
-
+            <Route exact path="/" component={ Landing } />
+              <Route path="/about" component={ About } />
+              <Route path="/login" component={ Login } />
+              <Route path="/register" component={ Register } />
             <Route component={ NotFound } />
           </Switch>
-          <Footer />
         </div>
       </Router>
     );

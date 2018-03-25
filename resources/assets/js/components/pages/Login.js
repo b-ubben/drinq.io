@@ -2,9 +2,15 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { string } from 'prop-types';
 
+//import partials
+import Navigation from './../partials/Navigation';
+import Messages from './../partials/Messages';
+import Footer from './../partials/Footer';
+
 export default class Login extends Component {
   state = {
       hasLoggedInSucessfully: false,
+      isLoggedIn: false,
       username: '',
       password: '',
   }
@@ -50,18 +56,26 @@ export default class Login extends Component {
     }
 
     return(
-      <main className="item-three-quarter item__mobile">
-      	<div className="pane pane-rounded bg-light padding-something">
-      		<p className="pane-title display-medium">Please sign in to continue</p>
-      		<form action="" className="crutch-form text-center container-mobile">
-      			<input type="text" name="username" id="username" className="input-long" placeholder="Username" onChange={ this.handleUsername }/>
-      			<br />
-      			<input type="password" name="password" id="password" className="input-long" placeholder="Password" onChange={ this.handlePassword }/>
-      			<br />
-      			<input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ this.handleLogIn }/>
-      		</form>
-      	</div>
-      </main>
+      <div>
+        <Navigation isLoggedIn={ this.state.isLoggedIn }/>
+        <Messages />
+
+        <main className="item-three-quarter item__mobile">
+        	<div className="pane pane-rounded bg-light padding-something">
+        		<p className="pane-title display-medium">Please sign in to continue</p>
+            <p className="text-center text-dark">Enter your username and password.</p>
+        		<form action="" className="crutch-form text-center container-mobile">
+        			<input type="text" name="username" id="username" className="input-long" placeholder="Username" onChange={ this.handleUsername }/>
+        			<br />
+        			<input type="password" name="password" id="password" className="input-long" placeholder="Password" onChange={ this.handlePassword }/>
+        			<br />
+        			<input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ this.handleLogIn }/>
+        		</form>
+        	</div>
+        </main>
+
+        <Footer />
+      </div>
     );
   }
 }
