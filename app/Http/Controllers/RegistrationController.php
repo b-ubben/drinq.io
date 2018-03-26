@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-// need all of these libraries for validation
+// need all of these libraries for validation, requests, etc.
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;

@@ -9,7 +9,7 @@ import Footer from './../partials/Footer';
 
 export default class Login extends Component {
   state = {
-      hasLoggedInSucessfully: false,
+      hasLoggedInSuccessfully: false,
       isLoggedIn: false,
       username: '',
       password: '',
@@ -43,7 +43,7 @@ export default class Login extends Component {
     //test credentials used to simulate proper credentials on DB
     if (this.state.username == 'test' && this.state.password == 'test') {
       sessionStorage.setItem('isLoggedIn', 'true');
-      this.setState({hasLoggedInSucessfully: true});
+      this.setState({hasLoggedInSuccessfully: true});
       console.log(sessionStorage.getItem('isLoggedIn'));
     } else {
       console.log('Incorrect credentials!!');
@@ -51,7 +51,7 @@ export default class Login extends Component {
   }
 
   render() {
-    if (this.state.hasLoggedInSucessfully) {
+    if (this.state.hasLoggedInSuccessfully) {
       return(<Redirect to='/' />);
     }
 

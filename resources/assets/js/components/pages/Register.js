@@ -20,12 +20,12 @@ export default class Register extends Component {
     isLoggedIn: false
   }
 
-  static propTypes = {
-    baseUrl: string.isRequired
-  }
-
   static defaultProps = {
     baseUrl: sessionStorage.getItem('baseUrl')
+  }
+
+  static propTypes = {
+    baseUrl: string.isRequired
   }
 
     /*
