@@ -25,7 +25,7 @@ class RegistrationController extends Controller
     	);
 
     	// // initiate validator, and get all form fields
-    	$validator = Validator::make($request->all(), $rules);
+    	$validator = Validator::make($request->only("username", "email", "password"), $rules);
 
     	// if validator fails, flash messages and return all field items except the password
     	if($validator->fails()) {

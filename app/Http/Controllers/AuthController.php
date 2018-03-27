@@ -23,7 +23,7 @@ class AuthController extends Controller
         );
 
         // start validator and get the request received from the react application
-        $validator = Validator::make($request->all(), $rules);
+        $validator = Validator::make($request->only("username", "password"), $rules);
 
         // check if the validator fails, if it fails, return error response.
         if($validator->fails()) {
@@ -35,12 +35,12 @@ class AuthController extends Controller
         } else {
         	// actually log the user in. will be using JWT to authenticate the user.
         	// on every auth, user will be given a different JWT that will be used to communicate w/ API and REACT
-        	
+        	echo "Login successful... for now.";
         }
     }
 
     // perform logout of user
     public function performLogout() {
-        
+        // no idea how logout is performed with JWT. will figure out.
     }
 }
