@@ -14,12 +14,32 @@ use App\User;
 
 class AuthController extends Controller
 {
-    // perform the actual logging in to the system
-    public function performLogin() {
-        // code goes here to start a login 
+    // perform authentication of user into the system
+    public function performLogin(Request $request) {
+        // set up validation rules - just two fields
+        $rules = array(
+        	"username"	=>	"required|alphaNum",
+        	"password"	=>	"required"
+        );
+
+        // start validator and get the request received from the react application
+        $validator = Validator::make($request->all(), $rules);
+
+        // check if the validator fails, if it fails, return error response.
+        if($validator->fails()) {
+        	return Response::json(array(
+        		"status" => 500,
+        		"reason" => "Couldn't authenticate user.",
+        		"message" => $validator->messages()
+        	));
+        } else {
+        	// actually log the user in. will be using JWT to authenticate the user.
+        	// on every auth, user will be given a different JWT that will be used to communicate w/ API and REACT
+        	
+        }
     }
 
-    // perform logout of application
+    // perform logout of user
     public function performLogout() {
         
     }
