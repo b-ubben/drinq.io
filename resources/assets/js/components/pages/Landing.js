@@ -34,7 +34,7 @@ export default class Landing extends Component {
 
         	<div className="row container-tablet">
         		<div className="item pane">
-        			<p className="pane-content text-center margin-bottom-nothing">Please enter your zipcode. We'll serach for nearby locations and tell you if their Happy Hour is anytime soon!</p>
+        			<p className="pane-content text-center margin-bottom-nothing">Please enter your zipcode. We'll search for nearby locations and tell you if their Happy Hour is anytime soon!</p>
 
               <form className="crutch-form container-mobile padding-something margin-y-something">
                 <input type="text" className="input-long border rounded-border"/>
