@@ -38,7 +38,7 @@ export default class Navigation extends Component {
     const isLoggedIn = this.state.isLoggedIn;
 
     return(
-      <div className="bg-dark">
+      <div className="bg-dark navigation-container">
         <nav className="navigation">
           <Link to="/" className="navigation-logo">drinq</Link>
           <button className="navigation-link bg-dark border-none" onClick={ this.handleToggle }>

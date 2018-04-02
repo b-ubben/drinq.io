@@ -4,6 +4,10 @@
 // Crutch
 @import "crutch";
 
+a {
+  text-decoration: underline;
+}
+
 .bg-lighterDark {
   background: lighten(map-get($theme, dark), 7%);
 }
@@ -12,6 +16,11 @@
   border-color: lighten(map-get($theme, dark), 13%) !important;
 }
 
-a {
-  text-decoration: underline;
+.input-long {
+  max-width: 500px;
+}
+
+.navigation-container {
+  position: sticky;
+  top: -1px;
 }

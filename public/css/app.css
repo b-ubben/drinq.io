@@ -2096,6 +2096,10 @@ button {
   overflow: scroll;
 }
 
+a {
+  text-decoration: underline;
+}
+
 .bg-lighterDark {
   background: #525252;
 }
@@ -2104,7 +2108,13 @@ button {
   border-color: #616161 !important;
 }
 
-a {
-  text-decoration: underline;
+.input-long {
+  max-width: 500px;
+}
+
+.navigation-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
 }
 
