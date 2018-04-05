@@ -32,7 +32,7 @@ export default class Register extends Component {
   }
 
   static propTypes = {
-    baseUrl: string.isRequired
+    baseUrl: string
   }
 
   validateUsername = (e) => {

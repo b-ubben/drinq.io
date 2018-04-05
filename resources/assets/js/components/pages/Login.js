@@ -16,7 +16,7 @@ export default class Login extends Component {
   }
 
   static propTypes = {
-    baseUrl: string.isRequired
+    baseUrl: string
   }
 
   static defaultProps = {

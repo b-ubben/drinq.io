@@ -2112,9 +2112,3 @@ a {
   max-width: 500px;
 }
 
-.navigation-container {
-  position: -webkit-sticky;
-  position: sticky;
-  top: -1px;
-}
-
