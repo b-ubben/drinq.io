@@ -105,13 +105,12 @@ export default class Register extends Component {
               headers: {
                   'Content-Type': 'application/json',
               }
-          }).then(function(response) {
-            if (response.status === '200') {
+          }).then(response => {
+            if(response.status == 200) {
               this.setState({successfulRegistration: true});
             }
           }).catch((error) => {
             this.setState({failedRegistration: true});
-            console.log('failed registration');
           });
       });
     } else {
@@ -130,9 +129,10 @@ export default class Register extends Component {
     const successfulRegistration = this.state.successfulRegistration;
 
     return(
-      successfulRegistration ? <Redirect to="/" /> :
 
       <div>
+      { successfulRegistration ?  <Redirect to="/" /> : "" }
+
         <Navigation isLoggedIn={ this.state.isLoggedIn }/>
         <Messages />
 
