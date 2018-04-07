@@ -48,6 +48,7 @@ class RegistrationController extends Controller
     		$new_user->username = $request->username;
     		$new_user->email = $request->email;
             $new_user->zip_code = 0;
+            $new_user->api_token = NULL;
     		$new_user->password = $hashed_pw;
 
     		// save the user to the database

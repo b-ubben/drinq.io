@@ -21,8 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', array('uses' => 'RegistrationController@registerUser'));
 
 // log in routes
-Route::post('login', array('uses' => 'AuthController@performLogin'));
-Route::get('logout', array('uses' => 'AuthController@performLogout'));
+Route::post('auth/login', array('uses' => 'AuthController@performLogin'));
+Route::post('auth/logout', array('uses' => 'AuthController@performLogout'));
 
 // test route for testing. duh. useful for when deploying the app and testing whether the api route works
 Route::get('test', function (){
