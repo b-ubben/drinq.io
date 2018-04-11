@@ -15,6 +15,8 @@ use App\User;
 class RegistrationController extends Controller
 {
     //
+    public $successStatus = 200;
+
     public function registerUser(Request $request) {
 
     	// initiate rules for validation.
@@ -37,32 +39,30 @@ class RegistrationController extends Controller
 	        	), 500
 	        );
     	} else {
-    		// if it succeeds, get all inputs and put them into the model
-    		$new_user = new User;
-    		// acquire password, then hash it
-    		$password = $request->password;
-    		// hash password
-    		$hashed_pw = Hash::make($password);
+    		// if it succeeds, get all request_paramss and put them into the model.
 
-    		// get all form fields and add them to the model. anything classified as fillable can be added here
-    		$new_user->username = $request->username;
-    		$new_user->email = $request->email;
-            $new_user->zip_code = 0;
-            $new_user->api_token = NULL;
-    		$new_user->password = $hashed_pw;
+            // get all of the items in the request
+            $request_params = $request->all();
+            // encrypt the password upon user creation
+            $request_params['password'] = bcrypt($request_params['password']);
+            // save & create new user into the database
+            $user = User::create($request_params);
+            // give user role of normal user
+            $user->roles()->attach(2);
 
-    		// save the user to the database
-    		$new_user->save();
+            // create the 
+            $success['token'] = $user->createToken('MyApp')->accessToken;
+            $success['name'] = $user->username;
 
-    		// attach the default role of user - not admin
-    		$new_user->roles()->attach(2);
 
     		// flash the message that the account was created
             return Response::json(
                     array(
-                    'status' => 200,
+                    'status' => $this->successStatus,
                     'message' => "User created!",
-                    'reason' => "User created successfully."
+                    'reason' => "User created successfully.",
+                    'username' => $success['name'],
+                    'token' =>  $success['token'],
                 ), 200
             );
     	}

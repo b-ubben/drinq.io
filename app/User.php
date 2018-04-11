@@ -2,12 +2,14 @@
 
 namespace App;
 
+// user needs to have API tokens.
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     // specify the primary key for the model/table
     protected $primaryKey = "user_id";
