@@ -13,7 +13,10 @@ use Response;
 use App\User;
 
 class AuthController extends Controller
-{
+{   
+
+    public $successStatus = 200;
+
     // perform authentication of user into the system
     public function performLogin(Request $request) {
         // set up validation rules - just two fields
@@ -33,15 +36,36 @@ class AuthController extends Controller
         		"message" => $validator->messages()
         	));
         } else {
-        	// actually log the user in. will be using JWT to authenticate the user.
-        	// on every auth, user will be given a different JWT that will be used to communicate w/ API and REACT
+            // using laravel passport to log in
         	$user_data = array(
         		'username'	=>	$request->username,
         		'password'	=>	$request->password,
         	);
 
         	if(Auth::attempt($user_data)) {
-        		// get authenticated user          
+                // get the user that logged in
+        		$user = Auth::user();
+                // create the new token on every log-in
+                $success['token'] = $user->createToken('drinq')->accessToken;
+
+                // return response with access token
+                    return Response::json(
+                        array(
+                            'status' => $this->successStatus,
+                            'message' => "Successfully logged in!",
+                            'reason' => "User logged in successfully.",
+                            'token' =>  $success['token'],
+                    ), $this->successStatus
+                );
+            } else {
+                $this->successStatus = 401;
+                return Response::json(
+                        array(
+                            'status' => $this->successStatus,
+                            'message' => "Failed to log in.",
+                            'reason' => "Please check your credentials and try again.",
+                    ), $this->successStatus
+                );
             }
         }
     }
@@ -49,5 +73,11 @@ class AuthController extends Controller
     // perform logout of user
     public function performLogout() {
         // no idea how logout is performed with JWT. will figure out.
+    }
+
+    // get all user details. meant to be used for testing only.
+    public function getDetails() {
+        $user = Auth::user();
+        return response()->json(['success' => $user], $this->successStatus);
     }
 }

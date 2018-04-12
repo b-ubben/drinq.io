@@ -50,20 +50,20 @@ class RegistrationController extends Controller
             // give user role of normal user
             $user->roles()->attach(2);
 
-            // create the 
-            $success['token'] = $user->createToken('MyApp')->accessToken;
+            // create the token under our drinq app and return the username
+            $success['token'] = $user->createToken('drinq')->accessToken;
             $success['name'] = $user->username;
 
 
     		// flash the message that the account was created
             return Response::json(
                     array(
-                    'status' => $this->successStatus,
-                    'message' => "User created!",
-                    'reason' => "User created successfully.",
-                    'username' => $success['name'],
-                    'token' =>  $success['token'],
-                ), 200
+                        'status' => $this->successStatus,
+                        'message' => "User created!",
+                        'reason' => "User created successfully.",
+                        'username' => $success['name'],
+                        'token' =>  $success['token'],
+                ), $this->successStatus
             );
     	}
     }

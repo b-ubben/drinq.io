@@ -17,14 +17,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// any actions that REQUIRE authentication, like adding comments, etc. the routes will be in here.
 Route::group(['middleware' => 'auth:api'], function(){
 	Route::post('get-details', 'AuthController@getDetails');
 });
 
-// register user routes routes
+// authentication related routes
 Route::post('register', array('uses' => 'RegistrationController@registerUser'));
-
-// log in routes
 Route::post('auth/login', array('uses' => 'AuthController@performLogin'));
 
 // Route::post('auth/logout', array('uses' => 'AuthController@performLogout'));
