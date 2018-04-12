@@ -80,7 +80,7 @@ class AuthController extends Controller
     public function performLogout() {
         // easy. if user is logged in, delete their token.
         if (Auth::check()) {
-            Auth::user()->AauthAcessToken()->delete();
+            Auth::user()->AauthAccessToken()->delete();
             return Response::json(
                     array(
                         'status' => $this->successStatus,
