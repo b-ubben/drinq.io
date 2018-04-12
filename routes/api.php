@@ -20,13 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // any actions that REQUIRE authentication, like adding comments, etc. the routes will be in here.
 Route::group(['middleware' => 'auth:api'], function(){
 	Route::post('get-details', 'AuthController@getDetails');
+	Route::post('auth/logout', array('uses' => 'AuthController@performLogout'));
 });
 
 // authentication related routes
 Route::post('register', array('uses' => 'RegistrationController@registerUser'));
 Route::post('auth/login', array('uses' => 'AuthController@performLogin'));
-
-// Route::post('auth/logout', array('uses' => 'AuthController@performLogout'));
 
 // test route for testing. duh. useful for when deploying the app and testing whether the api route works
 Route::get('test', function (){

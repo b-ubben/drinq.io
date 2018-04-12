@@ -70,14 +70,24 @@ class AuthController extends Controller
         }
     }
 
-    // perform logout of user
-    public function performLogout() {
-        // no idea how logout is performed with JWT. will figure out.
-    }
-
     // get all user details. meant to be used for testing only.
     public function getDetails() {
         $user = Auth::user();
         return response()->json(['success' => $user], $this->successStatus);
+    }
+
+    // perform logout of user
+    public function performLogout() {
+        // easy. if user is logged in, delete their token.
+        if (Auth::check()) {
+            Auth::user()->AauthAcessToken()->delete();
+            return Response::json(
+                    array(
+                        'status' => $this->successStatus,
+                        'message' => "User logged out.",
+                        'reason' => "User logged out successfully.",
+                ), $this->successStatus
+            );
+        }
     }
 }

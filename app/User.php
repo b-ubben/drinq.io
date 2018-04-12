@@ -37,6 +37,11 @@ class User extends Authenticatable
         return false;
     }
 
+    // relationship to the oauth access tokens, can have many.
+    public function AauthAcessToken(){
+        return $this->hasMany('App\OauthAccessToken', 'user_id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
