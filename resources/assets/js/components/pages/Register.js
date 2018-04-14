@@ -95,13 +95,13 @@ export default class Register extends Component {
 
       this.setState({valid: true}, () => {
         // code goes here for fetch to submit all parameters in the state.
-        let loginData = JSON.stringify({
+        let registerData = JSON.stringify({
             username: this.state.username,
             email: this.state.email,
             password: this.state.password
         })
-        // run the post request with the user loginData shown above
-        axios.post(this.props.baseUrl + '/register', loginData, {
+        // run the post request with the user registerData shown above
+        axios.post(this.props.baseUrl + '/register', registerData, {
               headers: {
                   'Content-Type': 'application/json',
               }

@@ -24,29 +24,40 @@ export default class Login extends Component {
   }
 
   handleUsername = (e) => {
-    this.setState({ username: e.target.value }, () => {
-      //validation happens here
-      console.log('Username: ' + this.state.username);
-    });
+    this.setState({ username: e.target.value });
   }
 
   handlePassword = (e) => {
-    this.setState({ password: e.target.value }, () => {
-      //validation happens here
-      console.log('Password: ' + this.state.password);
-    });
+    this.setState({ password: e.target.value });
   }
 
   handleLogIn = (e) => {
-    e.preventDefault();
-
-    //test credentials used to simulate proper credentials on DB
-    if (this.state.username == 'test' && this.state.password == 'test') {
-      sessionStorage.setItem('isLoggedIn', 'true');
-      this.setState({hasLoggedInSuccessfully: true});
-      console.log(sessionStorage.getItem('isLoggedIn'));
+    if(this.state.username != '' && this.state.password != '') {
+      e.preventDefault();
+      // submit the data in the login form
+      let loginData = JSON.stringify({
+          username: this.state.username,
+          password: this.state.password
+      })
+      // submit the actual data to the db and see if they log in
+      axios.post(this.props.baseUrl + '/auth/login', loginData, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }).then(response => {
+        if(response.status == 200) {
+          // console.log(response.data.token);
+          sessionStorage.setItem('token', response.data.token);
+          this.setState({isLoggedIn: true});
+          console.log(sessionStorage.getItem('token'));
+        }
+      }).catch((error) => {
+        if(error.response.status == 401) {
+          console.log("Unable to log in");
+        }
+      });
     } else {
-      console.log('Incorrect credentials!!');
+      e.preventDefault();
     }
   }
 
