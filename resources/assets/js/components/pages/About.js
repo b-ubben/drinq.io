@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 //import partials
 import Navigation from './../partials/Navigation';
-import Messages from './../partials/Messages';
 import Footer from './../partials/Footer';
 
 export default class About extends Component {
@@ -10,7 +9,6 @@ export default class About extends Component {
     return(
       <div>
         <Navigation isLoggedIn={ this.state.isLoggedIn }/>
-        <Messages />
 
         <main>
         	<div className="row">

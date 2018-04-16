@@ -4,8 +4,8 @@ import { string } from 'prop-types';
 
 //import partials
 import Navigation from './../partials/Navigation';
-import Messages from './../partials/Messages';
 import Footer from './../partials/Footer';
+import { BASE_URL } from './../partials/Path';
 
 export default class Login extends Component {
   state = {
@@ -13,14 +13,15 @@ export default class Login extends Component {
       isLoggedIn: false,
       username: '',
       password: '',
+      loginFeedback: ''
   }
 
-  static propTypes = {
-    baseUrl: string
+  componentDidMount() {
+    setInterval(this.clearMessage, 8000);
   }
 
-  static defaultProps = {
-    baseUrl: sessionStorage.getItem('baseUrl')
+  clearMessage = () => {
+    if (this.state.loginFeedback) this.setState({loginFeedback: ''});
   }
 
   handleUsername = (e) => {
@@ -40,7 +41,7 @@ export default class Login extends Component {
           password: this.state.password
       })
       // submit the actual data to the db and see if they log in
-      axios.post(this.props.baseUrl + '/auth/login', loginData, {
+      axios.post(BASE_URL + '/auth/login', loginData, {
         headers: {
           'Content-Type': 'application/json',
         }
@@ -49,11 +50,10 @@ export default class Login extends Component {
           // console.log(response.data.token);
           sessionStorage.setItem('token', response.data.token);
           this.setState({isLoggedIn: true});
-          console.log(sessionStorage.getItem('token'));
         }
       }).catch((error) => {
-        if(error.response.status == 401) {
-          console.log("Unable to log in");
+        if(error.response.status === 401) {
+          this.setState({loginFeedback: error.response.data.reason});
         }
       });
     } else {
@@ -62,14 +62,12 @@ export default class Login extends Component {
   }
 
   render() {
-    if (this.state.hasLoggedInSuccessfully) {
-      return(<Redirect to='/' />);
-    }
+    const isLoggedIn = this.state.isLoggedIn;
 
     return(
       <div>
+        { isLoggedIn ? <Redirect to='/' /> : ''}
         <Navigation isLoggedIn={ this.state.isLoggedIn }/>
-        <Messages />
 
         <main className="item-three-quarter item__mobile">
         	<div className="pane pane-rounded bg-light padding-something">
@@ -80,6 +78,7 @@ export default class Login extends Component {
         			<br />
         			<input type="password" name="password" id="password" className="input-long" placeholder="Password" onChange={ this.handlePassword }/>
         			<br />
+              {(this.state.loginFeedback) ? <p className="alert-failure">{this.state.loginFeedback}</p> : ''}
         			<input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ this.handleLogIn }/>
         		</form>
         	</div>

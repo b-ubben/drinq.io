@@ -12,7 +12,7 @@ export default class Navigation extends Component {
   }
 
   checkIfLoggedIn() {
-    if (sessionStorage.getItem('isLoggedIn') === 'true') {
+    if (sessionStorage.getItem('token')) {
       this.setState({isLoggedIn: true});
     }
   }

@@ -4,8 +4,8 @@ import { string } from 'prop-types';
 
 //import partials
 import Navigation from './../partials/Navigation';
-import Messages from './../partials/Messages';
 import Footer from './../partials/Footer';
+import { BASE_URL } from './../partials/Path';
 
 //import FontAwesome
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -17,6 +17,7 @@ export default class Register extends Component {
     email: '',
     password: '',
     passwordConf: '',
+    registerFeedback: '',
     validUsername: false,
     validEmail: false,
     validPassword: false,
@@ -27,12 +28,12 @@ export default class Register extends Component {
     successfulRegistration: false
   }
 
-  static defaultProps = {
-    baseUrl: sessionStorage.getItem('baseUrl')
+  componentDidMount() {
+    setInterval(this.clearMessage, 8000);
   }
 
-  static propTypes = {
-    baseUrl: string
+  clearMessage = () => {
+    if (this.state.registerFeedback) this.setState({registerFeedback: ''});
   }
 
   validateUsername = (e) => {
@@ -101,7 +102,7 @@ export default class Register extends Component {
             password: this.state.password
         })
         // run the post request with the user registerData shown above
-        axios.post(this.props.baseUrl + '/register', registerData, {
+        axios.post(BASE_URL + '/register', registerData, {
               headers: {
                   'Content-Type': 'application/json',
               }
@@ -110,7 +111,18 @@ export default class Register extends Component {
               this.setState({successfulRegistration: true});
             }
           }).catch((error) => {
-            this.setState({failedRegistration: true});
+            this.setState({
+              failedRegistration: true,
+            });
+            if (error.response.data.reason.email && error.response.data.reason.username) {
+              this.setState({
+                registerFeedback: error.response.data.reason.email + ' ' + error.response.data.reason.username
+              });
+            } else if(error.response.data.reason.email && !error.response.data.reason.username) {
+              this.setState({registerFeedback: error.response.data.reason.email});
+            } else {
+              this.setState({registerFeedback: error.response.data.reason.username});
+            }
           });
       });
     } else {
@@ -134,7 +146,6 @@ export default class Register extends Component {
       { successfulRegistration ?  <Redirect to="/" /> : "" }
 
         <Navigation isLoggedIn={ this.state.isLoggedIn }/>
-        <Messages />
 
         <main className="row">
         	<div className="item-three-quarter item__mobile">
@@ -155,11 +166,9 @@ export default class Register extends Component {
                 <input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className="input-long" onChange={ this.validatePasswordConf } />
                 { validPasswordConf ? <p className="small margin-top-nothing">Passwords Match <FontAwesomeIcon icon={faCheckCircle} color="green"/></p> : <p className="small margin-top-nothing">Please confirm your password by typing it again.</p> }
 
-                <input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ this.readyForSubmission } />
+                {(this.state.registerFeedback) ? <p className="alert-failure">{this.state.registerFeedback}</p> : ''}
 
-                {
-                    failedRegistration ? <p className="text-attention">Failed to register you. Please try again.</p> : <span className="display-none"></span>
-                }
+                <input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ this.readyForSubmission } />
         			</form>
         		</div>
         	</div>

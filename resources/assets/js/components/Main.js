@@ -18,27 +18,7 @@ import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 
 export default class Main extends Component {
-  state = {
-    isLoggedIn: false
-   }
-
-   componentDidMount() {
-     if (!sessionStorage.getItem('baseUrl')) {
-       sessionStorage.setItem('baseUrl', BASE_URL);
-     }
-
-     this.checkIfLoggedIn();
-   }
-
-   checkIfLoggedIn() {
-     if ( sessionStorage.getItem('isLoggedIn') == 'true') {
-       this.setState({isLoggedIn: true});
-     }
-   }
-
   render() {
-    const isLoggedIn = this.state.isLoggedIn;
-
     return(
       <Router>
         <div className="Main">

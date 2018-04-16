@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 //import partials
 import Navigation from './../partials/Navigation';
-import Messages from './../partials/Messages';
 import Footer from './../partials/Footer';
 
 export default class Landing extends Component {
@@ -21,7 +20,6 @@ export default class Landing extends Component {
     return(
       <div>
         <Navigation isLoggedIn={ this.state.isLoggedIn } />
-        <Messages />
 
         <p className="text-center">{this.state.messages}</p>
 
@@ -34,7 +32,7 @@ export default class Landing extends Component {
 
         	<div className="row container-tablet">
         		<div className="item pane">
-        			<p className="pane-content text-center margin-bottom-nothing">Please enter your zipcode. We'll search for nearby locations and tell you if their Happy Hour is anytime soon!</p>
+        			<p className="pane-content text-center margin-bottom-nothing">Please enter your zipcode. We'll search for places nearby where you can get a drink!</p>
 
               <form className="crutch-form container-mobile padding-something margin-y-something">
                 <input type="text" className="input-long border rounded-border" />
