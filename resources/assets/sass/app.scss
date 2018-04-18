@@ -16,6 +16,13 @@ a {
   border-color: lighten(map-get($theme, dark), 13%) !important;
 }
 
+.faCircleNotch {
+  display: block;
+  font-size: 5rem;
+  margin: auto;
+  margin-top: 15rem;
+}
+
 .input-long {
   max-width: 500px;
 }

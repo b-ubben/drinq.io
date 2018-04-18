@@ -6,6 +6,7 @@ import { string } from 'prop-types';
 import Navigation from './../partials/Navigation';
 import Footer from './../partials/Footer';
 import { BASE_URL } from './../partials/Path';
+import Loading from './../partials/Loading';
 
 //import FontAwesome
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -155,16 +156,16 @@ export default class Register extends Component {
 
         			<form className="crutch-form text-center text-dark container-mobile">
           			<input type="text" name="username" id="username" placeholder="Username" className="input-long" onChange={ this.validateUsername } />
-                { validUsername ? <p className="small margin-top-nothing">Valid Username <FontAwesomeIcon icon={faCheckCircle} color="green"/></p> : <p className="small margin-top-nothing">Username must be alphanumeric and 4+ characters long.</p> }
+                { validUsername ? <p className="small margin-top-nothing">Valid Username <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Username must be alphanumeric and 4+ characters long.</p> }
 
                 <input type="text" name="email" id="email" placeholder="Email Address" className="input-long" onChange={ this.validateEmail } />
-                { validEmail ? <p className="small margin-top-nothing">Valid Email Address <FontAwesomeIcon icon={faCheckCircle} color="green"/></p> : <p className="small margin-top-nothing">Email address must be properly formatted.</p> }
+                { validEmail ? <p className="small margin-top-nothing">Valid Email Address <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Email address must be properly formatted.</p> }
 
                 <input type="password" name="password" id="password" placeholder="Password" className="input-long" onChange={ this.validatePassword } />
-                { validPassword ? <p className="small margin-top-nothing">Valid Password <FontAwesomeIcon icon={faCheckCircle} color="green"/></p> : <p className="small margin-top-nothing">Password must be greater than 5 characters. Make it strong!</p> }
+                { validPassword ? <p className="small margin-top-nothing">Valid Password <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Password must be greater than 5 characters. Make it strong!</p> }
 
                 <input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className="input-long" onChange={ this.validatePasswordConf } />
-                { validPasswordConf ? <p className="small margin-top-nothing">Passwords Match <FontAwesomeIcon icon={faCheckCircle} color="green"/></p> : <p className="small margin-top-nothing">Please confirm your password by typing it again.</p> }
+                { validPasswordConf ? <p className="small margin-top-nothing">Passwords Match <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Please confirm your password by typing it again.</p> }
 
                 {(this.state.registerFeedback) ? <p className="alert-failure">{this.state.registerFeedback}</p> : ''}
 

@@ -17,6 +17,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 
+import Loading from './partials/Loading';
+
 export default class Main extends Component {
   render() {
     return(

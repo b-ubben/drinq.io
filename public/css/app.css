@@ -2108,6 +2108,13 @@ a {
   border-color: #616161 !important;
 }
 
+.faCircleNotch {
+  display: block;
+  font-size: 5rem;
+  margin: auto;
+  margin-top: 15rem;
+}
+
 .input-long {
   max-width: 500px;
 }
