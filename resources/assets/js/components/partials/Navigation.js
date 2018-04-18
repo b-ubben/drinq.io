@@ -7,7 +7,8 @@ import { BASE_URL } from './../partials/Path';
 export default class Navigation extends Component {
   state = {
     isExpanded: false,
-    isLoggedIn: false
+    isLoggedIn: false,
+    hasLoggedOutSuccessfully: false,
   }
 
   componentDidMount() {
@@ -28,6 +29,7 @@ export default class Navigation extends Component {
   handleLogOut = (e) => {
     e.preventDefault();
 
+   // build out parameters that will be sent
    var config = {
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +49,9 @@ export default class Navigation extends Component {
     }).catch();
 
     // revert the UI to show that you're logged out
-    this.setState({isLoggedIn: false});
+    this.setState({isLoggedIn: false}, function() {
+      
+    });
     // clear username, token, etc. from session
     sessionStorage.clear();
   }
