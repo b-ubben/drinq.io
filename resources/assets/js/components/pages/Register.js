@@ -142,19 +142,11 @@ export default class Register extends Component {
     const failedRegistration = this.state.failedRegistration;
     const successfulRegistration = this.state.successfulRegistration;
 
-    if (successfulRegistration) {
-      return(
-        <Loading message="Registering new user.." />
-      );
-    }
-
     return(
 
       <div>
-      { successfulRegistration ?  <Redirect to="/" /> : "" }
-
         <Navigation isLoggedIn={ this.state.isLoggedIn }/>
-
+        { successfulRegistration ? <Loading message="Registering new user.." view="login" /> : '' }
         <main className="row">
         	<div className="item-three-quarter item__mobile">
         		<div className="pane pane-rounded padding-something margin-top-enough bg-light">

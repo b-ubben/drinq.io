@@ -29,7 +29,7 @@ a {
 }
 
 .loading-container {
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.62);
   bottom: 0;
   height: 100%;
   left: 0;
@@ -37,4 +37,10 @@ a {
   right: 0;
   top: 0;
   width: 100%;
+}
+
+.navigation-container {
+  box-shadow: 1px 0px 3px 0px #666;
+  position: sticky !important;
+  top: -1px;
 }

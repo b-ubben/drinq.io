@@ -65,16 +65,10 @@ export default class Login extends Component {
   render() {
     const isLoggedIn = this.state.isLoggedIn;
 
-    if (isLoggedIn) {
-      return(
-        <Loading message={'Logging you in, ' + sessionStorage.getItem('username') } />
-      );
-    }
-
     return(
       <div>
         <Navigation />
-
+        { isLoggedIn ? <Loading message={'Logging you in, ' + sessionStorage.getItem('username')} /> : ''}
         <main className="item-three-quarter item__mobile">
         	<div className="pane pane-rounded bg-light padding-something">
         		<p className="pane-title display-medium">Please sign in to continue</p>
