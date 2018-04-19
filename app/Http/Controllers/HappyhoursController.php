@@ -45,7 +45,21 @@ class HappyhoursController extends Controller
     // returns all of the happy hours within a radius.
     public function getHappyHoursZip($zipcode) {
         // get all of the locations with happy hours with zipcode constraints.
+        $defaultRadius = 15;
 
-        
+        $locations_radius = Location::select(
+            DB::raw("*,
+                        ( 3959 * acos( cos( radians(?) ) *
+                        cos( radians( lat ) )
+                        * cos( radians( lon ) - radians(?)
+                        ) + sin( radians(?) ) *
+                        sin( radians( lat ) ) )
+                        ) AS distance"))
+                ->having("distance", "<", "?")
+                ->orderBy("distance")
+                ->setBindings([$lat, $lon, $lat,  $defaultRadius])
+                ->get();
+                
+        return $locations_radius;
     }
 }
