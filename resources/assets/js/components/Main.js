@@ -16,8 +16,10 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
+import LoggedOut from './pages/LoggedOut';
 
-import Loading from './partials/Loading';
+//Uncoment this import for testing
+//import Loading from './partials/Loading';
 
 export default class Main extends Component {
   render() {
@@ -29,6 +31,7 @@ export default class Main extends Component {
               <Route path="/about" component={ About } />
               <Route path="/login" component={ Login } />
               <Route path="/register" component={ Register } />
+              <Route path="/loggedout" component={ LoggedOut } />
             <Route component={ NotFound } />
           </Switch>
         </div>

@@ -102,7 +102,7 @@ export default class Register extends Component {
             email: this.state.email,
             password: this.state.password
         })
-        
+
         // run the post request with the user registerData shown above
         axios.post(BASE_URL + '/register', registerData, {
               headers: {
@@ -141,6 +141,12 @@ export default class Register extends Component {
     const valid = this.state.valid;
     const failedRegistration = this.state.failedRegistration;
     const successfulRegistration = this.state.successfulRegistration;
+
+    if (successfulRegistration) {
+      return(
+        <Loading message="Registering new user.." />
+      );
+    }
 
     return(
 

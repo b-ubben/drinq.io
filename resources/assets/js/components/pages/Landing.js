@@ -7,12 +7,17 @@ import Footer from './../partials/Footer';
 export default class Landing extends Component {
   state = {
     isLoggedIn: false,
-    messages: ''
   }
 
   componentDidMount() {
-    if (sessionStorage.getItem('isLoggedIn')) {
+    if (sessionStorage.getItem('token')) {
       this.setState({isLoggedIn: true});
+    }
+  }
+
+  checkIfLoggedIn = () => {
+    if (!sessionStorage.getItem('token')) {
+      this.setState({isLoggedIn: false});
     }
   }
 
@@ -22,8 +27,6 @@ export default class Landing extends Component {
     return(
       <div>
         <Navigation isLoggedIn={ this.state.isLoggedIn } />
-
-        <p className="text-center">{this.state.messages}</p>
 
         <section>
         	<div className="row">

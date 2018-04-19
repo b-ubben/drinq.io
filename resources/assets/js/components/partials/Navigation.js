@@ -4,11 +4,15 @@ import { Link, Redirect } from 'react-router-dom';
 // import base url for api for logging out
 import { BASE_URL } from './../partials/Path';
 
+// import loading partial
+import Loading from './../partials/Loading';
+
 export default class Navigation extends Component {
   state = {
     isExpanded: false,
     isLoggedIn: false,
     hasLoggedOutSuccessfully: false,
+    logoutMessage: ''
   }
 
   componentDidMount() {
@@ -39,9 +43,10 @@ export default class Navigation extends Component {
 
     // delete the token from the database
     axios.post(BASE_URL + '/auth/logout', "", config).then((response) => {
-      console.log(response);
-    }).then((response) => {
-      this.setState({isLoggedIn: false}, function() {
+      this.setState({
+        isLoggedIn: false,
+        hasLoggedOutSuccessfully: true
+      }, function() {
         // clear username, token, etc. from session
         sessionStorage.clear();
       });
@@ -57,9 +62,11 @@ export default class Navigation extends Component {
 
   render() {
     const isLoggedIn = this.state.isLoggedIn;
+    const hasLoggedOutSuccessfully = this.state.hasLoggedOutSuccessfully;
 
     return(
       <div className="bg-dark navigation-container">
+        { hasLoggedOutSuccessfully ? <Loading message="Logging Out.." view="loggedout" /> : '' }
         <nav className="navigation">
           <Link to="/" className="navigation-logo">drinq</Link>
           <button className="navigation-link bg-dark border-none" onClick={ this.handleToggle }>

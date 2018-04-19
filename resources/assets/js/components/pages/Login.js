@@ -6,6 +6,7 @@ import { string } from 'prop-types';
 import Navigation from './../partials/Navigation';
 import Footer from './../partials/Footer';
 import { BASE_URL } from './../partials/Path';
+import Loading from './../partials/Loading';
 
 export default class Login extends Component {
   state = {
@@ -49,7 +50,6 @@ export default class Login extends Component {
         if(response.status == 200) {
           sessionStorage.setItem('token', response.data.token);
           sessionStorage.setItem('username', response.data.username);
-          sessionStorage.setItem('isLoggedIn', true);
           this.setState({isLoggedIn: true});
         }
       }).catch((error) => {
@@ -65,11 +65,16 @@ export default class Login extends Component {
   render() {
     const isLoggedIn = this.state.isLoggedIn;
 
+    if (isLoggedIn) {
+      return(
+        <Loading message={'Logging you in, ' + sessionStorage.getItem('username') } />
+      );
+    }
+
     return(
       <div>
-        { isLoggedIn ? <Redirect to='/' /> : ''}
-        <Navigation isLoggedIn={ this.state.isLoggedIn }/>
-        
+        <Navigation />
+
         <main className="item-three-quarter item__mobile">
         	<div className="pane pane-rounded bg-light padding-something">
         		<p className="pane-title display-medium">Please sign in to continue</p>

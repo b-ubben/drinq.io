@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { string } from 'prop-types';
 
 
 //import font-awesome
@@ -11,20 +12,34 @@ export default class Loading extends Component {
       loading: true
     }
 
+    static propTypes = {
+      view: string,
+      message: string
+    }
+
+    static defaultProps = {
+      view: '',
+      message: ''
+    }
+
     componentDidMount() {
-      setInterval(() => {
-        this.setState({loading: false});
+      setTimeout( () => {
+        this.setState({ loading: false });
       }, 2600);
     }
 
     render() {
       const loading = this.state.loading;
+      const view = '/' + this.props.view;
+
+      if (!loading) return(
+        <Redirect to={ view } />
+      );
 
       return(
-        <div>
-        <FontAwesomeIcon icon={ faCircleNotch } className="faCircleNotch" spin />
-
-        { loading ? '' : <Redirect to ="/" /> }
+        <div className="loading-container">
+          <FontAwesomeIcon icon={ faCircleNotch } className="faCircleNotch" spin />
+          <p className="display-medium paddig-top-something text-center">{ this.props.message }</p>
         </div>
       );
     }
