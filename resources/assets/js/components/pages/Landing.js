@@ -28,7 +28,7 @@ export default class Landing extends Component {
         <section>
         	<div className="row">
         		<div className="item">
-            {(this.state.isLoggedIn) ? <p className="display-big text-center">{"Welcome, " + sessionStorage.getItem("username")}</p> : ''}
+            {isLoggedIn ? <p className="display-big text-center">{"Welcome, " + sessionStorage.getItem("username")}</p> : ''}
         			<p className="display-big text-center">Looking for the Nearest Happy Hour?</p>
         		</div>
         	</div>

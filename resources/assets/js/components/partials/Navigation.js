@@ -37,23 +37,15 @@ export default class Navigation extends Component {
       }
    };
 
-   var requestBody = {
-      "request": "post"
-   };
-
     // delete the token from the database
-    axios.post(BASE_URL + '/auth/logout', requestBody, config).then((response) => {
+    axios.post(BASE_URL + '/auth/logout', "", config).then((response) => {
       console.log(response);
     }).then((response) => {
-      console.log(response)
+      this.setState({isLoggedIn: false}, function() {
+        // clear username, token, etc. from session
+        sessionStorage.clear();
+      });
     }).catch();
-
-    // revert the UI to show that you're logged out
-    this.setState({isLoggedIn: false}, function() {
-      
-    });
-    // clear username, token, etc. from session
-    sessionStorage.clear();
   }
 
   onLogoutClick = (e) => {

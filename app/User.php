@@ -30,11 +30,17 @@ class User extends Authenticatable
     // small function that determines whether the user is an admin or not
     public function isAdmin() {
         foreach ($this->roles()->get() as $role) {
-            if ($role->role == 'Administrator') {
+            if ($role->role == 'admin') {
                 return true;
             }
         }
         return false;
+    }
+
+    public function currentRole() {
+        foreach($this->roles()->get() as $role) {
+            return $role->role;
+        }
     }
 
     // relationship to the oauth access tokens, can have many.
