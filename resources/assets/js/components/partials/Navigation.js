@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
+// import base url for api for logging out
+import { BASE_URL } from './../partials/Path';
+
 export default class Navigation extends Component {
   state = {
     isExpanded: false,
-    isLoggedIn: false
+    isLoggedIn: false,
+    hasLoggedOutSuccessfully: false,
   }
 
   componentDidMount() {
@@ -21,9 +25,34 @@ export default class Navigation extends Component {
     this.state.isExpanded ? this.setState({isExpanded: false}) : this.setState({isExpanded: true});
   }
 
+  // log the user out
   handleLogOut = (e) => {
     e.preventDefault();
-    this.setState({isLoggedIn: false});
+
+   // build out parameters that will be sent
+   var config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': "Bearer " + sessionStorage.getItem('token'),
+      }
+   };
+
+   var requestBody = {
+      "request": "post"
+   };
+
+    // delete the token from the database
+    axios.post(BASE_URL + '/auth/logout', requestBody, config).then((response) => {
+      console.log(response);
+    }).then((response) => {
+      console.log(response)
+    }).catch();
+
+    // revert the UI to show that you're logged out
+    this.setState({isLoggedIn: false}, function() {
+      
+    });
+    // clear username, token, etc. from session
     sessionStorage.clear();
   }
 

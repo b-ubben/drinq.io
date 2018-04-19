@@ -102,6 +102,7 @@ export default class Register extends Component {
             email: this.state.email,
             password: this.state.password
         })
+        
         // run the post request with the user registerData shown above
         axios.post(BASE_URL + '/register', registerData, {
               headers: {

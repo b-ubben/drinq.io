@@ -52,6 +52,7 @@ class AuthController extends Controller
                     return Response::json(
                         array(
                             'status' => $this->successStatus,
+                            'username' => $user->username,
                             'message' => "Successfully logged in!",
                             'reason' => "User logged in successfully.",
                             'token' =>  $success['token'],

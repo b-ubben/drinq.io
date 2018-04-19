@@ -47,8 +47,9 @@ export default class Login extends Component {
         }
       }).then(response => {
         if(response.status == 200) {
-          // console.log(response.data.token);
           sessionStorage.setItem('token', response.data.token);
+          sessionStorage.setItem('username', response.data.username);
+          sessionStorage.setItem('isLoggedIn', true);
           this.setState({isLoggedIn: true});
         }
       }).catch((error) => {
@@ -68,7 +69,7 @@ export default class Login extends Component {
       <div>
         { isLoggedIn ? <Redirect to='/' /> : ''}
         <Navigation isLoggedIn={ this.state.isLoggedIn }/>
-
+        
         <main className="item-three-quarter item__mobile">
         	<div className="pane pane-rounded bg-light padding-something">
         		<p className="pane-title display-medium">Please sign in to continue</p>
