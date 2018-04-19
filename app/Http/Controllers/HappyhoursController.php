@@ -19,13 +19,31 @@ use App\Location;
 
 class HappyhoursController extends Controller
 {
-    //
-    public $successStatus = 200;
 
     // just returns all of the happy hours. for testing or for anything else
     public function getHappyHours() {
     	// get all of the locations with happy_hours
     	$results = Location::with('happy_hours')->get();
-    	return Response::json(array($results));
+
+    	if($results) {
+    		$successStatus = 200;
+	    	// build the json array
+	    	return Response::json(array(
+	    		'status' => $successStatus,
+	    		'results' => $results
+	    	));
+	    } else {
+            $successStatus = 500;
+            return Response::json(array(
+                'status' => $successStatus,
+                'reason' => 'Unable to retrieve results',
+                'message' => 'Could not retrieve results from the database'
+            ));
+        }
+    }
+
+    // returns all of the happy hours within a radius.
+    public function getHappyHoursZip($zipcode) {
+        
     }
 }
