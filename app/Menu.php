@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     // specify the primary key for the table
-    protected $primaryKey = "menu_id";
+    protected $primaryKey = "item_id";
 
     // specify the table for the Menu model
-    protected $table = "menus";
+    protected $table = "items";
 
     // create the relationship of RESTAURANT has one MENU
     public function location() {
@@ -24,7 +24,7 @@ class Menu extends Model
      */
     protected $fillable = [
         'item_name', 
-        'menu_description', 
-        'menu_price',
+        'item_description', 
+        'item_price',
     ];
 }

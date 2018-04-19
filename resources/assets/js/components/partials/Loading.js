@@ -25,7 +25,7 @@ export default class Loading extends Component {
     componentDidMount() {
       setTimeout( () => {
         this.setState({ loading: false });
-      }, 2600);
+      }, 2000);
     }
 
     render() {

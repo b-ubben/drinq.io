@@ -13,7 +13,7 @@ class HappyHour extends Model
     protected $table = "happy_hours";
 
     // specify the relations for the models
-    public function restaurant() {
+    public function locations() {
         return $this->belongsTo('App\Location', 'location_id');
     }
 

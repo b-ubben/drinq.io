@@ -15,13 +15,15 @@ class Location extends Model
     // return the relation for reviews, menu items, and happy hours
 
     public function reviews() {
-        return $this->hasMany('App\Review', 'review_id');
+        return $this->hasMany('App\Review', 'location_id');
     }
     public function menu_items() {
-        return $this->hasMany('App\Menu', 'menu_id');
+        return $this->hasMany('App\Menu', 'location_id');
     }
+
+    // set to the location_id so the relationship works.
     public function happy_hours() {
-        return $this->hasMany('App\HappyHour', 'hours_id');
+        return $this->hasMany('App\HappyHour', 'location_id');
     }
 
      /**

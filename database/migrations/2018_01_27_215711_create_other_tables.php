@@ -28,13 +28,13 @@ class CreateOtherTables extends Migration
         // define the locations table, just commented out fields we don't need anymore.
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('location_id');
-            $table->string('g_location_id')->nullable(false); //remove
+            $table->string('g_location_id')->nullable(true); //remove
             $table->string('location_name')->nullable(false);
-            $table->string('categories')->nullable(false); //remove
-            $table->string('rating')->nullable(false); //remove
+            $table->string('categories')->nullable(true); //remove
+            $table->string('rating')->nullable(true); //remove
             $table->string('latitude')->nullable(false);
             $table->string('longitude')->nullable(false);
-            $table->string('price')->nullable(false); //remove
+            $table->string('price')->nullable(true); //remove
             $table->string('address')->nullable(false);
             $table->string('city')->nullable(false);
             $table->string('zip_code')->nullable(false);

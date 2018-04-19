@@ -24,7 +24,8 @@ class HappyhoursController extends Controller
 
     // just returns all of the happy hours. for testing or for anything else
     public function getHappyHours() {
-    	$happyhours = \App\Location::all();
-    	return Response::json(array('data' => $happyhours));
+    	// get all of the locations with happy_hours
+    	$results = Location::with('happy_hours')->get();
+    	return Response::json(array($results));
     }
 }
