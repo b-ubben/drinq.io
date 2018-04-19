@@ -29,6 +29,7 @@ Route::post('auth/login', array('uses' => 'AuthController@performLogin'));
 
 // happy hour related routes.
 Route::get('happyhours', array('uses' => 'HappyhoursController@getHappyHours'));
+Route::get('happyhours/{zip}', array('uses' => 'HappyhoursController@getHappyHoursZip'));
 
 // test route for testing. duh. useful for when deploying the app and testing whether the api route works
 Route::get('test', function (){

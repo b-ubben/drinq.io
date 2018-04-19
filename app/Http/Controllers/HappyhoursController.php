@@ -44,6 +44,8 @@ class HappyhoursController extends Controller
 
     // returns all of the happy hours within a radius.
     public function getHappyHoursZip($zipcode) {
+        // get all of the locations with happy hours with zipcode constraints.
+
         
     }
 }
