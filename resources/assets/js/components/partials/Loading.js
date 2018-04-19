@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { string } from 'prop-types';
 
 
-//import font-awesome
+//import font-awesome icon
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faCircleNotch from '@fortawesome/fontawesome-free-solid/faCircleNotch';
 
