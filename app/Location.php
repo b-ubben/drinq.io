@@ -10,7 +10,7 @@ class Location extends Model
     protected $primaryKey = "location_id";
 
     // specify the table that will be used for Location
-    protected $table = "location";
+    protected $table = "locations";
 
     // return the relation for reviews, menu items, and happy hours
 

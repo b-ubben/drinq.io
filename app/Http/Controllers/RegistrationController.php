@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Auth;
 use Session;
 use Response;
+
+// any necessary models
 use App\User;
 
 class RegistrationController extends Controller
