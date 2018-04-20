@@ -8,7 +8,7 @@ export default class About extends Component {
   render() {
     return(
       <div>
-        <Navigation isLoggedIn={ this.state.isLoggedIn }/>
+        <Navigation />
 
         <main>
         	<div className="row">

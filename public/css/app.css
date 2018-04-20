@@ -2122,20 +2122,30 @@ a {
 
 .loading-container {
   background: rgba(0, 0, 0, 0.62);
-  bottom: 0;
+  bottom: 0px;
   height: 100%;
-  left: 0;
+  left: 0px;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 0px;
+  top: 0px;
   width: 100%;
 }
 
 .navigation-container {
-  -webkit-box-shadow: 1px 0px 3px 0px #666;
-          box-shadow: 1px 0px 3px 0px #666;
-  position: -webkit-sticky !important;
-  position: sticky !important;
+  -webkit-box-shadow: 0px 0px 6px 1px #666;
+          box-shadow: 0px 0px 6px 1px #666;
+  position: -webkit-sticky;
+  position: sticky;
   top: -1px;
+}
+
+.position-static {
+  position: static !important;
+}
+
+@media only screen and (min-width: 641px) {
+  .navigation .item-half .navigation-link {
+    margin: 0;
+  }
 }
 

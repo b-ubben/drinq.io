@@ -65,8 +65,7 @@ export default class Navigation extends Component {
     const hasLoggedOutSuccessfully = this.state.hasLoggedOutSuccessfully;
 
     return(
-      <div className="bg-dark navigation-container">
-        { hasLoggedOutSuccessfully ? <Loading message="Logging Out.." view="loggedout" /> : '' }
+      <div className={ hasLoggedOutSuccessfully ? 'bg-dark navigation-container position-static' : 'bg-dark navigation-container' }>
         <nav className="navigation">
           <Link to="/" className="navigation-logo">drinq</Link>
           <button className="navigation-link bg-dark border-none" onClick={ this.handleToggle }>
@@ -78,16 +77,18 @@ export default class Navigation extends Component {
           </button>
         </nav>
 
+        { hasLoggedOutSuccessfully ? <Loading message="Logging Out.." view="loggedout" /> : ''}
+
         <nav className={this.state.isExpanded ? 'nav-expanded bg-lighterDark display-block' : 'display-none'}>
           <div className="row text-center flex-nowrap">
-            <div className="item-half">
+            <div className="item-half margin-y-nothing padding-y-something">
               <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/" onClick={ this.handleToggle }>Home</Link>
               {isLoggedIn ? (
                 <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/logout" onClick={ this.onLogoutClick }>Log Out</Link>) : (<Link className="navigation-link border rounded-border button-long pane bg-dark border-color-grey" to="/login" onClick={ this.handleToggle }>Log In</Link>)
               }
             </div>
 
-            <div className="item-half">
+            <div className="item-half margin-y-nothing padding-y-something">
               {isLoggedIn ? (
                 <Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/profile" onClick={ this.handleToggle }>Profile</Link>) : (<Link className="navigation-link border rounded-border button-long margin-bottom-something pane bg-dark border-color-grey" to="/register" onClick={ this.handleToggle }>Register</Link>)
               }
