@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->command->info('Happy Hours table seeded!');
 
         // seed the roles table.
-        $roles_path = 'sql/happy_hours.sql';
+        $roles_path = 'sql/roles.sql';
         DB::unprepared(file_get_contents($roles_path));
         $this->command->info('Roles table seeded!');
     }
