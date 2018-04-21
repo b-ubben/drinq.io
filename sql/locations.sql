@@ -10,6 +10,7 @@
 --
 
 LOCK TABLES `locations` WRITE;
+
 INSERT INTO `locations` VALUES
 (1, 'Idle Hour', 34.1583859, -118.3699943, '4824 Vineland Ave, Los Angeles', ' Los Angeles', 91601, 'US', 'CA', '(818) 980-5604', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 (2, 'Roppongi Asian Tapas Bar & Sushi', 34.093915, -118.377508, '8535 Sunset Blvd #1, West Hollywood', ' West Hollywood', 90069, 'US', 'CA', '(310) 289-0030', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),

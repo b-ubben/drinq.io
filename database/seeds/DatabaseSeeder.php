@@ -10,9 +10,11 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
+        
         // $this->call(UsersTableSeeder::class);
 
+        // temporarily disables mass assignment protection for our tables, needed to seed from .sql files.
     	Eloquent::unguard();
 
     	// seed the locations table

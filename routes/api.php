@@ -32,9 +32,9 @@ Route::get('happyhours', array('uses' => 'HappyhoursController@getHappyHours'));
 Route::get('happyhours/{zip}', array('uses' => 'HappyhoursController@getHappyHoursZip'));
 
 // test route for testing. duh. useful for when deploying the app and testing whether the api route works
-Route::get('test', function (){
+Route::get('status', function (){
     return Response::json(array(
     	"status" => 200,
-    	"message" => "All's well in the API world. System Operational."
+    	"message" => "System Operational."
     ), 200); 
 });
