@@ -4,6 +4,9 @@
 // Crutch
 @import "crutch";
 
+// Logo font
+@import url('https://fonts.googleapis.com/css?family=Lemon');
+
 a {
   text-decoration: underline;
 }
@@ -30,11 +33,9 @@ a {
 
 .loading-container {
   background: rgba(0, 0, 0, 0.62);
-  bottom: 0px;
   height: 100%;
-  left: 0px;
+  min-height: 960px;
   position: absolute;
-  right: 0px;
   top: 0px;
   width: 100%;
 }
@@ -45,12 +46,20 @@ a {
   top: -1px;
 }
 
+.navigation-logo {
+  font-family: 'Lemon' !important;
+  font-size: 1.6em;
+  margin: auto;
+  padding-left: 2.83em;
+}
+
 .position-static {
   position: static !important;
 }
 
 @media only screen and (min-width: 641px) {
-  .navigation .item-half .navigation-link {
+  .navigation-logo {
     margin: 0;
+    padding-left: 0.5em;
   }
 }

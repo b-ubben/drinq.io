@@ -130,6 +130,7 @@ export default class Register extends Component {
     } else {
       // disable enter key/go button submission if requirements aren't met.
       e.preventDefault();
+      this.setState({ registerFeedback: 'Fill in all the fields, please!' });
     }
   }
 
@@ -154,6 +155,8 @@ export default class Register extends Component {
               <p className="pane-content text-dark text-center container-mobile padding-something">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
 
         			<form className="crutch-form text-center text-dark container-mobile">
+                {(this.state.registerFeedback) ? <p className="alert-failure">{this.state.registerFeedback}</p> : ''}
+                
           			<input type="text" name="username" id="username" placeholder="Username" className="input-long" onChange={ this.validateUsername } />
                 { validUsername ? <p className="small margin-top-nothing">Valid Username <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Username must be alphanumeric and 4+ characters long.</p> }
 
@@ -165,8 +168,6 @@ export default class Register extends Component {
 
                 <input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className="input-long" onChange={ this.validatePasswordConf } />
                 { validPasswordConf ? <p className="small margin-top-nothing">Passwords Match <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Please confirm your password by typing it again.</p> }
-
-                {(this.state.registerFeedback) ? <p className="alert-failure">{this.state.registerFeedback}</p> : ''}
 
                 <input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ this.readyForSubmission } />
         			</form>

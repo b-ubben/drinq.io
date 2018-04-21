@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i);/* My Own Personal Additions */
+@import url(https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i);@import url(https://fonts.googleapis.com/css?family=Lemon);/* My Own Personal Additions */
 
 html {
   -webkit-box-sizing: border-box;
@@ -513,7 +513,7 @@ template {
 }
 
 .pane-title {
-  color: #c774e8;
+  color: #161925;
   text-align: center;
 }
 
@@ -601,7 +601,7 @@ h6,
 
 body {
   font-family: "Nunito", "Helvetica Neue", Arial, sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 200;
   line-height: 1.35;
 }
@@ -613,7 +613,7 @@ body {
 
 @media screen and (min-width: 620px) {
   body {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     font-weight: 200;
   }
 }
@@ -626,7 +626,7 @@ a:visited {
 }
 
 a:hover {
-  color: #ff6ad5;
+  color: #8EA8C3;
   cursor: pointer;
 }
 
@@ -662,7 +662,7 @@ a:hover {
 }
 
 .crutch-form input:hover {
-  border: 1px solid #c774e8;
+  border: 1px solid #161925;
 }
 
 .input-long {
@@ -838,7 +838,7 @@ a:hover {
 
 .crutch-form input:focus,
 .crutch-form input:hover {
-  border: 1px solid #c774e8;
+  border: 1px solid #161925;
 }
 
 .crutch-form input[type="submit"] {
@@ -884,7 +884,7 @@ button {
 .navigation-logo {
   color: inherit;
   display: block;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   text-decoration: none;
   padding: 0.38rem 0.8rem;
 }
@@ -894,7 +894,7 @@ button {
 }
 
 .navigation-link:hover {
-  color: #ff6ad5;
+  color: #8EA8C3;
 }
 
 .menu-logo {
@@ -945,15 +945,15 @@ button {
 }
 
 .bg-main {
-  background-color: #c774e8 !important;
+  background-color: #161925 !important;
 }
 
 .bg-secondary {
-  background-color: #8795e8 !important;
+  background-color: #406E8E !important;
 }
 
 .bg-attention {
-  background-color: #ff6ad5 !important;
+  background-color: #8EA8C3 !important;
 }
 
 .bg-dark {
@@ -965,7 +965,7 @@ button {
 }
 
 .bg-dank {
-  background-color: #330066 !important;
+  background-color: #23395B !important;
 }
 
 .bg-white {
@@ -1005,15 +1005,15 @@ button {
 }
 
 .border-color-main {
-  border-color: #c774e8 !important;
+  border-color: #161925 !important;
 }
 
 .border-color-secondary {
-  border-color: #8795e8 !important;
+  border-color: #406E8E !important;
 }
 
 .border-color-attention {
-  border-color: #ff6ad5 !important;
+  border-color: #8EA8C3 !important;
 }
 
 .border-color-dark {
@@ -1025,7 +1025,7 @@ button {
 }
 
 .border-color-dank {
-  border-color: #330066 !important;
+  border-color: #23395B !important;
 }
 
 .border-color-white {
@@ -1321,7 +1321,7 @@ button {
   top: 0;
   right: 0;
   left: 0;
-  padding-bottom: 2.553125rem;
+  padding-bottom: 2.60375rem;
 }
 
 .fixed-bottom {
@@ -2073,7 +2073,7 @@ button {
 }
 
 .text-main {
-  color: #c774e8;
+  color: #161925;
 }
 
 .text-hide {
@@ -2122,11 +2122,9 @@ a {
 
 .loading-container {
   background: rgba(0, 0, 0, 0.62);
-  bottom: 0px;
   height: 100%;
-  left: 0px;
+  min-height: 960px;
   position: absolute;
-  right: 0px;
   top: 0px;
   width: 100%;
 }
@@ -2139,13 +2137,21 @@ a {
   top: -1px;
 }
 
+.navigation-logo {
+  font-family: 'Lemon' !important;
+  font-size: 1.6em;
+  margin: auto;
+  padding-left: 2.83em;
+}
+
 .position-static {
   position: static !important;
 }
 
 @media only screen and (min-width: 641px) {
-  .navigation .item-half .navigation-link {
+  .navigation-logo {
     margin: 0;
+    padding-left: 0.5em;
   }
 }
 

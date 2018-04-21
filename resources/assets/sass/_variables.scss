@@ -44,12 +44,12 @@ $pink: #f666cc !default;
 //
 //Content Colors
 $theme: (
-	main: #c774e8,
-	secondary: #8795e8,
-	attention: #ff6ad5,
+	main: #161925,
+	secondary: #406E8E,
+	attention: #8EA8C3,
 	dark: lighten($black, 25%),
 	light: lighten($off-white, 30%),
-	dank: #330066
+	dank: #23395B
 	) !default;
 
 //
@@ -126,7 +126,7 @@ $sans-serif-family: "Nunito", "Helvetica Neue", Arial, sans-serif !default;
 $mono-family: Monaco, "Liberation Mono", monospace !default;
 $serif-family: "PT Serif", "Droid Serif", "Baskerville", serif !default;
 
-$base-font-size: .95rem !default;
+$base-font-size: .98rem !default;
 $more-font-size: 1.2rem !default;
 $less-font-size: .8rem !default;
 

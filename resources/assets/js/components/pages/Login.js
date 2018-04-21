@@ -59,6 +59,7 @@ export default class Login extends Component {
       });
     } else {
       e.preventDefault();
+      this.setState({ loginFeedback: 'Fill in those fields!'});
     }
   }
 
@@ -74,11 +75,11 @@ export default class Login extends Component {
         		<p className="pane-title display-medium">Please sign in to continue</p>
             <p className="text-center text-dark">Enter your username and password.</p>
         		<form action="" className="crutch-form text-center container-mobile">
+              {(this.state.loginFeedback) ? <p className="alert-failure">{this.state.loginFeedback}</p> : ''}
         			<input type="text" name="username" id="username" className="input-long" placeholder="Username" onChange={ this.handleUsername }/>
         			<br />
         			<input type="password" name="password" id="password" className="input-long" placeholder="Password" onChange={ this.handlePassword }/>
         			<br />
-              {(this.state.loginFeedback) ? <p className="alert-failure">{this.state.loginFeedback}</p> : ''}
         			<input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ this.handleLogIn }/>
         		</form>
         	</div>

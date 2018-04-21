@@ -32,9 +32,11 @@ export default class Loading extends Component {
       const loading = this.state.loading;
       const view = '/' + this.props.view;
 
-      if (!loading) return(
-        <Redirect to={ view } />
-      );
+      if (!loading) {
+          return(
+          <Redirect to={ view } />
+        );
+      }
 
       return(
         <div className="loading-container">
