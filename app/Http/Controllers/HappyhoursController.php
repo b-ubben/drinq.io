@@ -48,6 +48,16 @@ class HappyhoursController extends Controller
         // get all of the locations with happy hours with zipcode constraints.
         $defaultRadius = 10;
 
+        // clean input to make sure that it's only a zip code, and numeric only.
+        if(strlen((string)$zipcode) < 5 || strlen((string)$zipcode) > 5 || !is_numeric($zipcode)) {
+        	$successStatus = 500;
+        	return Response::json(array(
+		        	'status' => $successStatus,
+		        	'reason'	 => 'Please enter a valid zip code.',
+		        	'message'	=>	'There are no happy hours in your area! :('
+		        ));
+        }
+
         // use google api to get the lat and long of the zip code.
         $url = "http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($zipcode)."&sensor=false";
 		$result_string = file_get_contents($url);
@@ -58,7 +68,8 @@ class HappyhoursController extends Controller
 		$longitude = $result["results"][0]["geometry"]["location"]["lng"];
 
 		// build query for getting 
-		$query = 'location_name, zip_code, (3959 * acos(cos(radians('.$latitude.')) * cos(radians(latitude)) * cos(radians(longitude) - radians('.$longitude.')) + sin(radians('.$latitude.')) * sin(radians(latitude)))) AS distance';
+		$query = 'location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, created_at, updated_at,
+		(3959 * acos(cos(radians('.$latitude.')) * cos(radians(latitude)) * cos(radians(longitude) - radians('.$longitude.')) + sin(radians('.$latitude.')) * sin(radians(latitude)))) AS distance';
 
 		// raw query to return areas within the radius.
 		$results = DB::table('locations')
