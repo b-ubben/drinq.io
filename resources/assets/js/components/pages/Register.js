@@ -150,13 +150,13 @@ export default class Register extends Component {
         { successfulRegistration ? <Loading message="Registering new user.." view="login" /> : '' }
         <main className="row">
         	<div className="item-three-quarter item__mobile">
-        		<div className="pane pane-rounded padding-something margin-top-enough bg-light">
+        		<div className="pane padding-something margin-top-enough bg-light">
           		<p className="pane-title display-big">Drinq User Registration</p>
               <p className="pane-content text-dark text-center container-mobile padding-something">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
 
         			<form className="crutch-form text-center text-dark container-mobile">
                 {(this.state.registerFeedback) ? <p className="alert-failure">{this.state.registerFeedback}</p> : ''}
-                
+
           			<input type="text" name="username" id="username" placeholder="Username" className="input-long" onChange={ this.validateUsername } />
                 { validUsername ? <p className="small margin-top-nothing">Valid Username <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Username must be alphanumeric and 4+ characters long.</p> }
 
