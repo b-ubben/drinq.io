@@ -37,7 +37,7 @@ export default class Landing extends Component {
     return(
       <div>
         <Navigation isLoggedIn={ this.state.isLoggedIn } />
-        { loadResults ? <Loading message="Loading Results" view="happyhours" /> : '' }
+        { loadResults ? <Loading message="Loading Results" view="results" /> : '' }
         <section>
         	<div className="row">
         		<div className="item">

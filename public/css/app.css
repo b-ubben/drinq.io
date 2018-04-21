@@ -2108,6 +2108,26 @@ a {
   border-color: #616161 !important;
 }
 
+.happy-hour-cards-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.happy-hour-cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+.happy-hour-card {
+  margin-right: 1em;
+  min-height: 400px;
+  min-width: 300px;
+  width: 100%;
+}
+
+.happy-hour-card__content {
+  width: 100%;
+}
+
 .faCircleNotch {
   display: block;
   font-size: 5rem;
@@ -2148,10 +2168,18 @@ a {
   position: static !important;
 }
 
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
 @media only screen and (min-width: 641px) {
   .navigation-logo {
     margin: 0;
     padding-left: 0.5em;
+  }
+
+  a {
+    font-size: 1.2rem;
   }
 }
 

@@ -17,6 +17,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import LoggedOut from './pages/LoggedOut';
+import HappyHoursResults from './pages/HappyHoursResults';
 
 //Uncoment this import for testing
 //import Loading from './partials/Loading';
@@ -32,6 +33,7 @@ export default class Main extends Component {
               <Route path="/login" component={ Login } />
               <Route path="/register" component={ Register } />
               <Route path="/loggedout" component={ LoggedOut } />
+              <Route path="/results" component={ HappyHoursResults } />
             <Route component={ NotFound } />
           </Switch>
         </div>
