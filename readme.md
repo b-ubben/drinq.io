@@ -15,6 +15,6 @@ This application is under the MIT license.
 
 ## Created With
 <p float="left">
-<a href="https://laravel.com//"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/LaravelLogo.png" height="66"></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://laravel.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/LaravelLogo.png" height="66"></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://reactjs.org/"><img src="https://cdn.worldvectorlogo.com/logos/react.svg" height="66"></a>
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp

@@ -19,7 +19,6 @@ INSERT INTO `locations` VALUES
 (5, 'The Local Peasant', 34.1491984, -118.4392045, '3532, 14058 Ventura Blvd, Sherman Oaks', ' 14058 Ventura Blvd, Sherman Oaks', 91423, 'US', 'CA', '(818) 501-0234', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 (6, 'Big Wangs North Hollywood', 34.167584, -118.375598, '5300 Lankershim Blvd, North Hollywood', ' North Hollywood', 91601, 'US', 'Los Angeles County', '(818) 985-2449', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 (7, 'Black Market Liquor Bar', 34.143198, -118.391145, '2607, 11915 Ventura Blvd, Studio City', ' 11915 Ventura Blvd, Studio City', 91604, 'US', 'CA', '(818) 446-2533', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
-(8, 'The Local Peasant - Woodland Hills', 34.165721, -118.6253058, '22901 Ventura Blvd, Woodland Hills', ' Woodland Hills', 91364, 'US', 'CA', '(818) 876-0105', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 (9, 'The Local Peasant - Woodland Hills', 34.165721, -118.6253058, '22901 Ventura Blvd, Woodland Hills', ' Woodland Hills', 91364, 'US', 'CA', '(818) 876-0105', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 (10, 'Buffalo Wild Wings', 34.2400354, -118.5568605, '9301 Tampa Ave, Northridge', ' Northridge', 91324, 'US', 'CA', '(818) 886-8520', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 (11, 'Tiki No', 34.155478, -118.369171, '4657 Lankershim Blvd, North Hollywood', ' North Hollywood', 91602, 'US', 'CA', '(818) 766-0116', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
