@@ -25,7 +25,11 @@ export default class HappyHoursResults extends Component {
 
   loadResults() {
     if (!isNaN(this.state.zipcode)) {
-      axios.get(BASE_URL + '/happyhours/' + this.state.zipcode).then( response => {
+      axios.get(BASE_URL + '/happyhours/' + this.state.zipcode, {
+        headers: {
+          'Content type': 'application/json'
+        }
+      }).then( response => {
         this.setState({ happyhours: response.data });
         console.log(this.state.happyhours);
       }).catch( error => {
