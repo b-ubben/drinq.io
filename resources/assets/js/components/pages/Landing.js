@@ -37,9 +37,8 @@ export default class Landing extends Component {
     e.preventDefault();
 
     if (this.state.locationInput.length == 5 && !isNaN(parseInt(this.state.locationInput))) {
-      this.setState({ loadResults: true });
-
       sessionStorage.setItem('zipcode', this.state.locationInput);
+      this.setState({ loadResults: true });
     } else {
       e.preventDefault();
 

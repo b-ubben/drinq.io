@@ -14,25 +14,27 @@ import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft';
 
 export default class HappyHoursResults extends Component {
   state = {
-    zipcode: parseInt(sessionStorage.getItem('zipcode')),
+    zipcode: sessionStorage.getItem('zipcode'),
     redirect: false
   }
 
   componentDidMount() {
       this.loadResults();
-      sessionStorage.setItem('zipcode', '');
   }
 
   loadResults() {
-    if (!isNaN(this.state.zipcode)) {
+    //sessionStorage.setItem('zipcode', '');
+
+    if (isNaN(this.state.zipcode) === false) {
       axios.get(BASE_URL + '/happyhours/' + this.state.zipcode, {
         headers: {
-          'Content type': 'application/json'
+          'Content-Type': 'application/json',
         }
       }).then( response => {
         this.setState({ happyhours: response.data });
         console.log(this.state.happyhours);
       }).catch( error => {
+        console.log(error);
         this.setState({ redirect: true });
       });
     } else {

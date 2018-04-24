@@ -34,13 +34,13 @@ class HappyhoursController extends Controller
 	    		'results' => $results
 	    	));
 	    } else {
-            $successStatus = 500;
-            return Response::json(array(
-                'status' => $successStatus,
-                'reason' => 'Unable to retrieve results',
-                'message' => 'Could not retrieve results from the database'
-            ));
-        }
+        $successStatus = 500;
+        return Response::json(array(
+            'status' => $successStatus,
+            'reason' => 'Unable to retrieve results',
+            'message' => 'Could not retrieve results from the database'
+        ));
+      }
     }
 
     // returns all of the happy hours within a radius.
@@ -52,10 +52,10 @@ class HappyhoursController extends Controller
       if(strlen((string)$zipcode) < 5 || strlen((string)$zipcode) > 5 || !is_numeric($zipcode)) {
       	$successStatus = 500;
       	return Response::json(array(
-          	'status' => $successStatus,
-          	'reason'	 => 'Please enter a valid zip code.',
-          	'message'	=>	'There are no happy hours in your area! :('
-          ));
+        	'status' => $successStatus,
+        	'reason'	 => 'Please enter a valid zip code.',
+        	'message'	=>	'There are no happy hours in your area! :('
+        ));
       }
 
       // use google api to get the lat and long of the zip code.
@@ -91,27 +91,27 @@ class HappyhoursController extends Controller
                        ->havingRaw('distance < '.$defaultRadius.'')
                        ->orderByRaw('distance ASC')
                        ->get();
-                       
+
       $successStatus = 200;
 
       if(count($results) == 0) {
-    		return Response::json(array(
-        	'status' => $successStatus,
-        	'reason'	 => 'No happy hours in your area!',
-        	'message'	=>	'There are no happy hours in your area! :('
-        ));
+      		return Response::json(array(
+          	'status' => $successStatus,
+          	'reason'	 => 'No happy hours in your area!',
+          	'message'	=>	'There are no happy hours in your area! :('
+          ));
         } else if ($results) {
-        return Response::json(array(
-        	'status' => $successStatus,
-        	'results'	 => $results
-        ));
+          return Response::json(array(
+          	'status' => $successStatus,
+          	'results'	 => $results
+          ));
         } else {
         	$successStatus = 500;
-    		return Response::json(array(
-        	'status' => $successStatus,
-        	'reason'	 => 'Could not retrieve results',
-        	'message'	=>	'Could not get results from database.'
-        ));
-      }
+      		return Response::json(array(
+          	'status' => $successStatus,
+          	'reason'	 => 'Could not retrieve results',
+          	'message'	=>	'Could not get results from database.'
+          ));
+        }
     }
 }
