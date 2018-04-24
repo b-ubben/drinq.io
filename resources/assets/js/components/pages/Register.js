@@ -150,7 +150,7 @@ export default class Register extends Component {
         { successfulRegistration ? <Loading message="Registering new user.." view="login" /> : '' }
         <main className="row">
         	<div className="item-three-quarter item__mobile">
-        		<div className="pane padding-something margin-top-enough bg-light">
+        		<div className="pane pane-rounded padding-something margin-top-enough bg-light">
           		<p className="pane-title display-big">Drinq User Registration</p>
               <p className="pane-content text-dark text-center container-mobile padding-something">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
 

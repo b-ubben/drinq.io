@@ -18,7 +18,7 @@ export default class Login extends Component {
   }
 
   componentDidMount() {
-    setInterval(this.clearMessage, 8000);
+    setTimeout(this.clearMessage, 8000);
   }
 
   clearMessage = () => {
@@ -71,7 +71,7 @@ export default class Login extends Component {
         <Navigation />
         { isLoggedIn ? <Loading message={'Logging you in, ' + sessionStorage.getItem('username')} /> : ''}
         <main className="item-three-quarter item__mobile">
-        	<div className="pane bg-light padding-something">
+        	<div className="pane pane-rounded bg-light padding-something">
         		<p className="pane-title display-medium">Please sign in to continue</p>
             <p className="text-center text-dark">Enter your username and password.</p>
         		<form action="" className="crutch-form text-center container-mobile">
