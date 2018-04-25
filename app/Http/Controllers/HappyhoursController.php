@@ -58,28 +58,29 @@ class HappyhoursController extends Controller
         ));
       }
 
-      // use google api to get the lat and long of the zip code.
-      // $url = "http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($zipcode)."&sensor=false";
-  		// $result_string = file_get_contents($url);
-  		// $result = json_decode($result_string, true);
-      //
-  		// // latitude and longitude item
-  		// $latitude = $result["results"][0]["geometry"]["location"]["lat"];
-  		// $longitude = $result["results"][0]["geometry"]["location"]["lng"];
-      $location = DB::table('locations')
+      // using a more reliable API with no request limits
+        $url = "http://api.zippopotam.us/us/".urlencode($zipcode);
+  		$result_string = file_get_contents($url);
+  		$result = json_decode($result_string, true);
+      
+  		// latitude and longitude item
+  		$longitude = $result["places"][0]["longitude"];
+        $latitude = $result["places"][0]["latitude"];
+
+        $location = DB::table('locations')
                     ->where('zip_code', $zipcode)
                     ->first();
 
-      if (!$location) {
-        return Response::json([
-          'status' => '666',
-          'reason' => 'No locations found',
-          'message' => 'Sorry, we don\'t know about any places near you to grab a drink!'
-        ]);
-      }
+      // if (!$location) {
+      //   return Response::json([
+      //     'status' => '666',
+      //     'reason' => 'No locations found',
+      //     'message' => 'Sorry, we don\'t know about any places near you to grab a drink!'
+      //   ]);
+      // }
 
-      $latitude = $location->latitude;
-      $longitude = $location->longitude;
+      // $latitude = $location->latitude;
+      // $longitude = $location->longitude;
 
   		// build query for getting
   		$query = 'location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, created_at, updated_at,
@@ -88,13 +89,13 @@ class HappyhoursController extends Controller
   		// raw query to return areas within the radius.
   		$results = DB::table('locations')
                        ->select(DB::raw($query))
-                       ->havingRaw('distance < '.$defaultRadius.'')
+                       ->havingRaw('distance < '.$defaultRadius)
                        ->orderByRaw('distance ASC')
                        ->get();
 
-      $successStatus = 200;
+        $successStatus = 200;
 
-      if(count($results) == 0) {
+        if(count($results) == 0) {
       		return Response::json(array(
           	'status' => $successStatus,
           	'reason'	 => 'No happy hours in your area!',
