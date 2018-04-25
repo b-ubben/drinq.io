@@ -54,7 +54,7 @@ class HappyhoursController extends Controller
       	return Response::json(array(
         	'status' => $successStatus,
         	'reason'	 => 'Please enter a valid zip code.',
-        	'message'	=>	'There are no happy hours in your area! :('
+        	'message'	=>	'The zip code entered is incorrectly formatted or is not valid.'
         ));
       }
 
@@ -68,28 +68,32 @@ class HappyhoursController extends Controller
         $latitude = $result["places"][0]["latitude"];
         
   		// build query for getting distance within location.
-  		$query = 'location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, created_at, updated_at,
+  		$query = 'locations.location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, locations.created_at, locations.updated_at, GROUP_CONCAT(DISTINCT happy_hours.day SEPARATOR ", ") as happy_hour_days, 
+            GROUP_CONCAT(DISTINCT happy_hours.start_time SEPARATOR ", ") as happy_hour_start,
+            GROUP_CONCAT(DISTINCT happy_hours.end_time SEPARATOR ", ") as happy_hour_end,
   		(3959 * acos(cos(radians('.$latitude.')) * cos(radians(latitude)) * cos(radians(longitude) - radians('.$longitude.')) + sin(radians('.$latitude.')) * sin(radians(latitude)))) AS distance';
 
   		// raw query to return areas within the radius.
-  		$results = DB::table('locations')
+  		$location_results = DB::table('locations')
+                       ->join('happy_hours', 'happy_hours.location_id', '=', 'locations.location_id')
                        ->select(DB::raw($query))
+                       ->groupBy(DB::raw('locations.location_id'))
                        ->havingRaw('distance < '.$defaultRadius)
                        ->orderByRaw('distance ASC')
                        ->get();
 
         $successStatus = 200;
 
-        if(count($results) == 0) {
+        if(count($location_results) == 0) {
       		return Response::json(array(
           	'status' => $successStatus,
           	'reason'	 => 'No happy hours in your area!',
           	'message'	=>	'There are no happy hours in your area! :('
           ));
-        } else if ($results) {
+        } else if ($location_results) {
           return Response::json(array(
           	'status' => $successStatus,
-          	'results'	 => $results
+          	'results'	 => $location_results
           ));
         } else {
         	$successStatus = 500;
