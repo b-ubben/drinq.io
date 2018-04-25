@@ -46,7 +46,7 @@ class HappyhoursController extends Controller
     // returns all of the happy hours within a radius.
     public function getHappyHoursZip($zipcode) {
       // get all of the locations with happy hours with zipcode constraints.
-      $defaultRadius = 10;
+      $defaultRadius = 5;
 
       // clean input to make sure that it's only a zip code, and numeric only.
       if(strlen((string)$zipcode) < 5 || strlen((string)$zipcode) > 5 || !is_numeric($zipcode)) {
@@ -58,20 +58,25 @@ class HappyhoursController extends Controller
         ));
       }
 
-      // using a more reliable API with no request limits
+        // using a more reliable API with no request limits
         $url = "http://api.zippopotam.us/us/".urlencode($zipcode);
   		$result_string = file_get_contents($url);
   		$result = json_decode($result_string, true);
       
-  		// latitude and longitude item
+  		// pulling simple lat/long data from request above
   		$longitude = $result["places"][0]["longitude"];
         $latitude = $result["places"][0]["latitude"];
         
+        // backup query below in case things don't work out. if they do, remove!!!
+
   		// build query for getting distance within location.
-  		$query = 'locations.location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, locations.created_at, locations.updated_at, GROUP_CONCAT(DISTINCT happy_hours.day SEPARATOR ", ") as happy_hour_days, 
-            GROUP_CONCAT(DISTINCT happy_hours.start_time SEPARATOR ", ") as happy_hour_start,
-            GROUP_CONCAT(DISTINCT happy_hours.end_time SEPARATOR ", ") as happy_hour_end,
-  		(3959 * acos(cos(radians('.$latitude.')) * cos(radians(latitude)) * cos(radians(longitude) - radians('.$longitude.')) + sin(radians('.$latitude.')) * sin(radians(latitude)))) AS distance';
+  		// $query = "locations.location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, locations.created_at, locations.updated_at,
+    //     GROUP_CONCAT(CONCAT('{day: ',happy_hours.day,',start_time: ',happy_hours.start_time,',end_time: ',happy_hours.end_time,'}')) AS happy_hours,
+  		// (3959 * acos(cos(radians($latitude)) * cos(radians(latitude)) * cos(radians(longitude) - radians($longitude)) + sin(radians($latitude)) * sin(radians(latitude)))) AS distance";
+
+        $query = "locations.location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, locations.created_at, locations.updated_at,
+        CONCAT('[', GROUP_CONCAT(JSON_OBJECT('day', happy_hours.day, 'start_time', happy_hours.start_time, 'end_time', happy_hours.end_time) SEPARATOR ', '), ']') AS happy_hours,
+        (3959 * acos(cos(radians($latitude)) * cos(radians(latitude)) * cos(radians(longitude) - radians($longitude)) + sin(radians($latitude)) * sin(radians(latitude)))) AS distance";
 
   		// raw query to return areas within the radius.
   		$location_results = DB::table('locations')
