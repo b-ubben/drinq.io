@@ -66,23 +66,8 @@ class HappyhoursController extends Controller
   		// latitude and longitude item
   		$longitude = $result["places"][0]["longitude"];
         $latitude = $result["places"][0]["latitude"];
-
-        $location = DB::table('locations')
-                    ->where('zip_code', $zipcode)
-                    ->first();
-
-      // if (!$location) {
-      //   return Response::json([
-      //     'status' => '666',
-      //     'reason' => 'No locations found',
-      //     'message' => 'Sorry, we don\'t know about any places near you to grab a drink!'
-      //   ]);
-      // }
-
-      // $latitude = $location->latitude;
-      // $longitude = $location->longitude;
-
-  		// build query for getting
+        
+  		// build query for getting distance within location.
   		$query = 'location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, created_at, updated_at,
   		(3959 * acos(cos(radians('.$latitude.')) * cos(radians(latitude)) * cos(radians(longitude) - radians('.$longitude.')) + sin(radians('.$latitude.')) * sin(radians(latitude)))) AS distance';
 
