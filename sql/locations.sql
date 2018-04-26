@@ -191,6 +191,8 @@ INSERT INTO `locations` VALUES
 (181, 'Public School 213', 34.049851, -118.257422, '612 Flower Street, Los Angeles', ' Los Angeles', 90017, 'US', 'CA', '(213) 622-4500', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 (182, 'The Greyhound Bar & Grill', 34.108813, -118.1940406, '5570 N Figueroa St, Los Angeles', ' Los Angeles', 90042, 'US', 'CA', '(323) 900-0300', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 (183, 'Congregation Ale House', 34.1400537, -118.148577, '300 S Raymond Ave, Pasadena', ' Pasadena', 91105, 'US', 'CA', '(626) 403-2337', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
-(184, 'Mexicali Cocina Cantina', 34.1436196, -118.3974444, '12161 Ventura Blvd, Studio City', ' Studio City', 91604, 'US', 'CA', '(818) 985-1744', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+(184, 'Mexicali Cocina Cantina', 34.1436196, -118.3974444, '12161 Ventura Blvd, Studio City', ' Studio City', 91604, 'US', 'CA', '(818) 985-1744', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+(185, 'Taps Valley Gastropub', 34.25843646, -118.5392713, '18673 Devonshire St', 'Northridge', 91324, 'US', 'CA', '(818) 217-4199', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+(186, 'San Fernando Brewing Company', 34.28311956, -118.4318564, '425 Park Ave', 'San Fernando', 91340, 'US', 'CA', '(818) 745-6175', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 /*!40000 ALTER TABLE `locations` ENABLE KEYS */;
 UNLOCK TABLES;

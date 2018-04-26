@@ -46,7 +46,7 @@ class HappyhoursController extends Controller
     // returns all of the happy hours within a radius.
     public function getHappyHoursZip($zipcode) {
       // get all of the locations with happy hours with zipcode constraints.
-      $defaultRadius = 5;
+      $defaultRadius = 10;
 
       // clean input to make sure that it's only a zip code, and numeric only.
       if(strlen((string)$zipcode) < 5 || strlen((string)$zipcode) > 5 || !is_numeric($zipcode)) {
