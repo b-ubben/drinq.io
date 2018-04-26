@@ -33,7 +33,6 @@ export default class HappyHoursResults extends Component {
         }
       }).then( response => {
         this.setState({ happyhours: response.data.results });
-        console.log(this.state.happyhours);
       }).catch( error => {
         this.setState({ redirect: true });
       });
