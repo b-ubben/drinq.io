@@ -15,6 +15,7 @@ import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft';
 export default class HappyHoursResults extends Component {
   state = {
     zipcode: sessionStorage.getItem('zipcode'),
+    happyhours: '',
     redirect: false
   }
 
@@ -25,27 +26,20 @@ export default class HappyHoursResults extends Component {
   loadResults() {
     //sessionStorage.setItem('zipcode', '');
 
-    if (isNaN(this.state.zipcode) === false) {
+    if (isNaN(this.state.zipcode) === false && this.state.zipcode != '') {
       axios.get(BASE_URL + '/happyhours/' + this.state.zipcode, {
         headers: {
           'Content-Type': 'application/json',
         }
       }).then( response => {
-        this.setState({ happyhours: response.data });
+        this.setState({ happyhours: response.data.results });
         console.log(this.state.happyhours);
       }).catch( error => {
-        console.log(error);
         this.setState({ redirect: true });
       });
     } else {
       this.setState({ redirect: true });
     }
-  }
-
-  renderCards() {
-    return(
-      <p className="text-center pane pane-rounded bg-light">{ this.state.happyhours }</p>
-    );
   }
 
   render() {
@@ -61,8 +55,10 @@ export default class HappyHoursResults extends Component {
               <FontAwesomeIcon icon={ faArrowLeft } /> Search
             </Link>
           </div>
-
           <div className="happy-hour-cards-container row align-items-center justify-content-start flex-nowrap flex-direction-row">
+            {
+              Object.values(this.state.happyhours).map( (happyhour, i) => <HappyHourCard data={ happyhour } key={ i } />)
+            }
           </div>
         </main>
         <Footer />

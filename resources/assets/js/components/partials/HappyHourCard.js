@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 
 export default class HappyHourCard extends Component {
+  state = {
+    selected: ''
+  }
+
   render() {
     return(
       <div className="item pane pane-rounded happy-hour-card bg-light text-dark container-mobile">
         <div className="happy-hour-card__content">
           <p className="pane-title">Testing</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, excepturi similique, corporis labore tempore iusto reprehenderit expedita sequi cumque esse necessitatibus rerum nostrum quisquam veritatis dicta. Non sapiente cupiditate pariatur.</p>
+          {
+            Object.values(this.props.data).map( (values, i) => <span key={ i }>{values}</span>)
+          }
         </div>
       </div>
     );
