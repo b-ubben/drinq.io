@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 //import partials
 import Navigation from './../partials/Navigation';
@@ -24,7 +24,7 @@ export default class LoggedOut extends Component {
       <main className="row margin-top-most">
         { loading ? '' : <Loading message="Taking you back to the home screen" /> }
         <div className="item pane justify-content-center align-items-center">
-          <p className=" display-medium pane-body item text-center">You have been logged out. Please click <Link to="/">here</Link> to return to the home screen, or wait a moment and you will be redirected.</p>
+          <p className=" display-medium pane-body item text-center">You have been logged out. Please wait a moment and you will be redirected to the home screen.</p>
         </div>
       </main>
     );

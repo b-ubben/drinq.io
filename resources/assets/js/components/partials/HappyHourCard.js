@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { object } from 'prop-types';
 
+//import Leaflet
+import { Map } from 'react-leaflet';
+
 export default class HappyHourCard extends Component {
   state = {
     id: this.props.data.location_id,
@@ -16,7 +19,8 @@ export default class HappyHourCard extends Component {
     createdAt: this.props.data.created_at,
     updatedAt: this.props.data.updated_at,
     happyhours: this.props.data.happy_hours,
-    distance: this.props.data.distance
+    distance: this.props.data.distance,
+    zoom: 13
   }
 
   static propTypes = {
@@ -24,6 +28,8 @@ export default class HappyHourCard extends Component {
   }
 
   render() {
+    const position = [this.state.lat, this.state.long];
+
     return(
       <div className="item pane pane-rounded happy-hour-card bg-light text-dark container-mobile">
         <div className="happy-hour-card__content">
@@ -32,8 +38,14 @@ export default class HappyHourCard extends Component {
             <p>{ this.state.address }</p>
             <p>{ this.state.lat }</p>
             <p>{ this.state.long }</p>
+
+            <Map
+              center={ this.state.position }
+              zoom={ this.state.zoom } >
+            </Map>
+
             <p>{ this.state.phone }</p>
-            <p>{ this.state.distance}</p>
+            <p>{ this.state.distance.toFixed(2)}</p>
           </div>
         </div>
       </div>

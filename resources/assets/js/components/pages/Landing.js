@@ -62,8 +62,8 @@ export default class Landing extends Component {
         <section>
         	<div className="row">
         		<div className="item margin-x-nothing">
-            {isLoggedIn ? <p className="display-big margin-x-nothing text-center">{"Welcome, " + sessionStorage.getItem("username")}</p> : ''}
-        			<p className="display-big text-center">Looking for the Nearest Happy Hour?</p>
+            {isLoggedIn ? <p className="display-medium text-center">{"Welcome, " + sessionStorage.getItem("username")}</p> : ''}
+        			<p className="display-big text-center">Feeling Thirsty?</p>
         		</div>
         	</div>
 

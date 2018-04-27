@@ -16,6 +16,7 @@ export default class HappyHoursResults extends Component {
   state = {
     zipcode: sessionStorage.getItem('zipcode'),
     happyhours: '',
+    errorFeedback: '',
     redirect: false
   }
 
@@ -34,10 +35,16 @@ export default class HappyHoursResults extends Component {
       }).then( response => {
         this.setState({ happyhours: response.data.results });
       }).catch( error => {
-        this.setState({ redirect: true });
+        this.setState({
+          redirect: true,
+          errorFeedback: 'Failed to load happy hour info!'
+         });
       });
     } else {
-      this.setState({ redirect: true });
+      this.setState({
+        redirect: true,
+        errorFeedback: 'Must enter zipcode first!'
+      });
     }
   }
 
@@ -47,9 +54,9 @@ export default class HappyHoursResults extends Component {
     return(
       <div>
         <Navigation />
-        { redirect ? <Loading message="Enter a zipcode first!" /> : '' }
+        { redirect ? <Loading message={ this.state.errorFeedback }/> : '' }
         <main className="container-desktop">
-          <div className="float-left">
+          <div className="float-left padding-bottom-nothing padding-top-enough">
             <Link to="/" className="text-decoration-none font-weight-bold" >
               <FontAwesomeIcon icon={ faArrowLeft } /> Search
             </Link>
