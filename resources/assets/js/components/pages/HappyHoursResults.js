@@ -56,8 +56,8 @@ export default class HappyHoursResults extends Component {
         <Navigation />
         { redirect ? <Loading message={ this.state.errorFeedback }/> : '' }
         <main className="container-desktop">
-          <div className="float-left padding-bottom-nothing padding-top-enough">
-            <Link to="/" className="text-decoration-none font-weight-bold" >
+          <div className="float-left padding-bottom-nothing">
+            <Link to="/" className="text-decoration-none font-weight-bold small" >
               <FontAwesomeIcon icon={ faArrowLeft } /> Search
             </Link>
           </div>
