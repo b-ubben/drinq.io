@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // any actions that REQUIRE authentication, like adding comments, etc. the routes will be in here.
-Route::group(['middleware' => 'auth:api'], function(){
+Route::group(['middleware' => 'auth:api'], function() {
 	Route::get('get-details', 'AuthController@getDetails');
 	Route::post('auth/logout', array('uses' => 'AuthController@performLogout'));
 });

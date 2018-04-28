@@ -68,20 +68,14 @@ class HappyhoursController extends Controller
         $latitude = $result["places"][0]["latitude"];
         
         // backup query below in case things don't work out. if they do, remove!!!
-
-  		// build query for getting distance within location.
-  		// $query = "locations.location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, locations.created_at, locations.updated_at,
-    //     GROUP_CONCAT(CONCAT('{day: ',happy_hours.day,',start_time: ',happy_hours.start_time,',end_time: ',happy_hours.end_time,'}')) AS happy_hours,
-  		// (3959 * acos(cos(radians($latitude)) * cos(radians(latitude)) * cos(radians(longitude) - radians($longitude)) + sin(radians($latitude)) * sin(radians(latitude)))) AS distance";
-
-        $query = "locations.location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, locations.created_at, locations.updated_at,
+        $proximity_query = "locations.location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, locations.created_at, locations.updated_at,
         CONCAT('[', GROUP_CONCAT(JSON_OBJECT('day', happy_hours.day, 'start_time', happy_hours.start_time, 'end_time', happy_hours.end_time) SEPARATOR ', '), ']') AS happy_hours,
         (3959 * acos(cos(radians($latitude)) * cos(radians(latitude)) * cos(radians(longitude) - radians($longitude)) + sin(radians($latitude)) * sin(radians(latitude)))) AS distance";
 
-  		// raw query to return areas within the radius.
+  		// raw proximity_query to return areas within the radius.
   		$location_results = DB::table('locations')
                        ->join('happy_hours', 'happy_hours.location_id', '=', 'locations.location_id')
-                       ->select(DB::raw($query))
+                       ->select(DB::raw($proximity_query))
                        ->groupBy(DB::raw('locations.location_id'))
                        ->havingRaw('distance < '.$defaultRadius)
                        ->orderByRaw('distance ASC')
@@ -108,5 +102,10 @@ class HappyhoursController extends Controller
           	'message'	=>	'Could not get results from database.'
           ));
         }
+    }
+
+    // let user post happy hours to the page.
+    public function addHappyHours() {
+    	
     }
 }
