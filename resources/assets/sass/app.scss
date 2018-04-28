@@ -11,6 +11,34 @@ a {
   text-decoration: underline;
 }
 
+details summary {
+  background: map-get($theme, attention);
+  border: 2px solid rgba(0, 0, 0, 0.0);
+  border-radius: 5px;
+  color: #fff;
+  list-style: none;
+  padding: 1em;
+}
+
+details summary:hover {
+  cursor: pointer;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+footer {
+  bottom: 10;
+  position: sticky;
+}
+
+.back-arrow {
+  position: sticky;
+  top: 0px;
+  z-index: 2;
+}
+
 .bg-lighterDark {
   background: lighten(map-get($theme, dark), 7%);
 }
@@ -31,9 +59,10 @@ a {
 .happy-hour-card {
   height: auto;
   margin-right: 1em;
-  min-height: 60vh;
-  max-height: 65vh;
+  max-height: 600px;
+  min-height: 400px;
   min-width: 310px;
+  padding-top: 5px;
   width: 100%;
   overflow-x: scroll;
 }
@@ -67,7 +96,7 @@ a {
 }
 
 .leaflet-container {
-  height: 100% !important;
+  height: 100%;
   z-index: 0;
 }
 
@@ -78,6 +107,10 @@ a {
   position: absolute;
   top: 0px;
   width: 100%;
+}
+
+.map-marker-address {
+  max-width: 100px;
 }
 
 .navigation-container {

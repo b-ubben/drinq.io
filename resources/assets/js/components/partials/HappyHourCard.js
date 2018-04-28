@@ -21,7 +21,8 @@ export default class HappyHourCard extends Component {
     updatedAt: this.props.data.updated_at,
     happyhours: JSON.parse(this.props.data.happy_hours),
     distance: this.props.data.distance.toFixed(2),
-    zoom: 15
+    zoom: 12,
+    open: false
   }
 
   static propTypes = {
@@ -36,6 +37,22 @@ export default class HappyHourCard extends Component {
     );
   }
 
+  scrollToPane = () => {
+    let map = document.querySelector('.happy-hour-map' + this.state.id);
+
+    if (!this.state.open) {
+      this.setState({ open: true });
+      map.style.minHeight = '160px';
+    } else {
+      this.setState({ open: false });
+      map.style.minHeight = '250px';
+    }
+
+    setTimeout( () => {
+      document.querySelector('.focus' + this.state.id).focus();
+    }, 1);
+  }
+
   render() {
     const position = [this.state.lat, this.state.long];
 
@@ -46,23 +63,23 @@ export default class HappyHourCard extends Component {
             <Map
               center={ position }
               zoom={ this.state.zoom }
-              className="happy-hour-map" >
+              className={ 'happy-hour-map happy-hour-map' + this.state.id } >
 
               <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
 
-              <Marker position={ position } >
+              <Marker position={ position } autoPan="true">
                 <Popup>
-                  <span>{ this.state.address }</span>
+                  <span className="map-marker-address">{ this.state.address }</span>
                 </Popup>
               </Marker>
             </Map>
 
             <details className="item margin-x-nothing text-center">
-              <summary>{ this.state.name }</summary>
-              <div className="pane pane-rounded">
-                <div className="pane-body padding-bottom-something">
+              <summary onClick={ this.scrollToPane }>{ this.state.name }</summary>
+              <div className="pane pane-rounded margin-top-enough scroll">
+                <div className="pane-body padding-something">
                   <p className="padding-bottom-nothing">{ this.state.address }</p>
                   <p>~{ this.state.distance }mi from you</p>
 
@@ -71,6 +88,7 @@ export default class HappyHourCard extends Component {
                   <a href={ 'tel:' + this.state.phone }>{ this.state.phone }</a>
                 </div>
               </div>
+              <a className={ 'text-hide focus' + this.state.id } tabIndex="0">focus</a>
             </details>
           </div>
         </div>

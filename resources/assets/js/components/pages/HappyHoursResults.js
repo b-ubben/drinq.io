@@ -55,10 +55,10 @@ export default class HappyHoursResults extends Component {
       <div>
         <Navigation />
         { redirect ? <Loading message={ this.state.errorFeedback }/> : '' }
-        <main className="container-desktop">
-          <div className="float-left padding-bottom-nothing">
-            <Link to="/" className="text-decoration-none font-weight-bold small" >
-              <FontAwesomeIcon icon={ faArrowLeft } /> Search
+        <section className="container-desktop padding-top-something">
+          <div className="float-left padding-bottom-nothing back-arrow">
+            <Link to="/" className="text-decoration-none h3" >
+              <FontAwesomeIcon icon={ faArrowLeft } />
             </Link>
           </div>
           <div className="happy-hour-cards-container row align-items-center justify-content-start flex-nowrap flex-direction-row">
@@ -66,7 +66,7 @@ export default class HappyHoursResults extends Component {
               Object.values(this.state.happyhours).map( (happyhour, i) => <HappyHourCard data={ happyhour } key={ i } />)
             }
           </div>
-        </main>
+        </section>
         <Footer />
       </div>
     );
