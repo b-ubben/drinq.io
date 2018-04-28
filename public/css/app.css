@@ -2124,9 +2124,8 @@ footer {
 }
 
 .back-arrow {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0px;
+  position: absolute;
+  top: 8px;
   z-index: 2;
 }
 
@@ -2199,6 +2198,7 @@ footer {
   position: absolute;
   top: 0px;
   width: 100%;
+  z-index: 3;
 }
 
 .map-marker-address {
@@ -2218,7 +2218,7 @@ footer {
   font-family: 'Lemon' !important;
   font-size: 1.6em;
   margin: auto;
-  padding-left: 2.83em;
+  padding-left: 2.66em;
 }
 
 .position-static {
@@ -2235,8 +2235,8 @@ footer {
     padding-left: 0.5em;
   }
 
-  a {
-    font-size: 1.2rem;
+  .back-arrow {
+    position: inherit;
   }
 }
 

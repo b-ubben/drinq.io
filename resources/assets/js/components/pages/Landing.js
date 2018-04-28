@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 //import partials
 import Navigation from './../partials/Navigation';
@@ -58,7 +59,7 @@ export default class Landing extends Component {
     return(
       <div>
         <Navigation isLoggedIn={ this.state.isLoggedIn } />
-        { loadResults ? <Loading message="Loading Results" view="results" /> : '' }
+        { loadResults ? <Redirect to="/results" /> : '' }
         <section>
         	<div className="row">
         		<div className="item margin-x-nothing">

@@ -25,7 +25,8 @@ export default class HappyHoursResults extends Component {
   }
 
   loadResults() {
-    //sessionStorage.setItem('zipcode', '');
+    //clears zipcode from storage
+    sessionStorage.setItem('zipcode', '');
 
     if (isNaN(this.state.zipcode) === false && this.state.zipcode != '') {
       axios.get(BASE_URL + '/happyhours/' + this.state.zipcode, {
@@ -54,8 +55,9 @@ export default class HappyHoursResults extends Component {
     return(
       <div>
         <Navigation />
-        { redirect ? <Loading message={ this.state.errorFeedback }/> : '' }
-        <section className="container-desktop padding-top-something">
+        { redirect ? <Loading message={ this.state.errorFeedback } /> : <Loading message="Loading Results.." redirect={ false } waitTime={ 2600 }/> }
+
+        <section className="container-desktop padding-top-enough">
           <div className="float-left padding-bottom-nothing back-arrow">
             <Link to="/" className="text-decoration-none h3" >
               <FontAwesomeIcon icon={ faArrowLeft } />
