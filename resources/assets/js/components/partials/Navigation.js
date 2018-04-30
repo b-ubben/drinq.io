@@ -67,7 +67,7 @@ export default class Navigation extends Component {
     return(
       <div className="bg-dark navigation-container">
         <nav className="navigation">
-          <Link to="/" className="navigation-logo">drinq</Link>
+          <span className="navigation-logo">drinq</span>
           <button className="navigation-link bg-dark border-none" onClick={ this.handleToggle }>
             <div className="menu-logo">
               <div className="menu-logo-bars"></div>

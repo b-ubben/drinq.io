@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { string } from 'prop-types';
 
 //import partials
@@ -73,19 +73,19 @@ export default class Login extends Component {
         <main className="item-three-quarter item__mobile">
         	<div className="pane pane-rounded bg-light padding-something">
         		<p className="pane-title display-medium">Please sign in to continue</p>
-            <p className="text-center text-dark">Enter your username and password.</p>
+            <p className="text-center text-dark">Enter your username and password. Not a registered user yet? Register <Link to="register">here</Link>.</p>
         		<form action="" className="crutch-form text-center container-mobile">
               {(this.state.loginFeedback) ? <p className="alert-failure">{this.state.loginFeedback}</p> : ''}
         			<input type="text" name="username" id="username" className="input-long" placeholder="Username" onChange={ this.handleUsername }/>
         			<br />
         			<input type="password" name="password" id="password" className="input-long" placeholder="Password" onChange={ this.handlePassword }/>
         			<br />
-        			<input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ this.handleLogIn }/>
+        			<button className="padding-something border border-color-grey rounded-border button-long bg-dank text-white" onClick={ this.handleLogIn }>Go</button>
         		</form>
         	</div>
         </main>
 
-        <Footer />
+        <Footer view="login" />
       </div>
     );
   }

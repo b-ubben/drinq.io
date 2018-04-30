@@ -48,8 +48,8 @@
   display: none;
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (max-width: 620px) {
   .display-mobile-only {
-    display: inherit;
+    display: block;
   }
 }

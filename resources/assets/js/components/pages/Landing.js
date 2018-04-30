@@ -81,7 +81,7 @@ export default class Landing extends Component {
         	</div>
 
         </section>
-        <Footer />
+        <Footer view="landing"/>
       </div>
     );
   }

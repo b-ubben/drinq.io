@@ -16,15 +16,17 @@ export default class About extends Component {
         			<p className="display-medium text-center">About Us</p>
         		</header>
 
-        		<section className="item pane container-tablet">
-        		  <div className="pane-content">
-                <p>Drinq is currently being developed and maintained by a senior design project group in California State University, Northridge's Computer Information Techonology program known as the Morning Drinkers.</p>
+        		<section className="item container-tablet text-dark">
+        		  <div className="pane pane-rounded bg-light padding-enough">
+                <div className="pane-body">
+                  <p>Drinq is currently being developed and maintained by a senior design project group in California State University, Northridge's Computer Information Techonology program known as the Morning Drinkers.</p>
+                </div>
         		  </div>
         	 </section>
           </div>
         </main>
 
-        <Footer />
+        <Footer view="about" />
       </div>
     );
   }

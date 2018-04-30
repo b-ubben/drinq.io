@@ -21,20 +21,28 @@ export default class HappyHoursResults extends Component {
   }
 
   componentDidMount() {
-      this.loadResults();
+      if (this.state.zipcode !== null) {
+        this.loadResults();
+      } else {
+        this.setState({ redirect: true });
+      }
   }
 
   loadResults() {
-    //clears zipcode from storage
-    sessionStorage.setItem('zipcode', '');
-
-    if (isNaN(this.state.zipcode) === false && this.state.zipcode != '') {
+    if (isNaN(this.state.zipcode) === false) {
       axios.get(BASE_URL + '/happyhours/' + this.state.zipcode, {
         headers: {
           'Content-Type': 'application/json',
         }
       }).then( response => {
-        this.setState({ happyhours: response.data.results });
+        if (response.status === 200) {
+          this.setState({ happyhours: response.data.results });
+        } else {
+          this.setState({
+            redirect: true,
+            errorFeedback: 'Unable to load results! Sorry!'
+          });
+        }
       }).catch( error => {
         this.setState({
           redirect: true,
@@ -49,28 +57,51 @@ export default class HappyHoursResults extends Component {
     }
   }
 
+  resultsError = () => {
+    this.setState({
+      redirect: true,
+      errorFeedback: ''
+    });
+  }
+
   render() {
     const redirect = this.state.redirect;
+    const happyhours = this.state.happyhours;
 
-    return(
-      <div>
-        <Navigation />
-        { redirect ? <Loading message={ this.state.errorFeedback } /> : <Loading message="Loading Results.." redirect={ false } waitTime={ 2600 }/> }
+    if (redirect) {
+      return(
+        <div>
+          <Navigation />
+          <Loading message="Must enter zipcode first!" />
+        </div>
+      );
+    } else if (!happyhours && !redirect) {
+      return(
+        <div>
+          <Navigation />
+          <Loading message="Loading results..." redirect={ false } />
+        </div>
+      );
+    } else {
+      return(
+        <div>
+          <Navigation />
 
-        <section className="container-desktop padding-top-enough">
-          <div className="float-left padding-bottom-nothing back-arrow">
-            <Link to="/" className="text-decoration-none h3" >
-              <FontAwesomeIcon icon={ faArrowLeft } />
-            </Link>
-          </div>
-          <div className="happy-hour-cards-container row align-items-center justify-content-start flex-nowrap flex-direction-row">
-            {
-              Object.values(this.state.happyhours).map( (happyhour, i) => <HappyHourCard data={ happyhour } key={ i } />)
-            }
-          </div>
-        </section>
-        <Footer />
-      </div>
-    );
+          <section className="container-desktop padding-top-enough">
+            <div className="float-left padding-bottom-nothing back-arrow">
+              <Link to="/" className="text-decoration-none h3" >
+                <FontAwesomeIcon icon={ faArrowLeft } />
+              </Link>
+            </div>
+            <div className="happy-hour-cards-container row align-items-center justify-content-start flex-nowrap flex-direction-row">
+              {
+                Object.values(happyhours).map( (happyhour, i) => <HappyHourCard data={ happyhour } key={ i } />)
+              }
+            </div>
+          </section>
+          <Footer view="results"/>
+        </div>
+      );
+    }
   }
 }

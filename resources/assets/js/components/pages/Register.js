@@ -169,7 +169,7 @@ export default class Register extends Component {
                 <input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className="input-long" onChange={ this.validatePasswordConf } />
                 { validPasswordConf ? <p className="small margin-top-nothing">Passwords Match <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Please confirm your password by typing it again.</p> }
 
-                <input type="submit" name="submit" value="Go" className="margin-x-auto margin-top-something margin-bottom-enough button-long bg-dank text-white" onClick={ this.readyForSubmission } />
+                <button className="padding-something border border-color-grey rounded-border button-long bg-dank text-white" onClick={ this.readyForSubmission }>Register</button>
         			</form>
         		</div>
         	</div>

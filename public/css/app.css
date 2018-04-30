@@ -1136,9 +1136,9 @@ button {
   display: none;
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (max-width: 620px) {
   .display-mobile-only {
-    display: inherit;
+    display: block;
   }
 }
 
@@ -2124,9 +2124,7 @@ footer {
 }
 
 .back-arrow {
-  position: absolute;
-  top: 8px;
-  z-index: 2;
+  display: none;
 }
 
 .bg-lighterDark {
@@ -2135,6 +2133,24 @@ footer {
 
 .border-color-grey {
   border-color: #616161 !important;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.bottom-nav-link {
+  min-width: 25%;
+  padding: 1em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.desktop-only {
+  display: none;
 }
 
 .happy-hour-cards-container {
@@ -2147,10 +2163,8 @@ footer {
 }
 
 .happy-hour-card {
-  height: auto;
+  height: 440px;
   margin-right: 1em;
-  max-height: 600px;
-  min-height: 400px;
   min-width: 310px;
   padding-top: 5px;
   width: 100%;
@@ -2210,7 +2224,9 @@ footer {
           box-shadow: 0px 0px 6px 1px #666;
   position: -webkit-sticky;
   position: sticky;
-  top: -1px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
   z-index: 1;
 }
 
@@ -2229,14 +2245,18 @@ footer {
   text-decoration: none !important;
 }
 
-@media only screen and (min-width: 641px) {
+@media only screen and (min-width: 621px) {
+  .back-arrow {
+    display: block;
+  }
+
+  .desktop-only {
+    display: block;
+  }
+
   .navigation-logo {
     margin: 0;
     padding-left: 0.5em;
-  }
-
-  .back-arrow {
-    position: inherit;
   }
 }
 
