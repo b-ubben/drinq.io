@@ -57,9 +57,9 @@ class CreateOtherTables extends Migration
         Schema::create('happy_hours', function(Blueprint $table) {
             $table->increments('hours_id');
             $table->integer('location_id')->unsigned();
-            $table->string("day");
-            $table->string("start_time");
-            $table->string("end_time");
+            $table->string("day")->nullable();
+            $table->string("start_time")->nullable();
+            $table->string("end_time")->nullable();
             $table->timestamps();
         });
 
