@@ -8,6 +8,7 @@
 /.vagrant
 /resources/assets/js/app.js
 /resources/assets/js/partials/Path.js
+/storage/framework/views/*
 Homestead.json
 Homestead.yaml
 npm-debug.log
