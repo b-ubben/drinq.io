@@ -67,7 +67,7 @@ class HappyhoursController extends Controller
   		$longitude = $result["places"][0]["longitude"];
       $latitude = $result["places"][0]["latitude"];
         
-        // backup query below in case things don't work out. if they do, remove!!!
+        // select statement for getting all elements we want back.
       $proximity_query = "locations.location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, locations.created_at, locations.updated_at,
         (3959 * acos(cos(radians($latitude)) * cos(radians(latitude)) * cos(radians(longitude) - radians($longitude)) + sin(radians($latitude)) * sin(radians(latitude)))) AS distance";
 
@@ -78,9 +78,7 @@ class HappyhoursController extends Controller
                           ->orderByRaw('distance ASC')
                           ->get();
 
-      return $location_results;
-
-        // $successStatus = 200;
+        $successStatus = 200;
 
         if(count($location_results) == 0) {
       		return Response::json(array(
