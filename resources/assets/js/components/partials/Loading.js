@@ -16,20 +16,24 @@ export default class Loading extends Component {
       view: string,
       message: string,
       redirect: bool,
-      waitTime: number
+      waitTime: number,
+      wait: bool
     }
 
     static defaultProps = {
       view: '',
       message: '',
       redirect: true,
-      waitTime: 2000
+      waitTime: 2000,
+      wait: true
     }
 
     componentDidMount() {
-      setTimeout( () => {
-        this.setState({ loading: false });
-      }, this.props.waitTime);
+      if (this.props.wait) {
+        setTimeout( () => {
+          this.setState({ loading: false });
+        }, this.props.waitTime);
+      }
     }
 
 

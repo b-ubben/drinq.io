@@ -79,7 +79,8 @@ export default class HappyHoursResults extends Component {
       return(
         <div>
           <Navigation />
-          <Loading message="Loading results..." redirect={ false } waitTime={ 800 }/>
+          <Loading message="Loading results..." redirect={ false } wait={ false }/>
+          <Footer />
         </div>
       );
     } else {
