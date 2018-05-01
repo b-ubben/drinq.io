@@ -63,13 +63,14 @@ export default class HappyHourCard extends Component {
             <Map
               center={ position }
               zoom={ this.state.zoom }
+              scrollWheelZoom={ false }
               className={ 'happy-hour-map happy-hour-map' + this.state.id } >
 
               <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
 
-              <Marker position={ position } autoPan="true">
+              <Marker position={ position }>
                 <Popup>
                   <span className="map-marker-address">{ this.state.address }</span>
                 </Popup>

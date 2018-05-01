@@ -2123,7 +2123,7 @@ footer {
   position: sticky;
 }
 
-.back-arrow {
+.back-to-search {
   display: none;
 }
 
@@ -2154,7 +2154,25 @@ footer {
 }
 
 .happy-hour-cards-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   overflow-x: auto;
+  padding-top: 1em;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -2163,7 +2181,7 @@ footer {
 }
 
 .happy-hour-card {
-  height: 440px;
+  height: 410px;
   margin-right: 1em;
   min-width: 310px;
   padding-top: 5px;
@@ -2246,12 +2264,29 @@ footer {
 }
 
 @media only screen and (min-width: 621px) {
-  .back-arrow {
+  .back-to-search {
     display: block;
   }
 
   .desktop-only {
     display: block;
+  }
+
+  .happy-hour-card {
+    max-width: 345px;
+  }
+
+  .happy-hour-cards-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-line-pack: start;
+        align-content: flex-start;
+    height: 100%;
+    max-height: 500px;
+    overflow-y: scroll;
   }
 
   .navigation-logo {

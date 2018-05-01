@@ -33,7 +33,7 @@ footer {
   position: sticky;
 }
 
-.back-arrow {
+.back-to-search {
   display: none;
 }
 
@@ -64,7 +64,14 @@ footer {
 }
 
 .happy-hour-cards-container {
+  display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
   overflow-x: auto;
+  padding-top: 1em;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -73,7 +80,7 @@ footer {
 }
 
 .happy-hour-card {
-  height: 440px;
+  height: 410px;
   margin-right: 1em;
   min-width: 310px;
   padding-top: 5px;
@@ -153,12 +160,25 @@ footer {
 }
 
 @media only screen and (min-width: 621px) {
-  .back-arrow {
+  .back-to-search {
     display: block;
   }
 
   .desktop-only {
     display: block;
+  }
+
+  .happy-hour-card {
+    max-width: 345px;
+  }
+
+  .happy-hour-cards-container {
+    display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+    height: 100%;
+    max-height: 500px;
+    overflow-y: scroll;
   }
 
   .navigation-logo {

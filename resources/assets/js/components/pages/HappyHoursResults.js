@@ -9,8 +9,8 @@ import Loading from './../partials/Loading';
 import { BASE_URL } from './../partials/Path';
 
 //import fontawesome
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft';
+// import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+// import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft';
 
 export default class HappyHoursResults extends Component {
   state = {
@@ -79,7 +79,7 @@ export default class HappyHoursResults extends Component {
       return(
         <div>
           <Navigation />
-          <Loading message="Loading results..." redirect={ false } />
+          <Loading message="Loading results..." redirect={ false } waitTime={ 800 }/>
         </div>
       );
     } else {
@@ -88,17 +88,18 @@ export default class HappyHoursResults extends Component {
           <Navigation />
 
           <section className="container-desktop padding-top-enough">
-            <div className="float-left padding-bottom-nothing back-arrow">
-              <Link to="/" className="text-decoration-none h3" >
-                <FontAwesomeIcon icon={ faArrowLeft } />
+            <div className="back-to-search padding-bottom-nothing text-center h4">
+              <Link to="/">
+                back to search
               </Link>
             </div>
-            <div className="happy-hour-cards-container row align-items-center justify-content-start flex-nowrap flex-direction-row">
+            <div className="happy-hour-cards-container container-desktop">
               {
                 Object.values(happyhours).map( (happyhour, i) => <HappyHourCard data={ happyhour } key={ i } />)
               }
             </div>
           </section>
+
           <Footer view="results"/>
         </div>
       );
