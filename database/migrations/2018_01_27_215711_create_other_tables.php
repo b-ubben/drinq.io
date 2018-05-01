@@ -60,6 +60,7 @@ class CreateOtherTables extends Migration
             $table->string("day")->nullable();
             $table->string("start_time")->nullable();
             $table->string("end_time")->nullable();
+            $table->integer("flags")->nullable();
             $table->timestamps();
         });
 

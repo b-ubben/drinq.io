@@ -134,6 +134,9 @@ class HappyhoursController extends Controller
         $new_happy_hour->start_time = $request->input('start_time');
         $new_happy_hour->end_time = $request->input('end_time');
 
+        // initiate with 0 flags. once it hits n amount of flags, it'll delete itself automatically.
+        $new_happy_hour->flags = 0;
+
         // associate the happy hour added to the location.
         $new_happy_hour->locations()->associate($location_id);
 
