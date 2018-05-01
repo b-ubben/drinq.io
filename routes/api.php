@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth:api'], function() {
 
 	// routes related to adding happy hours
 	Route::post('addhours', array('uses' => 'HappyhoursController@addHappyHours'));
+	Route::put('flaghour', array('uses' => 'HappyhoursController@flagHappyHour'));
 	Route::post('auth/logout', array('uses' => 'AuthController@performLogout'));
 });
 
