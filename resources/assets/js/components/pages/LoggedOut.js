@@ -20,13 +20,26 @@ export default class LoggedOut extends Component {
   render() {
     const loading = this.state.loading;
 
-    return(
-      <main className="row margin-top-most">
-        { loading ? '' : <Loading message="Taking you back to the home screen" /> }
-        <div className="item pane justify-content-center align-items-center">
-          <p className=" display-medium pane-body item text-center">You have been logged out. Please wait a moment and you will be redirected to the home screen.</p>
+    if (!loading) {
+      return(
+        <div>
+          <Navigation />
+          <Loading />
+          <Footer />
         </div>
-      </main>
-    );
+      );
+    } else {
+      return(
+        <div>
+          <Navigation />
+          <div className="row margin-top-most">
+            <div className="item pane justify-content-center align-items-center">
+              <p className=" display-medium pane-body item text-center">You have been logged out. Please wait a moment and you will be redirected to the home screen.</p>
+            </div>
+          </div>
+          <Footer />
+        </div>
+      );
+    }
   }
 }

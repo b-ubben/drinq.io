@@ -12,7 +12,7 @@ a {
 }
 
 details summary {
-  background: map-get($theme, attention);
+  background: map-get($theme, dank);
   border: 2px solid rgba(0, 0, 0, 0.0);
   border-radius: 5px;
   color: #fff;
@@ -123,9 +123,12 @@ footer {
 
 .loading-container {
   background: rgba(0, 0, 0, 0.62);
+  bottom: 0px;
   height: 100%;
-  min-height: 120vh;
+  left: 0px;
+  //min-height: 120vh;
   position: absolute;
+  right: 0px;
   top: 0px;
   width: 100%;
   z-index: 3;

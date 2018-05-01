@@ -2101,7 +2101,7 @@ a {
 }
 
 details summary {
-  background: #8EA8C3;
+  background: #23395B;
   border: 2px solid transparent;
   border-radius: 5px;
   color: #fff;
@@ -2225,9 +2225,11 @@ footer {
 
 .loading-container {
   background: rgba(0, 0, 0, 0.62);
+  bottom: 0px;
   height: 100%;
-  min-height: 120vh;
+  left: 0px;
   position: absolute;
+  right: 0px;
   top: 0px;
   width: 100%;
   z-index: 3;
