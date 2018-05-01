@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
+| NOTE: This API is NOT FOLLOWING REST API CONVENTIONS!!!!!
+| THIS WILL BE CHANGED IN VERSION 2 OF THE APPLICATION!!!!
+|
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -20,8 +23,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // any actions that REQUIRE authentication, like adding comments, etc. the routes will be in here.
 Route::group(['middleware' => 'auth:api'], function() {
 	Route::get('get-details', 'AuthController@getDetails');
+	
 	// routes related to adding happy hours
-	Route::post('happyhours/add/{day}/start/{start_time}/end/{end_time}', array('uses' => 'HappyhoursController@addHappyHours'));
+	Route::post('addhours', array('uses' => 'HappyhoursController@addHappyHours'));
 	Route::post('auth/logout', array('uses' => 'AuthController@performLogout'));
 });
 

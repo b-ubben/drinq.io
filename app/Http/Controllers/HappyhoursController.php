@@ -103,8 +103,53 @@ class HappyhoursController extends Controller
 
     // let user post happy hours to the page.
     // MUST BE LOGGED IN TO USE THIS ROUTE
-    public function addHappyHours($day, $start_time, $end_time) {
-    	// code to allow users to add happy hours.
-      
+    public function addHappyHours(Request $request) {      
+      // initiate rules for validation.
+      $rules = array(
+        'location_id' =>  'required|numeric',
+        'day'  =>  'required|alphaNum|size:3',
+        'start_time'   =>  'required',
+        'end_time'  =>  'required',
+      );
+
+      // initiate validator, and get all form fields
+      $validator = Validator::make($request->only("location_id", "day", "start_time", "end_time"), $rules);
+
+      if($validator->fails()) {
+        $successStatus = 500;
+        return Response::json(
+            array(
+                'status' => $successStatus,
+                'message' => "Could not add happy hour.",
+                'reason' => $validator->messages()
+            ), 500
+          );
+      } else {
+        // if validation succeeds, proceed with making the new time.
+        $new_happy_hour = new HappyHour;
+        $location_id = $request->input('location_id');
+
+        // build the happy hour model to add it
+        $new_happy_hour->day = $request->input('day');
+        $new_happy_hour->start_time = $request->input('start_time');
+        $new_happy_hour->end_time = $request->input('end_time');
+
+        // associate the happy hour added to the location.
+        $new_happy_hour->locations()->associate($location_id);
+
+        // save the newly created model to the database.
+        $new_happy_hour->save();
+
+        // set success status
+        $successStatus = 200;
+
+        return Response::json(
+            array(
+              'status' => $successStatus,
+              'message' => "Successfully added happy hour time!",
+              'reason' => "Added the happy hour successfully.",
+          )
+        );
+      }
     }
 }

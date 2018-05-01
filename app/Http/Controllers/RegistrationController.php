@@ -28,7 +28,7 @@ class RegistrationController extends Controller
     		'password'	=>	'required|alphaNum|between:5,255',
     	);
 
-    	// // initiate validator, and get all form fields
+    	// initiate validator, and get all form fields
     	$validator = Validator::make($request->only("username", "email", "password"), $rules);
 
     	// if validator fails, flash messages and return all field items except the password
