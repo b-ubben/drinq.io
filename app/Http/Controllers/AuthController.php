@@ -71,12 +71,6 @@ class AuthController extends Controller
         }
     }
 
-    // get all user details. meant to be used for testing only.
-    public function getDetails() {
-        $user = Auth::user();
-        return response()->json(['success' => $user], $this->successStatus);
-    }
-
     // perform logout of user
     public function performLogout() {
         // easy. if user is logged in, delete their token.

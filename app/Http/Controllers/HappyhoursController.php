@@ -103,7 +103,7 @@ class HappyhoursController extends Controller
 
     // let user post happy hours to the page.
     // MUST BE LOGGED IN TO USE THIS ROUTE
-    public function addHappyHours(Request $request) {      
+    public function addHappyHours(Request $request) {
       // initiate rules for validation.
       $rules = array(
         'location_id' =>  'required|numeric',
