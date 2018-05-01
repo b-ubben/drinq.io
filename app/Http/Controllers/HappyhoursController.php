@@ -102,8 +102,9 @@ class HappyhoursController extends Controller
     }
 
     // let user post happy hours to the page.
+    // MUST BE LOGGED IN TO USE THIS ROUTE
     public function addHappyHours($day, $start_time, $end_time) {
     	// code to allow users to add happy hours.
-      echo $day . $start_time . $end_time;
+      
     }
 }
