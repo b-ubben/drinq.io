@@ -37,6 +37,7 @@ export default class HappyHoursResults extends Component {
       }).then( response => {
         if (response.status === 200) {
           this.setState({ happyhours: response.data.results });
+          //console.log(response);
         } else {
           this.setState({
             redirect: true,
@@ -68,42 +69,44 @@ export default class HappyHoursResults extends Component {
     const redirect = this.state.redirect;
     const happyhours = this.state.happyhours;
 
-    if (redirect) {
+    if (redirect === true) {
       return(
         <div>
           <Navigation />
           <Loading message="Must enter zipcode first!" />
-        </div>
-      );
-    } else if (!happyhours && !redirect) {
-      return(
-        <div>
-          <Navigation />
-          <Loading message="Loading results..." redirect={ false } wait={ false }/>
-          <Footer />
+          <Footer view="results" />
         </div>
       );
     } else {
-      return(
-        <div>
-          <Navigation />
-
-          <section className="container-desktop padding-top-enough">
-            <div className="back-to-search padding-bottom-nothing text-center h4">
-              <Link to="/">
-                back to search
-              </Link>
-            </div>
-            <div className="happy-hour-cards-container container-desktop">
-              {
-                Object.values(happyhours).map( (happyhour, i) => <HappyHourCard data={ happyhour } key={ i } />)
-              }
-            </div>
-          </section>
-
-          <Footer view="results"/>
-        </div>
-      );
+      if (!happyhours) {
+        console.log('here');
+        return(
+          <div>
+            <Navigation />
+            <Loading message="Loading results..." redirect={ false } wait={ false }/>
+            <Footer view="results" />
+          </div>
+        );
+      } else {
+        return(
+          <div>
+            <Navigation />
+            <section className="container-desktop padding-top-enough">
+              <div className="back-to-search padding-bottom-nothing text-center h4">
+                <Link to="/">
+                  back to search
+                </Link>
+              </div>
+              <div className="happy-hour-cards-container container-desktop">
+                {
+                  Object.values(happyhours).map( (happyhour, i) => <HappyHourCard data={ happyhour } key={ i } />)
+                }
+              </div>
+            </section>
+            <Footer view="results"/>
+          </div>
+        );
+      }
     }
   }
 }

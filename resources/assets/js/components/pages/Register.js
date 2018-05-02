@@ -143,40 +143,47 @@ export default class Register extends Component {
     const failedRegistration = this.state.failedRegistration;
     const successfulRegistration = this.state.successfulRegistration;
 
-    return(
+    if (successfulRegistration) {
+      return(
+        <div>
+          <Navigation />
+          <Loading message="Registering new user.." view="login" />
+          <Footer view="login" />
+        </div>
+      );
+    } else {
+      return(
+        <div>
+          <Navigation />
+          <div className="row">
+          	<div className="item-three-quarter item__mobile">
+          		<div className="pane pane-rounded padding-something margin-top-enough bg-light">
+            		<p className="pane-title display-big">Drinq User Registration</p>
+                <p className="pane-content text-dark text-center container-mobile padding-something">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
 
-      <div>
-        <Navigation isLoggedIn={ this.state.isLoggedIn }/>
-        { successfulRegistration ? <Loading message="Registering new user.." view="login" /> : '' }
-        <main className="row">
-        	<div className="item-three-quarter item__mobile">
-        		<div className="pane pane-rounded padding-something margin-top-enough bg-light">
-          		<p className="pane-title display-big">Drinq User Registration</p>
-              <p className="pane-content text-dark text-center container-mobile padding-something">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
+          			<form className="crutch-form text-center text-dark container-mobile">
+                  {(this.state.registerFeedback) ? <p className="alert-failure">{this.state.registerFeedback}</p> : ''}
 
-        			<form className="crutch-form text-center text-dark container-mobile">
-                {(this.state.registerFeedback) ? <p className="alert-failure">{this.state.registerFeedback}</p> : ''}
+            			<input type="text" name="username" id="username" placeholder="Username" className="input-long" onChange={ this.validateUsername } />
+                  { validUsername ? <p className="small margin-top-nothing">Valid Username <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Username must be alphanumeric and 4+ characters long.</p> }
 
-          			<input type="text" name="username" id="username" placeholder="Username" className="input-long" onChange={ this.validateUsername } />
-                { validUsername ? <p className="small margin-top-nothing">Valid Username <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Username must be alphanumeric and 4+ characters long.</p> }
+                  <input type="text" name="email" id="email" placeholder="Email Address" className="input-long" onChange={ this.validateEmail } />
+                  { validEmail ? <p className="small margin-top-nothing">Valid Email Address <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Email address must be properly formatted.</p> }
 
-                <input type="text" name="email" id="email" placeholder="Email Address" className="input-long" onChange={ this.validateEmail } />
-                { validEmail ? <p className="small margin-top-nothing">Valid Email Address <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Email address must be properly formatted.</p> }
+                  <input type="password" name="password" id="password" placeholder="Password" className="input-long" onChange={ this.validatePassword } />
+                  { validPassword ? <p className="small margin-top-nothing">Valid Password <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Password must be greater than 5 characters. Make it strong!</p> }
 
-                <input type="password" name="password" id="password" placeholder="Password" className="input-long" onChange={ this.validatePassword } />
-                { validPassword ? <p className="small margin-top-nothing">Valid Password <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Password must be greater than 5 characters. Make it strong!</p> }
+                  <input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className="input-long" onChange={ this.validatePasswordConf } />
+                  { validPasswordConf ? <p className="small margin-top-nothing">Passwords Match <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Please confirm your password by typing it again.</p> }
 
-                <input type="password" name="passwordConf" id="passwordConf" placeholder="Please confirm password" className="input-long" onChange={ this.validatePasswordConf } />
-                { validPasswordConf ? <p className="small margin-top-nothing">Passwords Match <FontAwesomeIcon icon={ faCheckCircle } color="green"/></p> : <p className="small margin-top-nothing">Please confirm your password by typing it again.</p> }
-
-                <button className="padding-something border border-color-grey rounded-border button-long bg-dank text-white" onClick={ this.readyForSubmission }>Register</button>
-        			</form>
-        		</div>
-        	</div>
-        </main>
-
-        <Footer />
-      </div>
-    );
+                  <button className="padding-something border border-color-grey rounded-border button-long bg-dank text-white" onClick={ this.readyForSubmission }>Register</button>
+          			</form>
+          		</div>
+          	</div>
+          </div>
+          <Footer view="login" />
+        </div>
+      );
+    }
   }
 }

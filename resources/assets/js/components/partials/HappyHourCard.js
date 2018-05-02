@@ -19,7 +19,7 @@ export default class HappyHourCard extends Component {
     phone: this.props.data.display_phone,
     createdAt: this.props.data.created_at,
     updatedAt: this.props.data.updated_at,
-    happyhours: JSON.parse(this.props.data.happy_hours),
+    happyhours: this.props.data.happy_hours,
     distance: this.props.data.distance.toFixed(2),
     zoom: 12,
     open: false
