@@ -69,7 +69,7 @@ export default class HappyHoursResults extends Component {
     const redirect = this.state.redirect;
     const happyhours = this.state.happyhours;
 
-    if (redirect === true) {
+    if (redirect) {
       return(
         <div>
           <Navigation />
@@ -79,7 +79,6 @@ export default class HappyHoursResults extends Component {
       );
     } else {
       if (!happyhours) {
-        console.log('here');
         return(
           <div>
             <Navigation />
@@ -91,9 +90,9 @@ export default class HappyHoursResults extends Component {
         return(
           <div>
             <Navigation />
-            <section className="container-desktop padding-top-enough">
-              <div className="back-to-search padding-bottom-nothing text-center h4">
-                <Link to="/">
+            <section className="container-desktop">
+              <div className="padding-bottom-nothing text-center small">
+                <Link to="search">
                   back to search
                 </Link>
               </div>

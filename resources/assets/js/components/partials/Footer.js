@@ -43,7 +43,7 @@ export default class Footer extends Component {
               <FontAwesomeIcon icon={ faHome } size="lg" />
             </Link>
 
-            <Link to="results" className={view == 'results' ? "bottom-nav-link bg-lighterDark" : "bottom-nav-link"}>
+            <Link to="search" className={(view == 'search' || view == 'results') ? "bottom-nav-link bg-lighterDark" : "bottom-nav-link"}>
               <FontAwesomeIcon icon={ faSearch } size="lg" />
             </Link>
 
