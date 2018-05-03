@@ -60,18 +60,36 @@ class HappyhoursController extends Controller
 
       // using a more reliable API with no request limits
       $url = "http://api.zippopotam.us/us/".urlencode($zipcode);
-  		$result_string = file_get_contents($url);
-  		$result = json_decode($result_string, true);
+
+      // MUST HAVE PHP CURL INSTALLED
+      $ch = curl_init($url);
+      curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
+      curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      $zip_data = curl_exec($ch);
+      $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+      // check to see if zippopotamus API returns a 200, else it couldn't find your zip.
+      if(curl_errno($ch) == 0 AND $status_code == 200) {
+          $result = json_decode($zip_data, true);
+      } else {
+          $successStatus = 500;
+          return Response::json(array(
+            'status' => $successStatus,
+            'reason'   => 'Could not find your zip code.',
+            'message' =>  'The zip code you entered does not exist!'
+          ));
+      }
       
   		// pulling simple lat/long data from request above
   		$longitude = $result["places"][0]["longitude"];
       $latitude = $result["places"][0]["latitude"];
         
-        // select statement for getting all elements we want back.
-      $proximity_query = "locations.location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, locations.created_at, locations.updated_at,
+      // select statement for getting all elements we want back.
+        $proximity_query = "locations.location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, locations.created_at, locations.updated_at,
         (3959 * acos(cos(radians($latitude)) * cos(radians(latitude)) * cos(radians(longitude) - radians($longitude)) + sin(radians($latitude)) * sin(radians(latitude)))) AS distance";
 
-      $location_results = Location::with('happy_hours')
+        $location_results = Location::with('happy_hours')
                           ->select(DB::raw($proximity_query))
                           ->groupBy(DB::raw('locations.location_id'))
                           ->havingRaw('distance < '.$defaultRadius)
