@@ -38,8 +38,8 @@ export default class Register extends Component {
   }
 
   validateUsername = (e) => {
-    this.setState({username: e.target.value}, () => {
-
+    this.setState({username: e.target.value.toLowerCase()}, () => {
+      document.getElementById('username').value = this.state.username;
       // check that only alphanumeric characters are used
       if(!this.state.username.match(/^[a-z0-9]+$/i)) {
         this.setState({validUsername: false});

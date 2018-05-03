@@ -37,7 +37,7 @@ export default class Landing extends Component {
             {isLoggedIn ? <p className="display-medium text-center">{"Welcome, " + sessionStorage.getItem("username")}</p> : ''}
         			<p className="display-big text-center">Feeling Thirsty?</p>
         		</div>
-            <div className="item pane pane-rounded bg-light text-dark">
+            <div className="item pane pane-rounded bg-light text-dark container-tablet">
               <p className="pane-body">Drinq is a web application that allows you to search for nearby bars or restaurants within a 10-mile radius to have a drink or enjoy a happy hour! We also allow our users to input happy hour information for other users to take advantage of, too.</p>
             </div>
         	</div>

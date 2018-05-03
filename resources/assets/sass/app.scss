@@ -138,6 +138,11 @@ footer {
   max-width: 100px;
 }
 
+.nav-expanded {
+  position: fixed;
+  right: 0px;
+}
+
 .navigation-container {
   box-shadow: 0px 0px 6px 1px #666;
   position: sticky;

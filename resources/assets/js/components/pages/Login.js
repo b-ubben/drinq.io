@@ -26,7 +26,9 @@ export default class Login extends Component {
   }
 
   handleUsername = (e) => {
-    this.setState({ username: e.target.value });
+    this.setState({username: e.target.value.toLowerCase()}, () => {
+      document.getElementById('username').value = this.state.username;
+    });
   }
 
   handlePassword = (e) => {

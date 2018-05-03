@@ -11,7 +11,8 @@ import faQuestion from '@fortawesome/fontawesome-free-solid/faQuestion';
 
 export default class Footer extends Component {
   state = {
-    loggedIn: this.checkIfLoggedIn()
+    loggedIn: this.checkIfLoggedIn(),
+    searchResults: this.checkIfSearchResults()
   }
 
   static propTypes = {
@@ -26,9 +27,18 @@ export default class Footer extends Component {
     }
   }
 
+  checkIfSearchResults() {
+    if (sessionStorage.getItem('zipcode')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   render() {
     const view = this.props.view;
     const loggedIn = this.state.loggedIn;
+    const checkIfSearchResults = this.state.searchResults;
 
     return(
       <footer className="row">
@@ -43,7 +53,7 @@ export default class Footer extends Component {
               <FontAwesomeIcon icon={ faHome } size="lg" />
             </Link>
 
-            <Link to="search" className={(view == 'search' || view == 'results') ? "bottom-nav-link bg-lighterDark" : "bottom-nav-link"}>
+            <Link to={ checkIfSearchResults ? "results" : "search" } className={(view == 'search' || view == 'results') ? "bottom-nav-link bg-lighterDark" : "bottom-nav-link"}>
               <FontAwesomeIcon icon={ faSearch } size="lg" />
             </Link>
 
