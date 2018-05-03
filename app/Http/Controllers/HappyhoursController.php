@@ -159,6 +159,11 @@ class HappyhoursController extends Controller
     // allows users to flag a specific happy hour on click
     // flags it in case if it's wrong, etc.
     public function flagHappyHour(Request $request) {
-        
+        // initiate the validation part of what we want.
+        $rules = array(
+        	'hours_id'	=>	'required|numeric'
+        );
+
+        // $flag_count = HappyHour::where()
     }
 }
