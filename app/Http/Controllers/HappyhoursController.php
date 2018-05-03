@@ -36,9 +36,9 @@ class HappyhoursController extends Controller
 	    } else {
         $successStatus = 500;
         return Response::json(array(
-            'status' => $successStatus,
-            'reason' => 'Unable to retrieve results',
-            'message' => 'Could not retrieve results from the database'
+          'status' => $successStatus,
+          'reason' => 'Unable to retrieve results',
+          'message' => 'Could not retrieve results from the database'
         ));
       }
     }
@@ -58,6 +58,7 @@ class HappyhoursController extends Controller
         ));
       }
 
+<<<<<<< Updated upstream
         // using a more reliable API with no request limits
       $url = "http://api.zippopotam.us/us/".urlencode($zipcode);
   		$result_string = file_get_contents($url);
@@ -81,6 +82,45 @@ class HappyhoursController extends Controller
         $successStatus = 200;
 
         if(count($location_results) == 0) {
+=======
+      // use google api to get the lat and long of the zip code.
+      // $url = "http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($zipcode)."&sensor=false";
+  		// $result_string = file_get_contents($url);
+  		// $result = json_decode($result_string, true);
+      //
+  		// // latitude and longitude item
+  		// $latitude = $result["results"][0]["geometry"]["location"]["lat"];
+  		// $longitude = $result["results"][0]["geometry"]["location"]["lng"];
+      $location = DB::table('locations')
+                        ->where('zip_code', $zipcode)
+                        ->first();
+
+      if (!$location) {
+        return Response::json([
+          'status' => '666',
+          'reason' => 'No locations found',
+          'message' => 'Sorry, we don\'t know about any places near you to grab a drink!'
+        ]);
+      }
+
+      $latitude = $location->latitude;
+      $longitude = $location->longitude;
+
+  		// build query for getting
+  		$query = 'location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, created_at, updated_at,
+  		(3959 * acos(cos(radians('.$latitude.')) * cos(radians(latitude)) * cos(radians(longitude) - radians('.$longitude.')) + sin(radians('.$latitude.')) * sin(radians(latitude)))) AS distance';
+
+  		// raw query to return areas within the radius.
+  		$results = DB::table('locations')
+                       ->select(DB::raw($query))
+                       ->havingRaw('distance < '.$defaultRadius.'')
+                       ->orderByRaw('distance ASC')
+                       ->get();
+
+      $successStatus = 200;
+
+      if(count($results) == 0) {
+>>>>>>> Stashed changes
       		return Response::json(array(
           	'status' => $successStatus,
           	'reason'	 => 'No happy hours in your area!',

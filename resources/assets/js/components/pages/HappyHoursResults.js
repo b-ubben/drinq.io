@@ -16,6 +16,7 @@ export default class HappyHoursResults extends Component {
   state = {
     zipcode: sessionStorage.getItem('zipcode'),
     happyhours: '',
+    error: false,
     errorFeedback: '',
     redirect: false
   }
@@ -37,7 +38,7 @@ export default class HappyHoursResults extends Component {
       }).then( response => {
         if (response.status === 200) {
           this.setState({ happyhours: response.data.results });
-          //console.log(response);
+          console.log(response);
         } else {
           this.setState({
             redirect: true,
@@ -45,10 +46,13 @@ export default class HappyHoursResults extends Component {
           });
         }
       }).catch( error => {
-        this.setState({
-          redirect: true,
-          errorFeedback: 'Failed to load happy hour info!'
-         });
+        if (error.status === 401) {
+          this.setState({
+            redirect: true,
+            error: true,
+            errorFeedback: 'Failed to load happy hour info!'
+           });
+        }
       });
     } else {
       this.setState({
@@ -68,6 +72,7 @@ export default class HappyHoursResults extends Component {
   render() {
     const redirect = this.state.redirect;
     const happyhours = this.state.happyhours;
+    const error = this.state.error;
 
     if (redirect) {
       return(
@@ -77,8 +82,7 @@ export default class HappyHoursResults extends Component {
           <Footer view="results" />
         </div>
       );
-    } else {
-      if (!happyhours) {
+    } else if (!happyhours && !error) {
         return(
           <div>
             <Navigation />
@@ -107,5 +111,4 @@ export default class HappyHoursResults extends Component {
         );
       }
     }
-  }
 }
