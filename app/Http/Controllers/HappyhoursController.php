@@ -130,7 +130,7 @@ class HappyhoursController extends Controller
         'end_time'  =>  'required',
       );
 
-      // initiate validator, and get all form fields
+      // initiate validator, and get all request fields
       $validator = Validator::make($request->only("location_id", "day", "start_time", "end_time"), $rules);
 
       if($validator->fails()) {
@@ -182,6 +182,54 @@ class HappyhoursController extends Controller
         	'hours_id'	=>	'required|numeric'
         );
 
-        // $flag_count = HappyHour::where()
+      // initiate validator, and get all request fields
+      $validator = Validator::make($request->only("hours_id"), $rules);
+
+      // check and see if the validator fails.
+      if($validator->fails()) {
+        $successStatus = 500;
+        return Response::json(
+            array(
+                'status' => $successStatus,
+                'message' => "Could not flag happy hour.",
+                'reason' => $validator->messages()
+            ), $successStatus
+          );
+      } else {
+        // get the hours id, query for the record, and get the amount of flags happy hour has.
+        $hours_id = $request->input('hours_id');
+        $happy_hour = HappyHour::find($hours_id);
+        $flag_count = $happy_hour->flags;
+
+        // On the fifth flag, the record will be deleted.
+        if($flag_count == 4) {
+          // delete flag
+          $happy_hour->delete();
+
+          // generate response on successful deletion
+          $successStatus = 200;
+          return Response::json(
+              array(
+                  'status' => $successStatus,
+                  'message' => "Happy hour has been removed!",
+                  'reason' => "Happy hour has been flagged too many times and has been removed!"
+              ), $successStatus
+            );
+        } else {
+          // increment flag by one, and update the record.
+          $happy_hour->flags = $flag_count + 1;
+          $happy_hour->save();
+
+          // generate response on successful flag.
+          $successStatus = 200;
+          return Response::json(
+              array(
+                  'status' => $successStatus,
+                  'message' => "Flagged happy hour!",
+                  'reason' => "Flagged happy hour as inaccurate!"
+              ), $successStatus
+            );
+        }
+      }
     }
 }
