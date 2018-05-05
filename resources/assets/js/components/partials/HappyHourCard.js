@@ -53,12 +53,12 @@ export default class HappyHourCard extends Component {
     const zoom = this.state.zoom;
 
     return(
-      <div className="item pane pane-rounded happy-hour-card bg-light text-dark container-mobile">
+      <div className="item pane pane-rounded happy-hour-card bg-light text-main container-mobile">
         <div className="happy-hour-card__content">
           <div className="pane-body row">
 
-            <Map center={ position } zoom={ zoom } width={300} height={open ? 175 : 300} attribution={ false }
-              zoonOnMouseWheel={ false } className="pigeon-map">
+            <Map center={ position } zoom={ zoom } width={ 300 } height={open ? 175 : 250} attribution={ false }
+              zoomOnMouseWheel={ false } className="pigeon-map">
               <Marker anchor={ position } />
             </Map>
 
