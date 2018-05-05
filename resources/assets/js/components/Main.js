@@ -20,6 +20,8 @@ import LoggedOut from './pages/LoggedOut';
 import HappyHoursResults from './pages/HappyHoursResults';
 import Profile from './pages/Profile';
 import Search from './pages/Search';
+import ErrorMessage from './pages/ErrorMessage';
+import AddHappyHourInformation from './pages/AddHappyHourInformation';
 
 //Uncoment this import for testing
 //import Loading from './partials/Loading';
@@ -38,6 +40,8 @@ export default class Main extends Component {
               <Route path="/results" component={ HappyHoursResults } />
               <Route path="/profile" component= { Profile } />
               <Route path="/search" component={ Search } />
+              <Route path="/error" component={ ErrorMessage } />
+              <Route path="/addhappyhour" component={ AddHappyHourInformation } />
             <Route component={ NotFound } />
           </Switch>
         </div>

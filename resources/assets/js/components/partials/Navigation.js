@@ -77,7 +77,7 @@ export default class Navigation extends Component {
               </div>
             </button>
           </nav>
-          <Loading view="loggedout" waitTime={ 400 }/>
+          <Redirect to="loggedout" />
         </div>
       );
     } else {
@@ -94,7 +94,7 @@ export default class Navigation extends Component {
             </button>
           </nav>
 
-          <nav className={this.state.isExpanded ? 'nav-expanded bg-secondary display-block container-mobile float-right border rounded-border border-color-grey' : 'display-none'}>
+          <nav className={this.state.isExpanded ? 'nav-expanded bg-secondary display-block container-mobile float-right border rounded-border margin-bottom-enough' : 'display-none'}>
             <div className="row text-center">
               <div className="item-half item-half__mobile margin-y-nothing padding-y-something">
                 <Link className="navigation-link bg-dark border-color-grey rounded-border" to="/" onClick={ this.handleToggle }>Home</Link>

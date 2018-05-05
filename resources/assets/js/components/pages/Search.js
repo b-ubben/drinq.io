@@ -65,7 +65,7 @@ export default class Search extends Component {
           <section>
           	<div className="row">
           		<div className="item margin-x-nothing">
-              {isLoggedIn ? <p className="display-medium text-center">{"Welcome, " + sessionStorage.getItem("username")}</p> : ''}
+              {isLoggedIn ? <p className="display-medium padding-top-nothing text-center">{"Welcome, " + sessionStorage.getItem("username")}</p> : ''}
           		</div>
           	</div>
 

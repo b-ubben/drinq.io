@@ -8,15 +8,25 @@ import { BASE_URL } from './../partials/Path';
 
 export default class Profile extends Component {
   state = {
-    redirect: false
+    redirect: false,
+    userData: ''
   }
 
   componentDidMount = () => {
       const loggedIn = this.checkIfLoggedIn();
 
       if (loggedIn) {
-        axios.get(BASE_URL + '/profile').then( response => {
-            console.log(response);
+        axios.get(BASE_URL + '/profile', {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('token')
+          }
+        }).then( response => {
+            if (response.status === 200 && response.data.status === 200) {
+              this.setState({ userData: response.data.reason });
+            } else {
+              this.setState({ redirect: true });
+            }
           }
         ).catch( error => {
             console.log(error);
@@ -37,12 +47,13 @@ export default class Profile extends Component {
 
   render() {
     const redirect = this.state.redirect;
+    const userData = this.state.userData;
 
     if (redirect) {
       return(
         <div>
           <Navigation />
-          <Loading message="Must be logged in!" />
+          <Loading message="Must be logged in!" view="search" />
           <Footer view="profile" />
         </div>
       );
@@ -50,9 +61,10 @@ export default class Profile extends Component {
       return(
         <div>
           <Navigation />
-          <section className="row">
-            <div className="item">
-              <p className="display-medium text-center">Test</p>
+          <section className="row padding-something padding-top-most">
+            <div className="item container-mobile text-main pane pane-rounded bg-light">
+              <p className="text-center">Username:<br /><span className="display-medium">{ userData.username }</span></p>
+              <p className="small text-center">{ userData.email }</p>
             </div>
           </section>
           <Footer view="profile" />

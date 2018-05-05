@@ -25,19 +25,19 @@ export default class LoggedOut extends Component {
         <div>
           <Navigation />
           <Loading />
-          <Footer />
+          <Footer view="home" />
         </div>
       );
     } else {
       return(
         <div>
           <Navigation />
-          <div className="row margin-top-most">
-            <div className="item pane justify-content-center align-items-center">
+          <div className="row margin-top-most padding-something">
+            <div className="item text-main justify-content-center align-items-center">
               <p className=" display-medium pane-body item text-center">You have been logged out. Please wait a moment and you will be redirected to the home screen.</p>
             </div>
           </div>
-          <Footer />
+          <Footer view="home" />
         </div>
       );
     }

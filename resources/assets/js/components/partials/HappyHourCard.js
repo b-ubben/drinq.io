@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { object } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // import pigeon-maps
 import Map from 'pigeon-maps';
@@ -30,12 +31,8 @@ export default class HappyHourCard extends Component {
     data: object
   }
 
-  renderHappyhours = () => {
-    return Object.values(this.state.happyhours).map( (happyhour, i) =>
-      <div key={ i }>
-        <span>{ happyhour.day }:  { happyhour.start_time } - { happyhour.end_time }</span>
-      </div>
-    );
+  happyHoursRender = () => {
+    console.log(document.querySelector('.happyhours-container').style);
   }
 
   scrollToBottom = () => {
@@ -47,8 +44,13 @@ export default class HappyHourCard extends Component {
     }, 1);
   }
 
+  setLocationIdToAdd() {
+    sessionStorage.setItem('locationIdToAdd', this.state.id);
+  }
+
   render() {
     const position = [this.state.lat, this.state.long];
+    const happyhours = this.state.happyhours;
     const open = this.state.open;
     const zoom = this.state.zoom;
 
@@ -62,17 +64,17 @@ export default class HappyHourCard extends Component {
               <Marker anchor={ position } />
             </Map>
 
-            <details className="item margin-x-nothing text-center text-main">
+            <details className="item margin-x-nothing text-center text-main location">
               <summary onClick={ this.scrollToBottom }>{ this.state.name }</summary>
               <div className="pane pane-rounded margin-top-enough scroll">
                 <div className="pane-body padding-something">
                   <p className="padding-bottom-nothing">{ this.state.address }</p>
                   <p>~{ this.state.distance }mi from you</p>
-
-                  <span>Happy Hours:</span><br />
-                  { this.renderHappyhours() }<br />
                   <a href={ 'tel:' + this.state.phone }>{ this.state.phone }</a>
                 </div>
+
+                <p className="padding-bottom-something">No happy hour info yet. Do you know when their happy hours are? <Link to="addhappyhour" onClick={ this.setLocationIdToAdd() }>Add a happy hour here.</Link></p>
+
               </div>
               <a className={ 'text-hide focus' + this.state.id } tabIndex="0">focus</a>
             </details>

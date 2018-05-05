@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 //import partials
 import Navigation from './../partials/Navigation';
@@ -86,10 +86,11 @@ export default class HappyHoursResults extends Component {
 
     if (load) {
       if (noZip || error) {
+        sessionStorage.setItem('errorMessage', errorFeedback);
         return(
           <div>
             <Navigation />
-            <Loading message={ errorFeedback } />
+            <Redirect to="error" />
             <Footer view="results" />
           </div>
         );
@@ -117,7 +118,7 @@ export default class HappyHoursResults extends Component {
       return(
         <div>
           <Navigation />
-          <Loading message="Loading Results.." redirect={ false } />
+          <Loading message="Loading Results.." redirect={ false } wait={ false } />
           <Footer view="results" />
         </div>
       );
