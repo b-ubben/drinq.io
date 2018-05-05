@@ -16,10 +16,9 @@ use App\User;
 
 class ProfileController extends Controller
 {
-    // get all user details. meant to be used for testing only.
-
 	public $successStatus = 200;
 
+    // this just retrieves all user information, ready to be parsed from json
     public function getUserProfile() {
     	// access the currently logged in user
         $user = Auth::user();
