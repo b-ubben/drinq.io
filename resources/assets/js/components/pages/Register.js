@@ -155,13 +155,13 @@ export default class Register extends Component {
       return(
         <div>
           <Navigation />
-          <div className="row">
-          	<div className="item-three-quarter item__mobile">
+          <div className="row text-main">
+          	<div className="item item__mobile container-mobile padding-bottom-enough">
           		<div className="pane pane-rounded padding-something margin-top-enough bg-light">
             		<p className="pane-title display-big">Drinq User Registration</p>
-                <p className="pane-content text-dark text-center container-mobile padding-something">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
+                <p className="pane-content text-center container-mobile padding-something">Drinq wants to get to know you a little better. Please pick a username, set your password and enjoy.</p>
 
-          			<form className="crutch-form text-center text-dark container-mobile">
+          			<form className="crutch-form text-center container-mobile">
                   {(this.state.registerFeedback) ? <p className="alert-failure">{this.state.registerFeedback}</p> : ''}
 
             			<input type="text" name="username" id="username" placeholder="Username" className="input-long" onChange={ this.validateUsername } />

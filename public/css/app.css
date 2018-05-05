@@ -626,7 +626,7 @@ a:visited {
 }
 
 a:hover {
-  color: #8EA8C3;
+  color: #0094C6;
   cursor: pointer;
 }
 
@@ -829,7 +829,7 @@ a:hover {
 .crutch-form input[type=password] {
   border: 1px solid #ddd;
   border-radius: 4px;
-  color: rgba(64, 64, 64, 0.85);
+  color: rgba(0, 78, 100, 0.85);
   padding: 0.35rem;
   margin: 0.25rem auto;
   -webkit-transition: border 200ms ease-in-out;
@@ -844,7 +844,7 @@ a:hover {
 .crutch-form input[type="submit"] {
   border: 1px solid #ddd;
   border-radius: 8px;
-  color: #404040;
+  color: #004E64;
   padding: 0.3rem;
   margin: 0.2rem;
   height: 2rem;
@@ -894,7 +894,7 @@ button {
 }
 
 .navigation-link:hover {
-  color: #8EA8C3;
+  color: #0094C6;
 }
 
 .menu-logo {
@@ -949,15 +949,15 @@ button {
 }
 
 .bg-secondary {
-  background-color: #406E8E !important;
+  background-color: #F0EFF4 !important;
 }
 
 .bg-attention {
-  background-color: #8EA8C3 !important;
+  background-color: #0094C6 !important;
 }
 
 .bg-dark {
-  background-color: #404040 !important;
+  background-color: #004E64 !important;
 }
 
 .bg-light {
@@ -1009,15 +1009,15 @@ button {
 }
 
 .border-color-secondary {
-  border-color: #406E8E !important;
+  border-color: #F0EFF4 !important;
 }
 
 .border-color-attention {
-  border-color: #8EA8C3 !important;
+  border-color: #0094C6 !important;
 }
 
 .border-color-dark {
-  border-color: #404040 !important;
+  border-color: #004E64 !important;
 }
 
 .border-color-light {
@@ -2069,7 +2069,7 @@ button {
 }
 
 .text-dark {
-  color: #404040;
+  color: #004E64;
 }
 
 .text-main {
@@ -2100,6 +2100,10 @@ a {
   text-decoration: underline;
 }
 
+body {
+  font-size: 1.1em;
+}
+
 details summary {
   background: #23395B;
   border: 2px solid transparent;
@@ -2128,11 +2132,11 @@ footer {
 }
 
 .bg-lighterDark {
-  background: #525252;
+  background: #006a88;
 }
 
 .border-color-grey {
-  border-color: #616161 !important;
+  border-color: #0082a6 !important;
 }
 
 .bottom-nav {
@@ -2209,20 +2213,6 @@ footer {
   max-width: 500px;
 }
 
-.happy-hour-map {
-  -webkit-box-shadow: 1px 2px #eee;
-          box-shadow: 1px 2px #eee;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  min-height: 250px;
-  width: 100%;
-}
-
-.leaflet-container {
-  height: 100%;
-  z-index: 0;
-}
-
 .loading-container {
   background: rgba(0, 0, 0, 0.62);
   bottom: 0px;
@@ -2233,10 +2223,6 @@ footer {
   top: 0px;
   width: 100%;
   z-index: 3;
-}
-
-.map-marker-address {
-  max-width: 100px;
 }
 
 .nav-expanded {
@@ -2259,7 +2245,15 @@ footer {
   font-family: 'Lemon' !important;
   font-size: 1.6em;
   margin: auto;
-  padding-left: 2.66em;
+  padding-left: 2.53em;
+}
+
+.pigeon-map {
+  border: transparent;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 1px 3px 0px #333;
+          box-shadow: 0px 1px 3px 0px #333;
+  padding: 1em;
 }
 
 .position-static {
@@ -2271,6 +2265,10 @@ footer {
 }
 
 @media only screen and (min-width: 621px) {
+  body {
+    font-size: .96em;
+  }
+
   .back-to-search {
     display: block;
   }

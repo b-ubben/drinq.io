@@ -69,8 +69,8 @@ export default class Search extends Component {
           		</div>
           	</div>
 
-          	<div className="row container-tablet">
-          		<div className="item pane pane-rounded bg-light text-dark">
+          	<div className="row container-mobile">
+          		<div className="item pane pane-rounded bg-light text-main">
           			<p className="pane-content text-center margin-bottom-nothing">Please enter your zipcode. We'll search for places nearby where you can get a drink!</p>
 
                 <form className="crutch-form container-mobile padding-something margin-y-something">

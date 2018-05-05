@@ -16,77 +16,80 @@ export default class HappyHoursResults extends Component {
   state = {
     zipcode: sessionStorage.getItem('zipcode'),
     happyhours: '',
-    error: false,
     errorFeedback: '',
-    redirect: false
+    error: false,
+    load: false,
+    noZip: true
   }
 
   componentDidMount() {
-      if (this.state.zipcode !== null) {
-        this.loadResults();
-      } else {
-        this.setState({ redirect: true });
-      }
-  }
-
-  loadResults() {
-    if (isNaN(this.state.zipcode) === false) {
-      axios.get(BASE_URL + '/happyhours/' + this.state.zipcode, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      }).then( response => {
-        if (response.status === 200) {
-          this.setState({ happyhours: response.data.results });
-          console.log(response);
-        } else {
-          this.setState({
-            redirect: true,
-            errorFeedback: 'Unable to load results! Sorry!'
-          });
-        }
-      }).catch( error => {
-        if (error.status === 401) {
-          this.setState({
-            redirect: true,
-            error: true,
-            errorFeedback: 'Failed to load happy hour info!'
-           });
-        }
-      });
+    if (this.state.zipcode !== null && isNaN(this.state.zipcode) === false) {
+      this.loadResults();
     } else {
       this.setState({
-        redirect: true,
-        errorFeedback: 'Must enter zipcode first!'
+        load: true,
+        error: true,
+        noZip: true,
+        errorFeedback: 'Invalid Zipcode!'
       });
     }
   }
 
-  resultsError = () => {
-    this.setState({
-      redirect: true,
-      errorFeedback: ''
+  loadResults() {
+    axios.get(BASE_URL + '/happyhours/' + this.state.zipcode, {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then( response => {
+        if (response.status === 200) {
+          if (response.data.status === 200) {
+            this.setState({
+              happyhours: response.data.results,
+              load: true,
+              noZip: false
+             });
+          } else {
+            this.setState({
+              error: true,
+              load: true,
+              noZip: false,
+              errorFeedback: response.data.message
+            });
+            sessionStorage.setItem('zipcode', '');
+          }
+        } else {
+          this.setState({
+            error: true,
+            load: true,
+            noZip: false,
+            errorFeedback: 'There was problem. Sorry!'
+          });
+          sessionStorage.setItem('zipcode', '');
+        }
+    }).catch( error => {
+      this.setState({
+        errorFeedback: 'Failed to load happy hour info!',
+        load: true,
+        error: true,
+        noZip: false
+       });
+      sessionStorage.setItem('zipcode', '');
     });
   }
 
   render() {
-    const redirect = this.state.redirect;
     const happyhours = this.state.happyhours;
     const error = this.state.error;
+    const errorFeedback = this.state.errorFeedback;
+    const noZip = this.state.noZip;
+    const load = this.state.load;
 
-    if (redirect) {
-      return(
-        <div>
-          <Navigation />
-          <Loading message="Must enter zipcode first!" />
-          <Footer view="results" />
-        </div>
-      );
-    } else if (!happyhours && !error) {
+    if (load) {
+      if (noZip || error) {
         return(
           <div>
             <Navigation />
-            <Loading message="Loading results..." redirect={ false } wait={ false }/>
+            <Loading message={ errorFeedback } />
             <Footer view="results" />
           </div>
         );
@@ -94,13 +97,13 @@ export default class HappyHoursResults extends Component {
         return(
           <div>
             <Navigation />
-            <section className="container-desktop">
-              <div className="padding-bottom-nothing text-center">
+            <section className="container-tablet text-main">
+              <div className="padding-bottom-nothing padding-top-enough text-center">
                 <Link to="search">
                   back to search
                 </Link>
               </div>
-              <div className="happy-hour-cards-container container-desktop">
+              <div className="happy-hour-cards-container">
                 {
                   Object.values(happyhours).map( (happyhour, i) => <HappyHourCard data={ happyhour } key={ i } />)
                 }
@@ -110,5 +113,14 @@ export default class HappyHoursResults extends Component {
           </div>
         );
       }
+    } else {
+      return(
+        <div>
+          <Navigation />
+          <Loading message="Loading Results.." redirect={ false } />
+          <Footer view="results" />
+        </div>
+      );
     }
+  }
 }

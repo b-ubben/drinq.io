@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { object } from 'prop-types';
 
-//import Leaflet
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+// import pigeon-maps
+import Map from 'pigeon-maps';
+import Marker from 'pigeon-marker';
+import Overlay from 'pigeon-overlay';
 
 export default class HappyHourCard extends Component {
   state = {
@@ -37,17 +38,10 @@ export default class HappyHourCard extends Component {
     );
   }
 
-  scrollToPane = () => {
-    let map = document.querySelector('.happy-hour-map' + this.state.id);
-
-    if (!this.state.open) {
-      this.setState({ open: true });
-      map.style.minHeight = '160px';
-    } else {
-      this.setState({ open: false });
-      map.style.minHeight = '250px';
-    }
-
+  scrollToBottom = () => {
+    this.setState( prevState => ({
+      open: !prevState.open
+    }));
     setTimeout( () => {
       document.querySelector('.focus' + this.state.id).focus();
     }, 1);
@@ -55,30 +49,21 @@ export default class HappyHourCard extends Component {
 
   render() {
     const position = [this.state.lat, this.state.long];
+    const open = this.state.open;
+    const zoom = this.state.zoom;
 
     return(
       <div className="item pane pane-rounded happy-hour-card bg-light text-dark container-mobile">
         <div className="happy-hour-card__content">
           <div className="pane-body row">
-            <Map
-              center={ position }
-              zoom={ this.state.zoom }
-              scrollWheelZoom={ false }
-              className={ 'happy-hour-map happy-hour-map' + this.state.id } >
 
-              <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-
-              <Marker position={ position }>
-                <Popup>
-                  <span className="map-marker-address">{ this.state.address }</span>
-                </Popup>
-              </Marker>
+            <Map center={ position } zoom={ zoom } width={300} height={open ? 175 : 300} attribution={ false }
+              zoonOnMouseWheel={ false } className="pigeon-map">
+              <Marker anchor={ position } />
             </Map>
 
-            <details className="item margin-x-nothing text-center">
-              <summary onClick={ this.scrollToPane }>{ this.state.name }</summary>
+            <details className="item margin-x-nothing text-center text-main">
+              <summary onClick={ this.scrollToBottom }>{ this.state.name }</summary>
               <div className="pane pane-rounded margin-top-enough scroll">
                 <div className="pane-body padding-something">
                   <p className="padding-bottom-nothing">{ this.state.address }</p>
@@ -91,6 +76,7 @@ export default class HappyHourCard extends Component {
               </div>
               <a className={ 'text-hide focus' + this.state.id } tabIndex="0">focus</a>
             </details>
+
           </div>
         </div>
       </div>

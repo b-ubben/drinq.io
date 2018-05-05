@@ -11,12 +11,12 @@ export default class About extends Component {
         <Navigation />
 
         <main>
-        	<div className="row">
+        	<div className="row text-main">
         		<header className="item margin-bottom-nothing">
         			<p className="display-medium text-center">About Us</p>
         		</header>
 
-        		<section className="item container-tablet text-dark">
+        		<section className="item container-tablet">
         		  <div className="pane pane-rounded bg-light padding-enough">
                 <div className="pane-body">
                   <p>Drinq is currently being developed and maintained by a senior design project group in California State University, Northridge's Computer Information Techonology program known as the Morning Drinkers.</p>

@@ -72,10 +72,10 @@ export default class Login extends Component {
       <div>
         <Navigation />
         { isLoggedIn ? <Loading message={'Logging you in, ' + sessionStorage.getItem('username')} /> : ''}
-        <main className="item-three-quarter item__mobile">
+        <main className="item item__mobile container-mobile">
         	<div className="pane pane-rounded bg-light padding-something">
         		<p className="pane-title display-medium">Please sign in to continue</p>
-            <p className="text-center text-dark">Enter your username and password. Not a registered user yet? Register <Link to="register">here</Link>.</p>
+            <p className="text-center text-main">Enter your username and password. Not a registered user yet? Register <Link to="register">here</Link>.</p>
         		<form action="" className="crutch-form text-center container-mobile">
               {(this.state.loginFeedback) ? <p className="alert-failure">{this.state.loginFeedback}</p> : ''}
         			<input type="text" name="username" id="username" className="input-long" placeholder="Username" onChange={ this.handleUsername }/>

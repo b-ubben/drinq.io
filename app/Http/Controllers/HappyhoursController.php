@@ -80,11 +80,11 @@ class HappyhoursController extends Controller
             'message' =>  'The zip code you entered does not exist!'
           ));
       }
-      
+
   		// pulling simple lat/long data from request above
   		$longitude = $result["places"][0]["longitude"];
       $latitude = $result["places"][0]["latitude"];
-        
+
       // select statement for getting all elements we want back.
         $proximity_query = "locations.location_id, location_name, zip_code, latitude, longitude, address, city, zip_code, country, state, display_phone, locations.created_at, locations.updated_at,
         (3959 * acos(cos(radians($latitude)) * cos(radians(latitude)) * cos(radians(longitude) - radians($longitude)) + sin(radians($latitude)) * sin(radians(latitude)))) AS distance";
@@ -96,15 +96,15 @@ class HappyhoursController extends Controller
                           ->orderByRaw('distance ASC')
                           ->get();
 
-        $successStatus = 200;
-
         if(count($location_results) == 0) {
+          $successStatus = 666;
     		  return Response::json(array(
               'status' => $successStatus,
               'reason'   => 'No happy hours in your area!',
               'message' =>  'There are no happy hours in your area! :('
           ));
         } else if ($location_results) {
+          $successStatus = 200;
           return Response::json(array(
           	'status' => $successStatus,
           	'results'	 => $location_results

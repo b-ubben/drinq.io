@@ -42,7 +42,7 @@ export default class Footer extends Component {
 
     return(
       <footer className="row">
-				<div className="item text-center desktop-only small">
+				<div className="item text-center text-main desktop-only small">
 					<p>Developed and tested by the Morning Drinkers</p>
           <p>Copyright &copy; 2018</p>
 				</div>

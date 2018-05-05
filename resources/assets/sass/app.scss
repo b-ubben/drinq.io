@@ -11,6 +11,10 @@ a {
   text-decoration: underline;
 }
 
+body {
+  font-size: 1.1em;
+}
+
 details summary {
   background: map-get($theme, dank);
   border: 2px solid rgba(0, 0, 0, 0.0);
@@ -108,34 +112,16 @@ footer {
   max-width: 500px;
 }
 
-.happy-hour-map {
-  box-shadow: 1px 2px #eee;
-  border: 1px solid rgba(0, 0, 0, 0.0);
-  border-radius: 4px;
-  min-height: 250px;
-  width: 100%;
-}
-
-.leaflet-container {
-  height: 100%;
-  z-index: 0;
-}
-
 .loading-container {
   background: rgba(0, 0, 0, 0.62);
   bottom: 0px;
   height: 100%;
   left: 0px;
-  //min-height: 120vh;
   position: absolute;
   right: 0px;
   top: 0px;
   width: 100%;
   z-index: 3;
-}
-
-.map-marker-address {
-  max-width: 100px;
 }
 
 .nav-expanded {
@@ -156,7 +142,14 @@ footer {
   font-family: 'Lemon' !important;
   font-size: 1.6em;
   margin: auto;
-  padding-left: 2.66em;
+  padding-left: 2.53em;
+}
+
+.pigeon-map {
+  border: rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  box-shadow: 0px 1px 3px 0px #333;
+  padding: 1em;
 }
 
 .position-static {
@@ -168,6 +161,10 @@ footer {
 }
 
 @media only screen and (min-width: 621px) {
+  body {
+    font-size: .96em;
+  }
+
   .back-to-search {
     display: block;
   }
