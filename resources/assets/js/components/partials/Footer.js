@@ -43,7 +43,8 @@ export default class Footer extends Component {
     return(
       <footer className="row">
 				<div className="item text-center text-main desktop-only small">
-					<p>Developed and tested by the Morning Drinkers</p>
+          <p>Built using Laravel, React.js and <Link to="https://www.ubben.co/crutch" target="_blank">Crutch</Link>.</p>
+          <p></p>
           <p>Copyright &copy; 2018</p>
 				</div>
 

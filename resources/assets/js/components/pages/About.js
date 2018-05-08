@@ -16,24 +16,10 @@ export default class About extends Component {
         			<p className="display-big text-center">About Us</p>
         		</header>
 
-        		<section className="item padding-top-nothing container-mobile">
+        		<section className="item margin-top-nothing padding-top-nothing container-mobile">
         		  <div className="pane pane-rounded bg-light padding-enough">
                 <div className="pane-body row">
-                  <p>Drinq is currently being developed and maintained by a senior design project group in California State University, Northridge's Computer Information Techonology program formally known as the Morning Drinkers.</p>
-
-                  <dl className="item">
-                    <dt><strong>Full-Stack Development:</strong></dt>
-                      <dd>Brandon Antillon</dd>
-                      <dd>Brandon Ubben</dd>
-                    <dt><strong>Data Collection:</strong></dt>
-                      <dd>Denis Semendyayev</dd>
-                      <dd>Sebastian Duran</dd>
-                    <dt><strong>Visual Design/Direction:</strong></dt>
-                      <dd>Daniel Jimenez</dd>
-                      <dd>Bryan Hiransomboon</dd>
-                    <dt><strong>Infrastructure Implementation/Automation:</strong></dt>
-                      <dd>Alfredo Garcia</dd>
-                  </dl>
+                  <p>Drinq was previously developed and maintained by a senior design project team in California State University, Northridge's Computer Information Techonology program known as the Morning Drinkers. Now, primary development continues on as a passion project of the a few members of that team.</p>
                 </div>
         		  </div>
         	 </section>

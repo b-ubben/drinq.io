@@ -2101,7 +2101,7 @@ a {
 }
 
 body {
-  font-size: 1.1em;
+  font-size: .99em;
 }
 
 details summary {
@@ -2151,6 +2151,11 @@ footer {
   padding: 1em;
   text-align: center;
   text-decoration: none;
+}
+
+.bottom-nav-link:visited,
+.bottom-nav-link:hover {
+  color: #fff;
 }
 
 .desktop-only {
@@ -2223,6 +2228,11 @@ footer {
   top: 0px;
   width: 100%;
   z-index: 3;
+}
+
+.nav-expanded {
+  position: fixed;
+  right: 0px;
 }
 
 .navigation-container {

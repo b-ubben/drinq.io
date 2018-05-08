@@ -99,7 +99,7 @@ export default class HappyHoursResults extends Component {
           <div>
             <Navigation />
             <section className="container text-main">
-              <div className="padding-bottom-nothing padding-top-enough text-center">
+              <div className="padding-bottom-nothing padding-top-something text-center">
                 <Link to="search">
                   back to search
                 </Link>

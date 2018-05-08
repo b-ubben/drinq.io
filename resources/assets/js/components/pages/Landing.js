@@ -34,7 +34,7 @@ export default class Landing extends Component {
         <section>
         	<div className="row padding-something text-main">
         		<div className="item margin-x-nothing">
-            {isLoggedIn ? <p className="display-medium text-center text-main">{"Welcome, " + sessionStorage.getItem("username")}</p> : ''}
+            {isLoggedIn ? <p className="display-medium text-center text-main padding-y-nohting margin-y-nothing">{"Welcome, " + sessionStorage.getItem("username")}</p> : ''}
         			<p className="display-big text-center">Feeling Thirsty?</p>
         		</div>
             <div className="item pane pane-rounded bg-light text-main padding-something container-mobile">

@@ -82,7 +82,7 @@ export default class Login extends Component {
         			<br />
         			<input type="password" name="password" id="password" className="input-long" placeholder="Password" onChange={ this.handlePassword }/>
         			<br />
-        			<button className="padding-something border border-color-grey rounded-border button-long bg-dank text-white" onClick={ this.handleLogIn }>Go</button>
+        			<button className="padding-something border border-color-grey rounded-border button-long bg-dank text-white margin-top-something" onClick={ this.handleLogIn }>Go</button>
         		</form>
         	</div>
         </main>

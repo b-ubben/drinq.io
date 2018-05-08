@@ -94,30 +94,32 @@ export default class Navigation extends Component {
             </button>
           </nav>
 
-          <nav className={this.state.isExpanded ? 'nav-expanded bg-secondary display-block container-mobile float-right border rounded-border margin-bottom-enough' : 'display-none'}>
+          <nav className={this.state.isExpanded ? 'nav-expanded bg-secondary display-block container-mobile item-quarter item-half__mobile float-right border rounded-border margin-top-nothing margin-bottom-enough bg-light' : 'display-none'}>
             <div className="row text-center">
-              <div className="item-half item-half__mobile margin-y-nothing padding-y-something">
+
+              <div className="item-three-quarter margin-y-nothing padding-y-something">
                 <Link className="navigation-link bg-dark border-color-grey rounded-border" to="/" onClick={ this.handleToggle }>Home</Link>
               </div>
 
-              <div className="item-half item-half__mobile margin-y-nothing padding-y-something">
+              <div className="item-three-quarter margin-y-nothing padding-y-something">
                 {isLoggedIn ? (
                   <Link className="navigation-link bg-dark border-color-grey rounded-border" to="/logout" onClick={ this.onLogoutClick }>Log Out</Link>) : (<Link className="navigation-link bg-dark border-color-grey rounded-border" to="/login" onClick={ this.handleToggle }>Log In</Link>)
                 }
               </div>
 
-              <div className="item-half item-half__mobile margin-y-nothing padding-y-something">
+              <div className="item-three-quarter margin-y-nothing padding-y-something">
                 {isLoggedIn ? (
                   <Link className="navigation-link bg-dark border-color-grey rounded-border" to="/profile" onClick={ this.handleToggle }>Profile</Link>) : (<Link className="navigation-link bg-dark border-color-grey rounded-border" to="/register" onClick={ this.handleToggle }>Register</Link>)
                 }
               </div>
-              <div className="item-half item-half__mobile margin-y-nothing padding-y-something">
+              <div className="item-three-quarter margin-y-nothing padding-y-something">
                 <Link className="navigation-link bg-dark border-color-grey rounded-border" to="/about" onClick={ this.handleToggle }>About Us</Link>
               </div>
 
-              <div className="item-half item-half__mobile margin-y-nothing padding-y-something">
+              <div className="item-three-quarter margin-y-nothing padding-y-something">
                 <Link className="navigation-link bg-dark border-color-grey rounded-border" to="/search" onClick={ this.handleToggle }>Search</Link>
               </div>
+
             </div>
           </nav>
         </div>

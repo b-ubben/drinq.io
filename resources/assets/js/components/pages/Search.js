@@ -63,13 +63,8 @@ export default class Search extends Component {
         <div>
           <Navigation />
           <section>
-          	<div className="row">
-          		<div className="item margin-x-nothing">
-              {isLoggedIn ? <p className="display-medium padding-top-nothing text-center">{"Welcome, " + sessionStorage.getItem("username")}</p> : ''}
-          		</div>
-          	</div>
 
-          	<div className="row container-mobile">
+          	<div className="row container-mobile margin-top-more">
           		<div className="item pane pane-rounded bg-light text-main">
           			<p className="pane-content text-center margin-bottom-nothing">Please enter your zipcode. We'll search for places nearby where you can get a drink!</p>
 

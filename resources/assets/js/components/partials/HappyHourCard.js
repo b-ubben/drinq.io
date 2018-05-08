@@ -60,7 +60,7 @@ export default class HappyHourCard extends Component {
           <div className="pane-body row">
 
             <Map center={ position } zoom={ zoom } width={ 300 } height={open ? 175 : 250} attribution={ false }
-              zoomOnMouseWheel={ false } className="pigeon-map">
+              zoomOnMouseWheel={ true } className="pigeon-map">
               <Marker anchor={ position } />
             </Map>
 
